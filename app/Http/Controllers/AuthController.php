@@ -50,4 +50,39 @@ class AuthController extends Controller
 
         return redirect('/login');
     }
+    // ========================
+// === SYARAT =============
+// ========================
+public function storeUser(Request $request)
+{
+    $request->validate([
+        'name' => 'required|string',
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
+
+    Syarat_fasilitas::create($data);
+    return redirect()->route('tables')->with('success', 'Data User berhasil disimpan.');
+}
+
+public function editUser($id)
+{
+    $data['user'] = Users::findOrFail($id);
+    return view('bina.edit_user', $data);
+}
+
+public function updateUser(Request $request, $id)
+{
+    $user = Users::findOrFail($id);
+    $user->update($request->all());
+    return redirect()->route('tables')->with('success', 'Data User berhasil diperbarui.');
+}
+public function destroyUser($id)
+{
+    $user = User::findOrFail($id);
+    $user->delete();
+    
+    return redirect()->route('tables')->with('success', 'Data berhasil dihapus!');
+}
+
 }

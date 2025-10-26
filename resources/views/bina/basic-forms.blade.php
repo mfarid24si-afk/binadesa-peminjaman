@@ -165,18 +165,18 @@
         <!-- Card Identitas -->
         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
           <div class="mdc-card">
-            <h6 class="card-title">Identitas</h6>
+            <h6 class="card-title">User</h6>
             <div class="template-demo">
               <div class="mdc-layout-grid__inner">
                 
                 <!-- Nama Depan -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                   <div class="mdc-text-field mdc-text-field--outlined">
-                    <input type="text" name="first_name" class="mdc-text-field__input" required>
+                    <input type="text" name="name" class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
                       <div class="mdc-notched-outline__leading"></div>
                       <div class="mdc-notched-outline__notch">
-                        <label class="mdc-floating-label">Nama Depan</label>
+                        <label class="mdc-floating-label">Name</label>
                       </div>
                       <div class="mdc-notched-outline__trailing"></div>
                     </div>
@@ -186,11 +186,11 @@
                 <!-- Nama Belakang -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                   <div class="mdc-text-field mdc-text-field--outlined">
-                    <input type="text" name="last_name" class="mdc-text-field__input" required>
+                    <input type="text" name="email" class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
                       <div class="mdc-notched-outline__leading"></div>
                       <div class="mdc-notched-outline__notch">
-                        <label class="mdc-floating-label">Nama Belakang</label>
+                        <label class="mdc-floating-label">Email</label>
                       </div>
                       <div class="mdc-notched-outline__trailing"></div>
                     </div>
@@ -200,11 +200,11 @@
                 <!-- Nomor HP -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                   <div class="mdc-text-field mdc-text-field--outlined">
-                    <input type="text" name="phone" class="mdc-text-field__input" required>
+                    <input type="text" name="password" class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
                       <div class="mdc-notched-outline__leading"></div>
                       <div class="mdc-notched-outline__notch">
-                        <label class="mdc-floating-label">Nomor Handphone</label>
+                        <label class="mdc-floating-label">Password</label>
                       </div>
                       <div class="mdc-notched-outline__trailing"></div>
                     </div>
@@ -212,7 +212,7 @@
                 </div>
 
                 <!-- Tanggal Lahir -->
-                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                {{-- <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                   <div class="mdc-text-field mdc-text-field--outlined">
                     <input type="date" name="birthday" class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
@@ -223,10 +223,10 @@
                       <div class="mdc-notched-outline__trailing"></div>
                     </div>
                   </div>
-                </div>
+                </div> --}}
 
                 <!-- Jenis Kelamin -->
-                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                {{-- <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                   <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
                     <input type="hidden" name="gender">
                     <i class="mdc-select__dropdown-icon"></i>
@@ -241,7 +241,7 @@
                     <span class="mdc-floating-label">Jenis Kelamin</span>
                     <div class="mdc-line-ripple"></div>
                   </div>
-                </div>
+                </div> --}}
 
               </div>
             </div>
@@ -249,7 +249,7 @@
         </div>
 
         <!-- Card Peminjaman -->
-        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+        {{-- <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
           <div class="mdc-card">
             <h6 class="card-title">Peminjaman</h6>
             <div class="template-demo">
@@ -272,7 +272,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
 
         <!-- Tombol Simpan & Batal -->
         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
