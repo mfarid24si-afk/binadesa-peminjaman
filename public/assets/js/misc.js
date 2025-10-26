@@ -72,3 +72,23 @@
 
   });
 })(jQuery);
+
+//table
+function showTab(evt, tabName) {
+  // Hide semua tab
+  const contents = document.getElementsByClassName('tab-content');
+  for (let i = 0; i < contents.length; i++) {
+    contents[i].classList.remove('active');
+  }
+
+  // Hapus active dari semua tombol
+  const tabs = document.getElementsByClassName('nav-tab');
+  for (let i = 0; i < tabs.length; i++) {
+    tabs[i].classList.remove('active');
+  }
+
+  // Tampilkan tab yang diklik
+  const selectedTab = document.getElementById(tabName);
+  if (selectedTab) selectedTab.classList.add('active');
+  evt.currentTarget.classList.add('active');
+}

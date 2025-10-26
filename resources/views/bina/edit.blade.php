@@ -129,315 +129,850 @@
               </div>
             </div>
           </div>
-          <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end mdc-top-app-bar__section-right">
-            <div class="menu-button-container menu-profile d-none d-md-block">
-              <button class="mdc-button mdc-menu-button">
-                <span class="d-flex align-items-center">
-                  <span class="figure">
-                    <img src="{{asset('assets/images/faces/face11.jpg')}}" alt="user" class="user">
-                  </span>
-                  <span class="user-name">Admin User</span>
-                </span>
-              </button>
-              <div class="mdc-menu mdc-menu-surface" tabindex="-1">
-                <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon-only">
-                      <i class="mdi mdi-account-edit-outline text-primary"></i>
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Edit profile</h6>
-                    </div>
-                  </li>
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon-only">
-                      <i class="mdi mdi-settings-outline text-primary"></i>                      
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Logout</h6>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="divider d-none d-md-block"></div>
-            <div class="menu-button-container d-none d-md-block">
-              <button class="mdc-button mdc-menu-button">
-                <i class="mdi mdi-settings"></i>
-              </button>
-              <div class="mdc-menu mdc-menu-surface" tabindex="-1">
-                <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon-only">
-                      <i class="mdi mdi-alert-circle-outline text-primary"></i>
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Settings</h6>
-                    </div>
-                  </li>
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon-only">
-                      <i class="mdi mdi-progress-download text-primary"></i>                      
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Update</h6>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="menu-button-container">
-              <button class="mdc-button mdc-menu-button">
-                <i class="mdi mdi-bell"></i>
-              </button>
-              <div class="mdc-menu mdc-menu-surface" tabindex="-1">
-                <h6 class="title"> <i class="mdi mdi-bell-outline mr-2 tx-16"></i> Notifications</h6>
-                <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon">
-                      <i class="mdi mdi-email-outline"></i>
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">You received a new message</h6>
-                      <small class="text-muted"> 6 min ago </small>
-                    </div>
-                  </li>
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon">
-                      <i class="mdi mdi-account-outline"></i>                      
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">New user registered</h6>
-                      <small class="text-muted"> 15 min ago </small>
-                    </div>
-                  </li>
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon">
-                      <i class="mdi mdi-alert-circle-outline"></i>
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">System Alert</h6>
-                      <small class="text-muted"> 2 days ago </small>
-                    </div>
-                  </li> 
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon">
-                      <i class="mdi mdi-update"></i>
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">You have a new update</h6>
-                      <small class="text-muted"> 3 days ago </small>
-                    </div>
-                  </li> 
-                </ul>
-              </div>
-            </div>
-            <div class="menu-button-container">
-              <button class="mdc-button mdc-menu-button">
-                <i class="mdi mdi-email"></i>
-                <span class="count-indicator">
-                  <span class="count">3</span>
-                </span>
-              </button>
-              <div class="mdc-menu mdc-menu-surface" tabindex="-1">
-                <h6 class="title"><i class="mdi mdi-email-outline mr-2 tx-16"></i> Messages</h6>
-                <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail">
-                      <img src="{{asset('assets/images/faces/face4.jpg')}}" alt="user">
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Mark send you a message</h6>
-                      <small class="text-muted"> 1 Minutes ago </small>
-                    </div>
-                  </li>
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail">
-                      <img src="{{asset('assets/images/faces/face2.jpg')}}" alt="user">
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Cregh send you a message</h6>
-                      <small class="text-muted"> 15 Minutes ago </small>
-                    </div>
-                  </li>
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail">
-                      <img src="{{asset('assets/images/faces/face3.jpg')}}" alt="user">
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Profile picture updated</h6>
-                      <small class="text-muted"> 18 Minutes ago </small>
-                    </div>
-                  </li>                
-                </ul>
-              </div>
-            </div>
-            <div class="menu-button-container d-none d-md-block">
-              <button class="mdc-button mdc-menu-button">
-                <i class="mdi mdi-arrow-down-bold-box"></i>
-              </button>
-              <div class="mdc-menu mdc-menu-surface" tabindex="-1">
-                <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon-only">
-                      <i class="mdi mdi-lock-outline text-primary"></i>
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Lock screen</h6>
-                    </div>
-                  </li>
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon-only">
-                      <i class="mdi mdi-logout-variant text-primary"></i>                      
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Logout</h6>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
       </header>
       <!-- partial -->
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
         <main class="content-wrapper">
           
-          <!-- ISI FORM DARI DOKUMEN 3 (YANG POLOS) -->
-          <form action="{{ route('forms.update', $pinjaman->peminjam_id) }}" method="POST">
-            @csrf
-            @method('PUT')
-            
-            <div class="mdc-layout-grid">
+          
+  <div id="warga" class="tab-content active">
+    {{-- form warga --}}
+  <form action="{{ route('warga.update', $warga->id) }}" method="POST">
+    @csrf
+    @method('PUT')
+    
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        
+        <!-- Card Identitas -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">Data Warga</h6>
+            <div class="template-demo">
               <div class="mdc-layout-grid__inner">
                 
-                <!-- Card Identitas -->
+                <!-- Nama -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                  <div class="mdc-card">
-                    <h6 class="card-title">Edit Identitas</h6>
-                    <div class="template-demo">
-                      <div class="mdc-layout-grid__inner">
-                        
-                        <!-- Nama Depan -->
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-text-field mdc-text-field--outlined">
-                            <input type="text" name="first_name" class="mdc-text-field__input" value="{{ $pinjaman->first_name }}" required>
-                            <div class="mdc-notched-outline">
-                              <div class="mdc-notched-outline__leading"></div>
-                              <div class="mdc-notched-outline__notch">
-                                <label class="mdc-floating-label">Nama Depan</label>
-                              </div>
-                              <div class="mdc-notched-outline__trailing"></div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- Nama Belakang -->
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-text-field mdc-text-field--outlined">
-                            <input type="text" name="last_name" class="mdc-text-field__input" value="{{ $pinjaman->last_name }}" required>
-                            <div class="mdc-notched-outline">
-                              <div class="mdc-notched-outline__leading"></div>
-                              <div class="mdc-notched-outline__notch">
-                                <label class="mdc-floating-label">Nama Belakang</label>
-                              </div>
-                              <div class="mdc-notched-outline__trailing"></div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- Nomor HP -->
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-text-field mdc-text-field--outlined">
-                            <input type="text" name="phone" class="mdc-text-field__input" value="{{ $pinjaman->phone }}" required>
-                            <div class="mdc-notched-outline">
-                              <div class="mdc-notched-outline__leading"></div>
-                              <div class="mdc-notched-outline__notch">
-                                <label class="mdc-floating-label">Nomor Handphone</label>
-                              </div>
-                              <div class="mdc-notched-outline__trailing"></div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- Tanggal Lahir -->
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-text-field mdc-text-field--outlined">
-                            <input type="date" name="birthday" class="mdc-text-field__input" value="{{ $pinjaman->birthday }}" required>
-                            <div class="mdc-notched-outline">
-                              <div class="mdc-notched-outline__leading"></div>
-                              <div class="mdc-notched-outline__notch">
-                                <label class="mdc-floating-label">Tanggal Lahir</label>
-                              </div>
-                              <div class="mdc-notched-outline__trailing"></div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- Jenis Kelamin -->
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
-                            <input type="hidden" name="gender" value="{{ $pinjaman->gender }}">
-                            <i class="mdc-select__dropdown-icon"></i>
-                            <div class="mdc-select__selected-text">{{ $pinjaman->gender }}</div>
-                            <div class="mdc-select__menu mdc-menu-surface demo-width-class">
-                              <ul class="mdc-list">
-                                <li class="mdc-list-item {{ $pinjaman->gender == 'Laki-Laki' ? 'mdc-list-item--selected' : '' }}" data-value="Laki-Laki">Laki-Laki</li>
-                                <li class="mdc-list-item {{ $pinjaman->gender == 'Perempuan' ? 'mdc-list-item--selected' : '' }}" data-value="Perempuan">Perempuan</li>
-                              </ul>
-                            </div>
-                            <span class="mdc-floating-label">Jenis Kelamin</span>
-                            <div class="mdc-line-ripple"></div>
-                          </div>
-                        </div>
-
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="nama" value="{{ old('nama', $warga->nama) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Nama</label>
                       </div>
+                      <div class="mdc-notched-outline__trailing"></div>
                     </div>
                   </div>
                 </div>
 
-                <!-- Card Peminjaman -->
+                <!-- pekerjaan -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                  <div class="mdc-card">
-                    <h6 class="card-title">Peminjaman</h6>
-                    <div class="template-demo">
-                      <div class="mdc-layout-grid__inner">
-                        
-                        <!-- Barang/Fasilitas -->
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field mdc-text-field--outlined">
-                            <input type="text" name="barang" class="mdc-text-field__input" value="{{ $pinjaman->barang }}" required>
-                            <div class="mdc-notched-outline">
-                              <div class="mdc-notched-outline__leading"></div>
-                              <div class="mdc-notched-outline__notch">
-                                <label class="mdc-floating-label">Barang/Fasilitas</label>
-                              </div>
-                              <div class="mdc-notched-outline__trailing"></div>
-                            </div>
-                          </div>
-                        </div>
-
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="pekerjaan" value="{{ old('pekerjaan', $warga->pekerjaan) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Pekerjaan</label>
                       </div>
+                      <div class="mdc-notched-outline__trailing"></div>
                     </div>
                   </div>
                 </div>
 
-                <!-- Tombol Update & Batal -->
+               <!-- Jenis Kelamin -->
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+  <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+    <input type="hidden" name="jenis_kelamin" value="{{ old('jenis_kelamin', $warga->jenis_kelamin) }}">
+    <i class="mdc-select__dropdown-icon"></i>
+    <div class="mdc-select__selected-text"></div>
+    <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+      <ul class="mdc-list">
+        <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true"></li>
+        <li class="mdc-list-item" data-value="L">Laki-Laki</li>
+        <li class="mdc-list-item" data-value="P">Perempuan</li>
+      </ul>
+    </div>
+    <span class="mdc-floating-label">Jenis Kelamin</span>
+    <div class="mdc-line-ripple"></div>
+  </div>
+</div>
+
+<!-- Agama -->
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+  <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+    <input type="hidden" name="agama" value="{{ old('agama', $warga->agama) }}">
+    <i class="mdc-select__dropdown-icon"></i>
+    <div class="mdc-select__selected-text"></div>
+    <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+      <ul class="mdc-list">
+        <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true"></li>
+        <li class="mdc-list-item" data-value="Islam">Islam</li>
+        <li class="mdc-list-item" data-value="Kristen">Kristen</li>
+        <li class="mdc-list-item" data-value="Budha">Budha</li>
+        <li class="mdc-list-item" data-value="Hindu">Hindu</li>
+        <li class="mdc-list-item" data-value="Konghucu">Konghucu</li>
+      </ul>
+    </div>
+    <span class="mdc-floating-label">Agama</span>
+    <div class="mdc-line-ripple"></div>
+  </div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card sebelahnya -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">👽</h6>
+            <div class="template-demo">
+              <div class="mdc-layout-grid__inner">
+                
+                <!-- no hp -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                  <div class="d-flex justify-content-end mt-4">
-                    <button type="submit" class="mdc-button mdc-button--raised">
-                      Update
-                    </button>
-                    <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">
-                      Batal
-                    </a>
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="telp" value="{{ old('telp', $warga->telp) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Nomor Handphone</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- email -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="email" value="{{ old('email', $warga->email) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Email</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ktp -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="no_ktp" value="{{ old('no_ktp', $warga->no_ktp) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Nomor KTP</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
                   </div>
                 </div>
 
               </div>
             </div>
-          </form>
+          </div>
+        </div>
+
+        <!-- Tombol Simpan & Batal -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+          <div class="d-flex justify-content-end mt-4">
+            <button type="submit" class="mdc-button mdc-button--raised">
+              Simpan
+            </button>
+            <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">
+              Batal
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+
+  <div id="media" class="tab-content">  
+  {{-- form media --}}
+  <!-- Form -->
+  <form action="{{ route('media.update', $media->id) }}" method="POST">
+    @csrf
+    @method('PUT')
+    
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        
+        <!-- Card Identitas -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">Media</h6>
+            <div class="template-demo">
+              <div class="mdc-layout-grid__inner">
+                
+                <!-- ref table -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="ref_table" value="{{ old('ref_table', $media->ref_table) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Ref Table</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ref id -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="ref_id" value="{{ old('ref_id', $media->ref_id) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Ref ID</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- file url -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="file_url" value="{{ old('file_url', $media->file_url) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">File URL</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card sebelahnya -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">🛸</h6>
+            <div class="template-demo">
+              <div class="mdc-layout-grid__inner">
+
+                <!-- Caption -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="caption" value="{{ old('caption', $media->caption) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Caption</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- mime type -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                  <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+                    <input type="hidden" name="mime_type" value="{{ old('mime_type', $media->mime_type) }}">
+                    <i class="mdc-select__dropdown-icon"></i>
+                    <div class="mdc-select__selected-text"></div>
+                    <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+                      <ul class="mdc-list">
+                        <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true"></li>
+                        <li class="mdc-list-item" data-value="image/jpg">image/jpg</li>
+                        <li class="mdc-list-item" data-value="image/png">image/png</li>
+                        <li class="mdc-list-item" data-value="image/jpeg">image/jpeg</li>
+                      </ul>
+                    </div>
+                    <span class="mdc-floating-label">Mime type</span>
+                    <div class="mdc-line-ripple"></div>
+                  </div>
+                </div>
+
+                <!-- sort order -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                  <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+                    <input type="hidden" name="sort_order" value="{{ old('sort_order', $media->sort_order) }}">
+                    <i class="mdc-select__dropdown-icon"></i>
+                    <div class="mdc-select__selected-text"></div>
+                    <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+                      <ul class="mdc-list">
+                        <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true"></li>
+                        <li class="mdc-list-item" data-value="1">1</li>
+                        <li class="mdc-list-item" data-value="2">2</li>
+                        <li class="mdc-list-item" data-value="3">3</li>
+                        <li class="mdc-list-item" data-value="4">4</li>
+                        <li class="mdc-list-item" data-value="5">5</li>
+                        <li class="mdc-list-item" data-value="6">6</li>
+                        <li class="mdc-list-item" data-value="7">7</li>
+                        <li class="mdc-list-item" data-value="8">8</li>
+                        <li class="mdc-list-item" data-value="9">9</li>
+                      </ul>
+                    </div>
+                    <span class="mdc-floating-label">Sort Order</span>
+                    <div class="mdc-line-ripple"></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tombol Simpan & Batal -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+          <div class="d-flex justify-content-end mt-4">
+            <button type="submit" class="mdc-button mdc-button--raised">
+              Simpan
+            </button>
+            <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">
+              Batal
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+
+<div id="fasilitas" class="tab-content">
+  {{-- form fasilitas --}}
+  <form action="{{ route('fasilitas.update', $fasilitas->id) }}" method="POST">
+    @csrf
+    @method('PUT')
+    
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        
+        <!-- Card Identitas -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">Data Fasilitas</h6>
+            <div class="template-demo">
+              <div class="mdc-layout-grid__inner">
+                
+                <!-- Nama Depan -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="nama" value="{{ old('nama', $fasilitas->nama) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Nama Fasilitas</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- alamat -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="alamat" value="{{ old('alamat', $fasilitas->alamat) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Alamat</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- rt -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="rt" value="{{ old('rt', $fasilitas->rt) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">RT</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- rw -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="rw" value="{{ old('rw', $fasilitas->rw) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">RW</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card sebelahnya -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">👽</h6>
+            <div class="template-demo">
+              <div class="mdc-layout-grid__inner">
+                
+               <!-- jenis fasilitas -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="jenis" value="{{ old('jenis', $fasilitas->jenis) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Jenis Fasilitas</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- kapasitas -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="kapasitas" value="{{ old('kapasitas', $fasilitas->kapasitas) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Kapasitas</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- deskripsi -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="deskripsi" value="{{ old('deskripsi', $fasilitas->deskripsi) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Deskripsi </label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol Simpan & Batal -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+          <div class="d-flex justify-content-end mt-4">
+            <button type="submit" class="mdc-button mdc-button--raised">
+              Simpan
+            </button>
+            <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">
+              Batal
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+
+<div id="peminjaman" class="tab-content">
+<form action="{{ route('peminjaman.update', $peminjaman->id) }}" method="POST">
+    @csrf
+    @method('PUT')
+    
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        
+        <!-- Card Identitas -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">Data Peminjaman</h6>
+            <div class="template-demo">
+              <div class="mdc-layout-grid__inner">
+                
+                <!-- Tanggal mulai -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="date" name="tanggal_mulai" value="{{ old('tanggal_mulai', $peminjaman->tanggal_mulai) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Tanggal Mulai</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tanggal selesai -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="date" name="tanggal_selesai" value="{{ old('tanggal_selesai', $peminjaman->tanggal_selesai) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Tanggal Selesai</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- tujuan -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="tujuan" value="{{ old('tujuan', $peminjaman->tujuan) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Tujuan</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card sebelahnya -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">👽</h6>
+            <div class="template-demo">
+              <div class="mdc-layout-grid__inner">
+                
+               <!-- status -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="status" value="{{ old('status', $peminjaman->status) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Status</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- total biaya -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="total_biaya" value="{{ old('total_biaya', $peminjaman->total_biaya) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Total Biaya</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol Simpan & Batal -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+          <div class="d-flex justify-content-end mt-4">
+            <button type="submit" class="mdc-button mdc-button--raised">
+              Simpan
+            </button>
+            <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">
+              Batal
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+
+<div id="syarat" class="tab-content">
+<form action="{{ route('syarat.update', $syarat->id) }}" method="POST">
+    @csrf
+    @method('PUT')
+    
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        
+        <!-- Card Identitas -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">Data Syarat Peminjaman</h6>
+            <div class="template-demo">
+              <div class="mdc-layout-grid__inner">
+                
+                <!-- jumlah -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="nama_syarat" value="{{ old('syarat', $syarat->nama_syarat) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Syarat</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card sebelahnya -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">👽</h6>
+            <div class="template-demo">
+              <div class="mdc-layout-grid__inner">
+                
+               <!-- status -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="deskripsi" value="{{ old('deskripsi', $syarat->deskripsi) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Deskripsi</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol Simpan & Batal -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+          <div class="d-flex justify-content-end mt-4">
+            <button type="submit" class="mdc-button mdc-button--raised">
+              Simpan
+            </button>
+            <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">
+              Batal
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+
+<div id="pembayaran" class="tab-content">
+<form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
+    @csrf
+    @method('PUT')
+    
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        
+        <!-- Card Identitas -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">Data Pembayaran</h6>
+            <div class="template-demo">
+              <div class="mdc-layout-grid__inner">
+                
+                <!-- Tanggal -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="date" name="tanggal" value="{{ old('tanggal', $pembayaran->tanggal) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Tanggal</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- jumlah -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="jumlah" value="{{ old('jumlah', $pembayaran->jumlah) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Jumlah</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card sebelahnya -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">👽</h6>
+            <div class="template-demo">
+              <div class="mdc-layout-grid__inner">
+                
+               <!-- status -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="metode" value="{{ old('metode', $pembayaran->metode) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Metode</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- total biaya -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="keterangan" value="{{ old('keterangan', $pembayaran->keterangan) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Keterangan</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol Simpan & Batal -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+          <div class="d-flex justify-content-end mt-4">
+            <button type="submit" class="mdc-button mdc-button--raised">
+              Simpan
+            </button>
+            <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">
+              Batal
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div id="petugas" class="tab-content">
+<form action="{{ route('petugas.update', $petugas->id) }}" method="POST">
+    @csrf
+    @method('PUT')
+    
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        
+        <!-- Card Identitas -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">Data Petugas</h6>
+            <div class="template-demo">
+              <div class="mdc-layout-grid__inner">
+                
+                <!-- jumlah -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="petugas_warga_id" value="{{ old('petugas_warga_id', $petugas->petugas_warga_id) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">ID Petugas</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card sebelahnya -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">👽</h6>
+            <div class="template-demo">
+              <div class="mdc-layout-grid__inner">
+                
+               <!-- status -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="peran" value="{{ old('peran', $petugas->peran) }}" class="mdc-text-field__input" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Peran</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol Simpan & Batal -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+          <div class="d-flex justify-content-end mt-4">
+            <button type="submit" class="mdc-button mdc-button--raised">
+              Simpan
+            </button>
+            <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">
+              Batal
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
 
         </main>
         <!-- partial:../../partials/_footer.html -->

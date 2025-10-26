@@ -53,52 +53,6 @@
               </a>
             </div>
             
-            <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="sample-page-submenu">
-                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">pages</i>
-                Sample Pages
-                <i class="mdc-drawer-arrow material-icons">chevron_right</i>
-              </a>
-              <div class="mdc-expansion-panel" id="sample-page-submenu">
-                <nav class="mdc-list mdc-drawer-submenu">
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/samples/blank-page.html">
-                      Blank Page
-                    </a>
-                  </div>
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/samples/403.html">
-                      403
-                    </a>
-                  </div>
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/samples/404.html">
-                      404
-                    </a>
-                  </div>
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/samples/500.html">
-                      500
-                    </a>
-                  </div>
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/samples/505.html">
-                      505
-                    </a>
-                  </div>
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/samples/login.html">
-                      Login
-                    </a>
-                  </div>
-                  <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="../../pages/samples/register.html">
-                      Register
-                    </a>
-                  </div>
-                </nav>
-              </div>
-            </div>
             
           </nav>
         </div>
@@ -139,139 +93,10 @@
                   <span class="user-name">{{ $name }}</span>
                 </span>
               </button>
-              <div class="mdc-menu mdc-menu-surface" tabindex="-1">
-                <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon-only">
-                      <i class="mdi mdi-account-edit-outline text-primary"></i>
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Edit profile</h6>
-                    </div>
-                  </li>
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon-only">
-                      <i class="mdi mdi-settings-outline text-primary"></i>                      
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Logout</h6>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+              
             </div>
             <div class="divider d-none d-md-block"></div>
-            <div class="menu-button-container d-none d-md-block">
-              <button class="mdc-button mdc-menu-button">
-                <i class="mdi mdi-settings"></i>
-              </button>
-              <div class="mdc-menu mdc-menu-surface" tabindex="-1">
-                <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon-only">
-                      <i class="mdi mdi-alert-circle-outline text-primary"></i>
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Settings</h6>
-                    </div>
-                  </li>
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon-only">
-                      <i class="mdi mdi-progress-download text-primary"></i>                      
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Update</h6>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="menu-button-container">
-              <button class="mdc-button mdc-menu-button">
-                <i class="mdi mdi-bell"></i>
-              </button>
-              <div class="mdc-menu mdc-menu-surface" tabindex="-1">
-                <h6 class="title"> <i class="mdi mdi-bell-outline mr-2 tx-16"></i> Notifications</h6>
-                <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon">
-                      <i class="mdi mdi-email-outline"></i>
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">You received a new message</h6>
-                      <small class="text-muted"> 6 min ago </small>
-                    </div>
-                  </li>
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon">
-                      <i class="mdi mdi-account-outline"></i>                      
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">New user registered</h6>
-                      <small class="text-muted"> 15 min ago </small>
-                    </div>
-                  </li>
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon">
-                      <i class="mdi mdi-alert-circle-outline"></i>
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">System Alert</h6>
-                      <small class="text-muted"> 2 days ago </small>
-                    </div>
-                  </li> 
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon">
-                      <i class="mdi mdi-update"></i>
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">You have a new update</h6>
-                      <small class="text-muted"> 3 days ago </small>
-                    </div>
-                  </li> 
-                </ul>
-              </div>
-            </div>
-            <div class="menu-button-container">
-              <button class="mdc-button mdc-menu-button">
-                <i class="mdi mdi-email"></i>
-                <span class="count-indicator">
-                  <span class="count">3</span>
-                </span>
-              </button>
-              <div class="mdc-menu mdc-menu-surface" tabindex="-1">
-                <h6 class="title"><i class="mdi mdi-email-outline mr-2 tx-16"></i> Messages</h6>
-                <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail">
-                      <img src="{{asset('assets/images/faces/face4.jpg')}}" alt="user">
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Mark send you a message</h6>
-                      <small class="text-muted"> 1 Minutes ago </small>
-                    </div>
-                  </li>
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail">
-                      <img src="{{asset('assets/images/faces/face2.jpg')}}" alt="user">
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Cregh send you a message</h6>
-                      <small class="text-muted"> 15 Minutes ago </small>
-                    </div>
-                  </li>
-                  <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail">
-                      <img src="{{asset('assets/images/faces/face3.jpg')}}" alt="user">
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Profile picture updated</h6>
-                      <small class="text-muted"> 18 Minutes ago </small>
-                    </div>
-                  </li>                
-                </ul>
-              </div>
-            </div>
+            
             <div class="menu-button-container d-none d-md-block">
               <button class="mdc-button mdc-menu-button">
                 <i class="mdi mdi-arrow-down-bold-box"></i>
@@ -299,56 +124,372 @@
             </div>
           </div>
         </div>
+        
+  <div class="tab-container">
+  <button class="nav-tab active" onclick="showTab(event, 'warga')">👽 Warga</button>
+  <button class="nav-tab" onclick="showTab(event, 'media')">🛸 Media</button>
+  <button class="nav-tab" onclick="showTab(event, 'fasilitas')">🏠 Fasilitas Umum</button>
+  <button class="nav-tab" onclick="showTab(event, 'peminjaman')">📋 Peminjaman</button>
+  <button class="nav-tab" onclick="showTab(event, 'pembayaran')">💰 Pembayaran</button>
+  <button class="nav-tab" onclick="showTab(event, 'syarat')">📄 Syarat Fasilitas</button>
+  <button class="nav-tab" onclick="showTab(event, 'petugas')">👥 Petugas</button>
+</div>
       </header>
       <!-- partial -->
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
-        <main class="content-wrapper">
-          <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                <div class="mdc-card p-0">
-                  <h6 class="card-title card-padding pb-0">Basic Table</h6>
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead>
-  <tr>
-    <th class="text-left">Nama Lengkap</th>
-    <th>No. Telepon</th>
-    <th>Barang/Fasilitas</th>
-    <th>Tanggal Lahir</th>
-    <th>Jenis Kelamin</th>
-    <th>Aksi</th>
-  </tr>
-</thead>
-                      <tbody>
-  @forelse($pinjaman as $item)
-  <tr>
-    <td class="text-left">{{ $item->first_name }} {{ $item->last_name }}</td>
-    <td>{{ $item->phone }}</td>
-    <td>{{ $item->barang }}</td>
-    <td>{{ \Carbon\Carbon::parse($item->birthday)->format('d/m/Y') }}</td>
-    <td>{{ $item->gender }}</td>
+      <main class="content-wrapper">
+
+<div id="warga" class="tab-content active">
+{{-- ==================== TABLE WARGA ==================== --}}
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-card p-0">
+    <h6 class="card-title card-padding pb-0">Data Warga</h6>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Agama</th>
+            <th>Jenis Kelamin</th>
+            <th>No. Telepon</th>
+            <th>Email</th>
+            <th>Aksi</th>   
+          </tr>
+        </thead>
+        <tbody>
+          @forelse($warga as $w)
+          <tr>
+            <td>{{ $w->warga_id }}</td>
+            <td>{{ $w->nama }}</td>
+            <td>{{ $w->agama }}</td>
+            <td>{{ $w->jenis_kelamin }}</td>
+            <td>{{ $w->telp }}</td>
+            <td>{{ $w->email }}</td>
+            <td>
+  <a href="{{ route('warga.edit', $w->warga_id) }}" class="btn btn-primary">Edit</a>
+
+  <form action="{{ route('warga.destroy', $w->warga_id) }}" method="POST" style="display:inline;">
+      @csrf
+      @method('DELETE')
+      <button type="submit" class="btn btn-danger">Hapus</button>
+  </form>
+</td>
+
+            </td>
+          </tr>
+          @empty
+          <tr>
+            <td colspan="5" class="text-center">Belum ada data warga</td>
+          </tr>
+          @endforelse
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="media" class="tab-content">
+{{-- ==================== TABLE MEDIA ==================== --}}
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-card p-0">
+    <h6 class="card-title card-padding pb-0">Data Media</h6>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Ref_table</th>
+            <th>Ref_id</th>
+            <th>File_url</th>
+            <th>Caption</th>
+            <th>Mimme Type</th>
+            <th>Sort order</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          @forelse($media as $m)
+          <tr>
+          <td>{{ $m->media_id }}</td>
+          <td>{{ $m->ref_table }}</td>
+          <td>{{ $m->ref_id }}</td>
+          <td>{{ $m->file_url }}</td>
+          <td>{{ $m->caption }}</td>
+          <td>{{ $m->mime_type }}</td>
+          <td>{{ $m->sort_order }}</td>
+          <td>
+  <a href="{{ route('media.edit', $m->media_id) }}" class="btn btn-primary">Edit</a>
+
+  <form action="{{ route('media.destroy', $m->media_id) }}" method="POST" style="display:inline;">
+      @csrf
+      @method('DELETE')
+      <button type="submit" class="btn btn-danger">Hapus</button>
+  </form>
+</td>
+
+          </tr>
+          @empty
+          <tr>
+            <td colspan="3" class="text-center">Belum ada data media</td>
+          </tr>
+          @endforelse
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="fasilitas" class="tab-content">
+{{-- ==================== TABLE Fasilitas umum ==================== --}}
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-card p-0">
+    <h6 class="card-title card-padding pb-0">Data Fasilitas</h6>
+    <div class="table-responsive">
+      <table class="table">
+         <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Nama Fasilitas</th>
+                          <th>Jenis Fasilitas</th>
+                            <th>Alamat</th>
+                            <th>Rt/Rw</th>
+                            <th>Kapasitas</th>
+                            <th>Deskripsi</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+@forelse ($fasilitas as $item)
+<tr>
+  <td>{{ $item->fasilitas_id }}</td>
+    <td>{{ $item->nama }}</td>
+    <td>{{ $item->jenis }}</td>
+    <td>{{ $item->alamat }}</td>
+    <td>{{ $item->rt }} / {{ $item->rw }}</td>
+    <td>{{ $item->kapasitas }}</td>
+    <td>{{ $item->deskripsi }}</td>
     <td>
-      <a href="{{ route('forms.edit', $item->peminjam_id) }}" class="mdc-button mdc-button--dense mdc-button--raised">Edit</a>
-      <form action="{{ route('tables.destroy', $item->peminjam_id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="mdc-button mdc-button--dense mdc-button--outlined">Hapus</button>
-      </form>
-    </td>
-  </tr>
-  @empty
-  <tr>
-    <td colspan="6" class="text-center">Belum ada data peminjaman</td>
-  </tr>
-  @endforelse
+  <a href="{{ route('fasilitas.edit', $item->fasilitas_id) }}" class="btn btn-primary">Edit</a>
+
+  <form action="{{ route('fasilitas.destroy', $item->fasilitas_id) }}" method="POST" style="display:inline;">
+      @csrf
+      @method('DELETE')
+      <button type="submit" class="btn btn-danger">Hapus</button>
+  </form>
+</td>
+
+</tr>
+@empty
+          <tr>
+            <td colspan="3" class="text-center">Belum ada data media</td>
+          </tr>
+@endforelse
 </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              
-              
+      </table>
+    </div>
+  </div>
+</div>
+</div> 
+
+<div id="peminjaman" class="tab-content">
+{{-- ==================== TABLE Peminjaman ==================== --}}
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-card p-0">
+    <h6 class="card-title card-padding pb-0">Data Peminjaman</h6>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+                        <tr>
+                          <th>No</th>
+                            <th>ID Fasilitas</th>
+                            <th>ID Warga</th>
+                            <th>Tanggal Mulai</th>
+                            <th>Tanggal Selesai</th>
+                            <th>Tujuan</th>
+                            <th>Status</th>
+                            <th>Total Biaya</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($peminjaman as $item)
+<tr>  
+    <td>{{ $item->pinjam_id }}</td>
+    <td>{{ $item->fasilitas_id }}</td>
+    <td>{{ $item->warga_id }}</td>
+    <td>{{ $item->tanggal_mulai }}</td>
+    <td>{{ $item->tanggal_selesai }}</td>
+    <td>{{ $item->tujuan }}</td>
+    <td>{{ $item->status }}</td>
+    <td>{{ $item->total_biaya }}</td>
+    <td>
+  <a href="{{ route('peminjaman.edit', $item->pinjam_id) }}" class="btn btn-primary">Edit</a>
+
+  <form action="{{ route('peminjaman.destroy', $item->pinjam_id) }}" method="POST" style="display:inline;">
+      @csrf
+      @method('DELETE')
+      <button type="submit" class="btn btn-danger">Hapus</button>
+  </form>
+</td>
+
+</tr>
+@empty
+          <tr>
+            <td colspan="3" class="text-center">Belum ada data peminjaman</td>
+          </tr>
+@endforelse
+                    </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="pembayaran" class="tab-content">
+{{-- ==================== TABLE Pembayaran ==================== --}}
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-card p-0">
+    <h6 class="card-title card-padding pb-0">Data Pembayaran</h6>
+    <div class="table-responsive">
+      <table class="table">
+         <thead>
+                        <tr>
+                          <td>No</td>
+                          <td>ID Peminjaman</td>
+                            <th>Tanggal</th>
+                            <th>Jumlah Nominal</th>
+                            <th>Metode</th>
+                            <th>Keterangan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                          @forelse ($pembayaran as $item)
+<tr>
+  <td>{{ $item->bayar_id }}</td>
+  <td>{{ $item->pinjam_id }}</td>  
+    <td>{{ $item->tanggal }}</td>
+    <td>{{ $item->jumlah }}</td>
+    <td>{{ $item->metode }}</td>
+    <td>{{ $item->keterangan }}</td>
+    <td>
+  <a href="{{ route('pembayaran.edit', $item->bayar_id) }}" class="btn btn-primary">Edit</a>
+
+  <form action="{{ route('pembayaran.destroy', $item->bayar_id) }}" method="POST" style="display:inline;">
+      @csrf
+      @method('DELETE')
+      <button type="submit" class="btn btn-danger">Hapus</button>
+  </form>
+</td>
+
+</tr>
+@empty
+          <tr>
+            <td colspan="3" class="text-center">Belum ada data pembayaran</td>
+          </tr>
+@endforelse
+                    </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="syarat" class="tab-content">
+{{-- ==================== TABLE Syarat ==================== --}}
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-card p-0">
+    <h6 class="card-title card-padding pb-0">Data Syarat</h6>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>ID Fasilitas</th>
+                            <th>Syarat</th>
+                            <th>Deskripsi</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                          @forelse ($syarat as $item)
+<tr>
+  <td>{{ $item->syarat_id }}</td>
+    <td>{{ $item->fasilitas_id }}</td>
+    <td>{{ $item->nama_syarat }}</td>
+    <td>{{ $item->deskripsi }}</td>
+    <td>
+  <a href="{{ route('syarat.edit', $item->syarat_id) }}" class="btn btn-primary">Edit</a>
+
+  <form action="{{ route('syarat.destroy', $item->syarat_id) }}" method="POST" style="display:inline;">
+      @csrf
+      @method('DELETE')
+      <button type="submit" class="btn btn-danger">Hapus</button>
+  </form>
+</td>
+
+</tr>
+@empty
+          <tr>
+            <td colspan="3" class="text-center">Belum ada data Syarat</td>
+          </tr>
+@endforelse
+                    </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="petugas" class="tab-content">
+{{-- ==================== TABLE Petugas ==================== --}}
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-card p-0">
+    <h6 class="card-title card-padding pb-0">Data Petugas</h6>
+    <div class="table-responsive">
+      <table class="table">
+         <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>ID Fasilitas</th>
+                            <th>ID Petugas</th>
+                            <th>Peran</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                          @forelse ($petugas as $item)
+<tr>
+  <td>{{ $item->petugas_id }}</td>
+    <td>{{ $item->fasilitas_id }}</td>
+    <td>{{ $item->petugas_warga_id }}</td>
+    <td>{{ $item->peran }}</td>
+    <td>
+  <a href="{{ route('petugas.edit', $item->petugas_id) }}" class="btn btn-primary">Edit</a>
+
+  <form action="{{ route('petugas.destroy', $item->petugas_id) }}" method="POST" style="display:inline;">
+      @csrf
+      @method('DELETE')
+      <button type="submit" class="btn btn-danger">Hapus</button>
+  </form>
+</td>
+
+</tr>
+@empty
+          <tr>
+            <td colspan="3" class="text-center">Belum ada data petugas</td>
+          </tr>
+@endforelse
+                    </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
         </main>
         <!-- partial:../../partials/_footer.html -->
         <footer>
@@ -373,10 +514,7 @@
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
   <!-- inject:js -->
-  <script src="{{asset('assetsassets/js/material.js')}}"></script>
-  <script src="{{asset('assetsassets/js/misc.js')}}"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <!-- End custom js for this page-->
+  <script src="{{asset('assets/js/material.js')}}"></script>
+  <script src="{{asset('assets/js/misc.js')}}"></script>
 </body>
 </html>

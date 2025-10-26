@@ -23163,3 +23163,183 @@ footer .vertical-divider {
 }
 
 /*# sourceMappingURL=../maps/demo/style.css.map */
+
+/*table*/
+.tab-container {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.nav-tab {
+  padding: 8px 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  background-color: #e0e0e0;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.nav-tab:hover {
+  background-color: #ccc;
+}
+
+.nav-tab.active {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.nav-tab.active {
+  background-color: #6200ea;
+  color: white;
+}
+ .table-responsive {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+
+  table.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  table.table th, table.table td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  table.table thead th {
+    background-color: #f4f4f4;
+    font-weight: 600;
+  }
+
+  .table tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+
+  .table tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  .card-title {
+    font-weight: 600;
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+    background: #f9f9f9;
+  }
+
+  /* .action-buttons {
+    display: flex;
+    gap: 8px;
+  } */
+    .action-buttons {
+    display: flex;
+    justify-content: center; /* biar tombolnya di tengah kolom */
+    gap: 8px; /* jarak antar tombol */
+  }
+
+  .action-buttons .btn {
+    padding: 4px 10px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+  }
+
+  /* opsional: biar kolom aksi gak sempit */
+  td:last-child, th:last-child {
+    text-align: center;
+    white-space: nowrap; /* biar tombol gak turun ke bawah */
+  }
+
+  .btn {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+  }
+
+  .btn-success {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+  }
+
+  .tab-content {
+    margin-top: 1.5rem;
+  }
+
+  .nav-tab {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 10px 16px;
+    margin: 0 4px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .nav-tab.active {
+    background-color: #3f51b5;
+    color: white;
+  }
+
+  .nav-tab:hover {
+    background-color: #5c6bc0;
+    color: white;
+  }
+  .table-responsive {
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+.action-buttons .btn {
+  transition: background-color 0.2s ease;
+}
+.action-buttons .btn:hover {
+  opacity: 0.9;
+}
+
+/* Benerin posisi header kolom Aksi */
+th:last-child {
+  text-align: center !important;
+  padding-right: 0 !important;
+}
+
+/* Biar isi kolom juga rata tengah */
+td:last-child {
+  text-align: center;
+}
+
+/* Tambahan: bikin tombol lebih rapat dan rapi */
+.action-buttons {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
