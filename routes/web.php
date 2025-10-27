@@ -93,3 +93,8 @@ Route::delete('/tables/delete/syarat/{id}', [binacontroller::class, 'destroySyar
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::post('/forms/user', [AuthController::class, 'storeUser'])->name('forms.store.user');
+Route::put('/update/user/{id}', [AuthController::class, 'updateUser'])->name('user.update');
+Route::get('/edit/user/{id}', [AuthController::class, 'editUser'])->name('user.edit');
+Route::delete('/tables/delete/user/{id}', [AuthController::class, 'destroyUser'])->name('user.destroy');

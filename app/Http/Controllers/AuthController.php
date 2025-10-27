@@ -10,7 +10,7 @@ class AuthController extends Controller
     // Tampilkan form login
     public function showLoginForm()
     {
-        return view('bina.login'); // sesuaikan nama view-mu
+        return view('pages.login'); // sesuaikan nama view-mu
     }
 
     // Proses login
@@ -29,16 +29,17 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Email atau password salah!',
-        ])->onlyInput('email');
-    //    $credentials = $request->only('username', 'password');
+            'email' => 'Email salah!',
+            'password' => 'password salah',
+        ])->onlyInput('email', 'password');
+        //    $credentials = $request->only('username', 'password');
 
-    //     if (Auth::attempt($credentials)) {
-    //         $request->session()->regenerate();
-    //         return redirect()->intended('dashboard')->with('success', 'Selamat Datang Admin!');
-    //     }
+        //     if (Auth::attempt($credentials)) {
+        //         $request->session()->regenerate();
+        //         return redirect()->intended('dashboard')->with('success', 'Selamat Datang Admin!');
+        //     }
 
-    //     return back()->with('error', 'Username atau Password salah!'); 
+        //     return back()->with('error', 'Username atau Password salah!'); 
     }
 
     // Logout
@@ -51,38 +52,38 @@ class AuthController extends Controller
         return redirect('/login');
     }
     // ========================
-// === SYARAT =============
+// === USER =============
 // ========================
-public function storeUser(Request $request)
-{
-    $request->validate([
-        'name' => 'required|string',
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
+    public function storeUser(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-    Syarat_fasilitas::create($data);
-    return redirect()->route('tables')->with('success', 'Data User berhasil disimpan.');
-}
+        User::create($request->all());
+        return redirect()->route('tables')->with('success', 'Data User berhasil disimpan.');
+    }
 
-public function editUser($id)
-{
-    $data['user'] = Users::findOrFail($id);
-    return view('bina.edit_user', $data);
-}
+    public function editUser($id)
+    {
+        $data['user'] = Users::findOrFail($id);
+        return view('pages.edit_user', $data);
+    }
 
-public function updateUser(Request $request, $id)
-{
-    $user = Users::findOrFail($id);
-    $user->update($request->all());
-    return redirect()->route('tables')->with('success', 'Data User berhasil diperbarui.');
-}
-public function destroyUser($id)
-{
-    $user = User::findOrFail($id);
-    $user->delete();
-    
-    return redirect()->route('tables')->with('success', 'Data berhasil dihapus!');
-}
+    public function updateUser(Request $request, $id)
+    {
+        $user = Users::findOrFail($id);
+        $user->update($request->all());
+        return redirect()->route('tables')->with('success', 'Data User berhasil diperbarui.');
+    }
+    public function destroyUser($id)
+    {
+        $user = Users::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('tables')->with('success', 'Data berhasil dihapus!');
+    }
 
 }

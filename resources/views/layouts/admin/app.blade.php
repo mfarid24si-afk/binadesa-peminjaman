@@ -1,4 +1,44 @@
-          <div class="d-flex justify-content-between">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Fasilitas Desa</title>
+{{-- start css --}}
+  @include('layouts.admin.css')
+  {{-- end css --}}
+</head>
+<body>
+  
+  <div class="item-content d-flex align-items-start flex-column justify-content-center">
+  <h1>Welcome {{ Auth::user()->name }}</h1>
+    {{-- <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit">Logout</button>
+    </form> --}}
+  </div>
+<script src="{{asset('assets/js/preloader.js')}}"></script>
+  <div class="body-wrapper">
+    <!-- start sidebar -->
+    @include('layouts.admin.sidebar')
+      {{-- end sidebar --}}
+    
+      <!-- start header -->
+      @include('layouts.admin.header')
+      <!-- end header -->
+       {{-- start main content --}}
+      <div class="page-wrapper mdc-toolbar-fixed-adjust">
+        <main class="content-wrapper">
+          <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+              
+              
+              
+              
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet">
+                <div class="mdc-card bg-success text-white">
+                  <div class="d-flex justify-content-between">
                     <h3 class="font-weight-normal">Impressions</h3>
                     <i class="material-icons options-icon text-white">more_vert</i>
                   </div>
@@ -134,3 +174,15 @@
           </div>
         </main>
         
+        <!-- end main content -->
+         <!-- footer -->
+        @include('layouts.admin.footer')
+        <!-- end footer -->
+      </div>
+    </div>
+  </div>
+  <!-- start js -->
+  @include('layouts.admin.js')
+  <!-- End js-->
+</body>
+</html> 

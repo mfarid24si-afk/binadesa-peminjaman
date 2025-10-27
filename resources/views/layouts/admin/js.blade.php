@@ -11,3 +11,7 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="{{asset('assets/js/dashboard.js')}}"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+<script>
+  feather.replace();
+</script>
