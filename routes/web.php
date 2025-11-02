@@ -94,6 +94,7 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+//<====User====>
 Route::post('/forms/user', [AuthController::class, 'storeUser'])->name('forms.store.user');
 Route::put('/update/user/{id}', [AuthController::class, 'updateUser'])->name('user.update');
 Route::get('/edit/user/{id}', [AuthController::class, 'editUser'])->name('user.edit');

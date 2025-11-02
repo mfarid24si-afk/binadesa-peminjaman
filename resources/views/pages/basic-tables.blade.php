@@ -18,14 +18,16 @@
     @include('layouts.admin.sidebar')
     <!-- partial -->
     <div class="main-wrapper mdc-drawer-app-content">
+      
       <!-- partial:../../partials/_navbar.html -->
       @include('layouts.admin.header_tf')
       <!-- partial -->
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
         <main class="content-wrapper">
-          <div id="warga" class="tab-content">
-            {{-- ==================== TABLE USER==================== --}}
-            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+
+          <div id="user" class="tab-content">
+            <!-- ==================== TABLE USER==================== --->
+             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
               <div class="mdc-card p-0">
                 <h6 class="card-title card-padding pb-0">Data User</h6>
                 <div class="table-responsive">
@@ -40,16 +42,16 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @forelse($warga as $w)
+                      @forelse($user as $u)
                         <tr>
-                          <td>{{ $w->id }}</td>
-                          <td>{{ $w->name }}</td>
-                          <td>{{ $w->email }}</td>
-                          <td>{{ $w->password }}</td>
+                          <td>{{ $u->id }}</td>
+                          <td>{{ $u->name }}</td>
+                          <td>{{ $u->email }}</td>
+                          <td>{{ $u->password }}</td>
                           <td>
-                            <a href="{{ route('user.edit', $w->id) }}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('user.edit', $u->id) }}" class="btn btn-primary">Edit</a>
 
-                            <form action="{{ route('user.destroy', $w->id) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('user.destroy', $u->id) }}" method="POST" style="display:inline;">
                               @csrf
                               @method('DELETE')
                               <button type="submit" class="btn btn-danger">Hapus</button>

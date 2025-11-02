@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pinjam;
+use App\Models\Users;
 use App\Models\Warga;
 use App\Models\Media;
 use App\Models\Fasilitas_umum;
 use App\Models\Pembayaran_fasilitas;
 use App\Models\Peminjaman_fasilitas;
 use App\Models\Petugas_fasilitas;
+use App\Models\User;
 use App\Models\Syarat_fasilitas;
 use Illuminate\Http\Request;
 
@@ -34,6 +36,8 @@ class binacontroller extends Controller
         $data['peminjaman'] = Peminjaman_fasilitas::all();
         $data['petugas'] = Petugas_fasilitas::all();
         $data['syarat'] = Syarat_fasilitas::all();
+        $data['user'] = User::all();
+        
         return view('pages.basic-tables', $data);
     }
 
@@ -65,6 +69,8 @@ class binacontroller extends Controller
 
     public function editWarga($id)
     {
+        $data['email'] = 'spyvy@desa.com';
+        $data['name'] = 'Spyvy';
         $data['warga'] = Warga::findOrFail($id);
         return view('pages.edit_warga', $data);
     }
@@ -103,6 +109,8 @@ class binacontroller extends Controller
 
     public function editMedia($id)
     {
+        $data['email'] = 'spyvy@desa.com';
+        $data['name'] = 'Spyvy';
         $data['media'] = Media::findOrFail($id);
         return view('pages.edit_media', $data);
     }
@@ -143,6 +151,8 @@ class binacontroller extends Controller
 
     public function editFasilitas($id)
     {
+        $data['email'] = 'spyvy@desa.com';
+        $data['name'] = 'Spyvy';
         $data['fasilitas'] = Fasilitas_umum::findOrFail($id);
         return view('pages.edit_fasilitas', $data);
     }
@@ -182,6 +192,8 @@ class binacontroller extends Controller
 
     public function editPembayaran($id)
     {
+        $data['email'] = 'spyvy@desa.com';
+        $data['name'] = 'Spyvy';
         $data['pembayaran'] = Pembayaran_fasilitas::findOrFail($id);
         return view('pages.edit_pembayaran', $data);
     }
@@ -223,6 +235,8 @@ class binacontroller extends Controller
 
     public function editPeminjaman($id)
     {
+        $data['email'] = 'spyvy@desa.com';
+        $data['name'] = 'Spyvy';
         $data['peminjaman'] = Peminjaman_fasilitas::findOrFail($id);
         return view('pages.edit_peminjaman', $data);
     }
@@ -260,6 +274,8 @@ class binacontroller extends Controller
 
     public function editPetugas($id)
     {
+        $data['email'] = 'spyvy@desa.com';
+        $data['name'] = 'Spyvy';
         $data['petugas'] = Petugas_fasilitas::findOrFail($id);
         return view('pages.edit_petugas', $data);
     }
@@ -297,6 +313,8 @@ class binacontroller extends Controller
 
     public function editSyarat($id)
     {
+        $data['email'] = 'spyvy@desa.com';
+        $data['name'] = 'Spyvy';
         $data['syarat'] = Syarat_fasilitas::findOrFail($id);
         return view('pages.edit_syarat', $data);
     }
