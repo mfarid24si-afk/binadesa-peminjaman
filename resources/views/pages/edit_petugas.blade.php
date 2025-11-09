@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Edit Data Peminjaman</title>
   <!-- plugins:css -->
+
   @include('layouts.admin.css')
   <!-- End layout styles -->
   <link rel="shortcut icon" href="../../../assets/images/favicon.png" />
@@ -14,10 +15,12 @@
 <script src="{{asset('assets/js/preloader.js')}}"></script>
   <div class="body-wrapper">
     <!-- partial:../../partials/_sidebar.html -->
+
     @include('layouts.admin.sidebar')
     <!-- partial -->
     <div class="main-wrapper mdc-drawer-app-content">
       <!-- partial:../../partials/_navbar.html -->
+
       @include('layouts.admin.header')
       <!-- partial -->
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
@@ -101,12 +104,14 @@
 
         </main>
        <!-- partial:../../partials/_footer.html -->
+
         @include('layouts.admin.footer')
         <!-- partial -->
       </div>
     </div>
   </div>
   <!-- plugins:js -->
+  
  @Include('layouts.admin.js')
   <!-- endinject -->
   <!-- Custom js for this page-->

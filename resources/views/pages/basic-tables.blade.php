@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{ $judul }}</title>
   {{-- start css --}}
+
   @include('layouts.admin.css')
   {{-- end css --}}
 </head>
@@ -15,10 +16,10 @@
   <script src="{{asset('assets/js/preloader.js')}}"></script>
   <div class="body-wrapper">
     <!-- partial:../../partials/_sidebar.html -->
+
     @include('layouts.admin.sidebar')
     <!-- partial -->
     <div class="main-wrapper mdc-drawer-app-content">
-      
       <!-- partial:../../partials/_navbar.html -->
       @include('layouts.admin.header_tf')
       <!-- partial -->
@@ -432,12 +433,14 @@
 
         </main>
         <!-- partial:../../partials/_footer.html -->
+
         @include('layouts.admin.footer')
         <!-- partial -->
       </div>
     </div>
   </div>
   <!-- plugins:js -->
+  
   @include('layouts.admin.js')
   <!-- End js-->
 </body>

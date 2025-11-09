@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Bina Desa</title>
+
   {{-- start css --}}
   @include('layouts.admin.css')
   {{-- end css --}}
@@ -16,6 +17,7 @@
 <body>
   <script src="{{asset('assets/js/preloader.js')}}"></script>
   <div class="body-wrapper">
+
     <!-- partial:../../partials/_sidebar.html -->
     @include('layouts.admin.sidebar')
     <!-- partial -->
@@ -23,6 +25,7 @@
     <div class="main-wrapper mdc-drawer-app-content">
 
       <!-- start heade -->
+
       @include('layouts.admin.header_tf')
       <!--- end header --->
 
@@ -963,6 +966,7 @@
 
         </main>
         <!-- partial:../../partials/_footer.html -->
+
         @include('layouts.admin.footer')
         <!-- partial -->
         <!-- partial -->
@@ -970,6 +974,7 @@
     </div>
   </div>
   <!-- plugins:js -->
+  
   @include('layouts.admin.js')
   <!-- End js-->
 </body>

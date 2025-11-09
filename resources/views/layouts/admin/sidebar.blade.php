@@ -77,6 +77,7 @@
           </div>
         </div>
         <div class="mdc-list-item mdc-drawer-item">
+          
           {{-- <a class="mdc-drawer-link"
             href="https://www.bootstrapdash.com/demo/material-admin-free/jquery/documentation/documentation.html"
             target="_blank">
@@ -87,7 +88,6 @@
         </div>
       </nav>
     </div>
-
     
     <div class="profile-actions">
       <form action="{{ route('logout') }}" method="POST">
@@ -101,4 +101,5 @@
   </div>
 </aside>
 <!-- partial -->
+
 <div class="main-wrapper mdc-drawer-app-content">

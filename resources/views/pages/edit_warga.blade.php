@@ -5,8 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Edit Data Peminjaman</title>
   <!-- plugins:css -->
+
   @include('layouts.admin.css')
   <!-- End layout styles -->
+
   <link rel="shortcut icon" href="../../../assets/images/favicon.png" />
 </head>
 <body>
@@ -184,12 +186,14 @@
         </main>
         
         <!-- partial:../../partials/_footer.html -->
+
         @include('layouts.admin.footer')
         <!-- partial -->
       </div>
     </div>
   </div>
   <!-- plugins:js -->
+  
  @Include('layouts.admin.js')
   <!-- endinject -->
   <!-- Custom js for this page-->

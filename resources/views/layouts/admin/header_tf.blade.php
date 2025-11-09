@@ -66,4 +66,5 @@
           <button class="nav-tab" onclick="showTab(event, 'syarat')">📄 Syarat Fasilitas</button>
           <button class="nav-tab" onclick="showTab(event, 'petugas')">👥 Petugas</button>
         </div>
+        
       </header>
