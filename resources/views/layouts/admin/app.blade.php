@@ -190,6 +190,7 @@
     </div>
   </div>
   </div>
+  
   <!-- start js -->
   @include('layouts.admin.js')
   <!-- End js-->
