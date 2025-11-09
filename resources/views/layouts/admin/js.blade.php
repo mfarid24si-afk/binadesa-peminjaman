@@ -25,6 +25,7 @@
     height: 35px;
   }
 </style>
+
 <a href="https://wa.me/6281234567890" class="whatsapp-float" target="_blank">
   <img src="{{ asset('assets/images/wa.jpg') }}" alt="WhatsApp" class="whatsapp-icon">
 </a>
