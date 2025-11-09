@@ -1,0 +1,314 @@
+{{-- <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                <div class="mdc-card p-0">
+                  <h6 class="card-title card-padding pb-0">Basic Table</h6>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+  <tr>
+    <th class="text-left">Nama Lengkap</th>
+    <th>No. Telepon</th>
+    <th>Barang/Fasilitas</th>
+    <th>Tanggal Lahir</th>
+    <th>Jenis Kelamin</th>
+    <th>Aksi</th>
+  </tr>
+</thead>
+                      <tbody>
+  @forelse($kolom as $item)
+  <tr>
+    <td class="text-left">{{ $item->first_name }} {{ $item->last_name }}</td>
+    <td>{{ $item->phone }}</td>
+    <td>{{ $item->barang }}</td>
+    <td>{{ \Carbon\Carbon::parse($item->birthday)->format('d/m/Y') }}</td>
+    <td>{{ $item->gender }}</td>
+    <td>
+      <a href="{{ route('forms.edit', $item->peminjam_id) }}" class="mdc-button mdc-button--dense mdc-button--raised">Edit</a>
+      <form action="{{ route('tables.destroy', $item->peminjam_id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="mdc-button mdc-button--dense mdc-button--outlined">Hapus</button>
+      </form>
+    </td>
+  </tr>
+  @empty
+  <tr>
+    <td colspan="6" class="text-center">Belum ada data peminjaman</td>
+  </tr>
+  @endforelse
+</tbody>
+
+
+                    </table>
+                  </div>
+                </div>
+                
+              </div>
+              
+               --}}
+
+<!-- Tab Fasilitas Umum -->
+ <div id="fasilitas" class="tab-content active">
+ <div class="table-section mb-5">
+ <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-card p-0">
+            <div class="search-bar">
+                <input type="text" placeholder="Cari fasilitas..." onkeyup="searchTable(this, 'fasilitasTable')">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="table-responsive">
+                <table class="table" id="fasilitas">
+                    <thead>
+                        <tr>
+                            <th>Nama Fasilitas</th>
+                            <th>Jenis</th>
+                            <th>Alamat</th>
+                            <th>Rt/Rw</th>
+                            <th>coba</th>
+                            <th>Kapasitas</th>
+                            <th>Deskripsi</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+@foreach ($fasilitas as $item)
+<tr>
+    <td>{{ $item->nama }}</td>
+    <td>{{ $item->jenis }}</td>
+    <td>{{ $item->alamat }}</td>
+    <td>{{ $item->rt }} / {{ $item->rw }}</td>
+    <td>{{ $item->rw }}</td>
+    <td>{{ $item->kapasitas }}</td>
+    <td>{{ $item->deskripsi }}</td>
+    <td><span class="status {{ strtolower($item->status) }}">{{ ucfirst($item->status) }}</span></td>
+    <td>
+        <div class="action-buttons">
+            <button class="btn btn-primary">Edit</button>
+            <button class="btn btn-success">Pinjam</button>
+        </div>
+    </td>
+</tr>
+@endforeach
+</tbody>
+
+                </table>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <!-- Tab Peminjaman -->
+        <div id="peminjaman" class="tab-content">
+        <div class="table-section mb-5">
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-card p-0">
+            <div class="search-bar">
+                <input type="text" placeholder="Cari fasilitas..." onkeyup="searchTable(this, 'fasilitasTable')">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="table-responsive">
+                <table class="table" id="peminjaman">
+                    <thead>
+                        <tr>
+                            <th>Tanggal Mulai</th>
+                            <th>Tanggal Selesai</th>
+                            <th>Tujuan</th>
+                            <th>Status</th>
+                            <th>Total Biaya</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($peminjaman as $item)
+<tr>
+    <td>{{ $item->tanggal_mulai }}</td>
+    <td>{{ $item->tanggal_selesai }}</td>
+    <td>{{ $item->tujuan }}</td>
+    <td>{{ $item->status }}</td>
+    <td>{{ $item->total_biaya }}</td>
+    <td><span class="status {{ strtolower($item->status) }}">{{ ucfirst($item->status) }}</span></td>
+    <td>
+        <div class="action-buttons">
+            <button class="btn btn-primary">Edit</button>
+            <button class="btn btn-success">Pinjam</button>
+        </div>
+    </td>
+</tr>
+@endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        <!-- Tab Pembayaran -->
+        <div id="pembayaran" class="tab-content">
+        <div class="table-section mb-5">
+       <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-card p-0">
+            <div class="search-bar">
+                <input type="text" placeholder="Cari fasilitas..." onkeyup="searchTable(this, 'fasilitasTable')">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="table-responsive">
+                <table class="table" id="pembayaran">
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Jumlah</th>
+                            <th>Metode</th>
+                            <th>Keterangan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                          @foreach ($pembayaran as $item)
+<tr>  
+    <td>{{ $item->tanggal }}</td>
+    <td>{{ $item->jumlah }}</td>
+    <td>{{ $item->metode }}</td>
+    <td>{{ $item->keterangan }}</td>
+    <td><span class="status {{ strtolower($item->status) }}">{{ ucfirst($item->status) }}</span></td>
+    <td>
+        <div class="action-buttons">
+            <button class="btn btn-primary">Edit</button>
+            <button class="btn btn-success">Pinjam</button>
+        </div>
+    </td>
+</tr>
+@endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+      </div>
+      </div>
+        <!-- Tab Syarat Fasilitas -->
+        <div id="syarat" class="tab-content">
+        <div class="table-section mb-5">
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-card p-0">
+            <div class="search-bar">
+                <input type="text" placeholder="Cari fasilitas..." onkeyup="searchTable(this, 'fasilitasTable')">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="table-responsive">
+                <table class="table" id="syarat">
+                    <thead>
+                        <tr>
+                            <th>Syarat</th>
+                            <th>Deskripsi</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                          @foreach ($syarat as $item)
+<tr>
+    
+    <td>{{ $item->nama_syarat }}</td>
+    <td>{{ $item->deskripsi }}</td>
+    <td><span class="status {{ strtolower($item->status) }}">{{ ucfirst($item->status) }}</span></td>
+    <td>
+        <div class="action-buttons">
+            <button class="btn btn-primary">Edit</button>
+            <button class="btn btn-success">Pinjam</button>
+        </div>
+    </td>
+</tr>
+@endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+      </div>
+      </div>
+        
+        <!-- Tab Petugas -->
+        <div id="petugas" class="tab-content">
+        <div class="table-section mb-5">
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-card p-0">
+            <div class="search-bar">
+                <input type="text" placeholder="Cari fasilitas..." onkeyup="searchTable(this, 'fasilitasTable')">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="table-responsive">
+                <table class="table" id="petugas">
+                    <thead>
+                        <tr>
+                            <th>Petugas</th>
+                            <th>Peran</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                          @foreach ($petugas as $item)
+<tr>
+    
+    <td>{{ $item->petugas_warga_id }}</td>
+    <td>{{ $item->peran }}</td>
+    <td><span class="status {{ strtolower($item->status) }}">{{ ucfirst($item->status) }}</span></td>
+    <td>
+        <div class="action-buttons">
+            <button class="btn btn-primary">Edit</button>
+            <button class="btn btn-success">Pinjam</button>
+        </div>
+    </td>
+</tr>
+@endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  {{-- <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-card p-0">
+    <h6 class="card-title card-padding pb-0">Data Peminjam</h6>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="text-left">Nama Lengkap</th>
+            <th>No. Telepon</th>
+            <th>Barang/Fasilitas</th>
+            <th>Tanggal Lahir</th>
+            <th>Jenis Kelamin</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          @forelse($peminjam as $item)
+          <tr>
+            <td class="text-left">{{ $item->first_name }} {{ $item->last_name }}</td>
+            <td>{{ $item->phone }}</td>
+            <td>{{ $item->barang }}</td>
+            <td>{{ \Carbon\Carbon::parse($item->birthday)->format('d/m/Y') }}</td>
+            <td>{{ $item->gender }}</td>
+            <td>
+              <a href="{{ route('forms.edit', $item->peminjam_id) }}" class="mdc-button mdc-button--dense mdc-button--raised">Edit</a>
+              <form action="{{ route('tables.destroy', $item->peminjam_id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="mdc-button mdc-button--dense mdc-button--outlined">Hapus</button>
+              </form>
+            </td>
+          </tr>
+          @empty
+          <tr>
+            <td colspan="6" class="text-center">Belum ada data peminjaman</td>
+          </tr>
+          @endforelse
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> --}}

@@ -1,0 +1,14 @@
+/* Biar judulnya gak nempel langsung sama field */
+.mdc-card {
+  overflow: hidden;
+}
+.welcome-card {
+  background-color: #4b2b8f; /* atau warna abu muda sesuai tema */
+  border: none;
+  box-shadow: none;
+}
+.h2{
+    color: #ffffff;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
