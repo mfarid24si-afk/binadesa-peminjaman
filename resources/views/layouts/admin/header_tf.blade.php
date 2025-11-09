@@ -57,7 +57,7 @@
           </div>
         </div>
         <div class="tab-container">
-          <button class="nav-tab" onclick="showTab(event, 'user')">Form</button>
+          <button class="nav-tab" onclick="showTab(event, 'user')">User</button>
           <button class="nav-tab active" onclick="showTab(event, 'warga')">👽 Warga</button>
           <button class="nav-tab" onclick="showTab(event, 'media')">🛸 Media</button>
           <button class="nav-tab" onclick="showTab(event, 'fasilitas')">🏠 Fasilitas Umum</button>

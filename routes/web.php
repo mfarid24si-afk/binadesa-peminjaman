@@ -39,6 +39,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/regis', [Authcontroller::class, 'regis'])->name('regis');
 Route::get('/bina', [binacontroller::class, 'index'])->name('dashboard');
 Route::get('/forms', [binacontroller::class, 'forms'])->name('forms');
 Route::post('/forms/store', [binacontroller::class, 'store'])->name('forms.store');

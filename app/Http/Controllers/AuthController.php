@@ -85,5 +85,9 @@ class AuthController extends Controller
 
         return redirect()->route('tables')->with('success', 'Data berhasil dihapus!');
     }
+    public function regis()
+    {
+        return view('pages.Regis');
+    }
 
 }

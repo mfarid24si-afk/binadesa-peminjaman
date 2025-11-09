@@ -174,6 +174,11 @@
                 <button type="submit" class="mdc-button mdc-button--raised w-100">Login</button>
               </div>
 
+              
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+             <a href="{{ route('regis') }}" class="mdc-button mdc-button w-100">Register</a>
+             </div>
+
             </div>
           </div>
         </form>
