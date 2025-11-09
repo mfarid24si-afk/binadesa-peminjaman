@@ -87,6 +87,8 @@
         </div>
       </nav>
     </div>
+
+    
     <div class="profile-actions">
       <form action="{{ route('logout') }}" method="POST">
         @csrf
