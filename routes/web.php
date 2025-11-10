@@ -5,39 +5,44 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/pcr', function () {
-    return ('selamat datang di halaman pcr');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/mahasiswa', function () {
-    return ('halo mahasiswa');
-});
+// Route::get('/pcr', function () {
+//     return ('selamat datang di halaman pcr');
+// });
 
-Route::get('/nama/{param1}', function ($param1) {
-    return 'Nama Saya: ' . $param1;
-});
+// Route::get('/mahasiswa', function () {
+//     return ('halo mahasiswa');
+// });
 
-Route::get('/nim/{param1?}', function ($param1 = '') {
-    return 'NIM saya: ' . $param1;
-});
+// Route::get('/nama/{param1}', function ($param1) {
+//     return 'Nama Saya: ' . $param1;
+// });
 
-Route::get('/mahasiswa', function () {
-    return 'Halo Mahasiswa';
-})->name('mahasiswa.show');
+// Route::get('/nim/{param1?}', function ($param1 = '') {
+//     return 'NIM saya: ' . $param1;
+// });
 
-Route::get('/mahasiswa/{param1}', [MahasiswaController::class, 'show']);
+// Route::get('/mahasiswa', function () {
+//     return 'Halo Mahasiswa';
+// })->name('mahasiswa.show');
 
-Route::get('/a', function () {
-    return view('bina_desa');
-});
+// Route::get('/mahasiswa/{param1}', [MahasiswaController::class, 'show']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/a', function () {
+//     return view('bina_desa');
+// });
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 Route::get('/regis', [Authcontroller::class, 'regis'])->name('regis');

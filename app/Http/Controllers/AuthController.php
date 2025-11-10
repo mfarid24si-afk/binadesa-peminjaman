@@ -32,14 +32,6 @@ class AuthController extends Controller
             'email' => 'Email salah!',
             'password' => 'password salah',
         ])->onlyInput('email', 'password');
-        //    $credentials = $request->only('username', 'password');
-
-        //     if (Auth::attempt($credentials)) {
-        //         $request->session()->regenerate();
-        //         return redirect()->intended('dashboard')->with('success', 'Selamat Datang Admin!');
-        //     }
-
-        //     return back()->with('error', 'Username atau Password salah!'); 
     }
 
     // Logout
