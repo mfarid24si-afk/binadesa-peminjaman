@@ -578,7 +578,7 @@
                       <button type="submit" class="mdc-button mdc-button--raised">
                         Simpan
                       </button>
-                      <a href="{{ route('forms.store.fasilitas') }}" class="mdc-button mdc-button--outlined ml-2">
+                      <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">
                         Batal
                       </a>
                     </div>
@@ -590,7 +590,7 @@
           </div>
 
           <div id="peminjaman" class="tab-content">
-            <form action="{{ route('forms.store.peminjaman') }}" method="POST">
+            <form action="{{ route('forms.store.peminjaman') }}" method="POST" >
               @csrf
 
               <div class="mdc-layout-grid">
@@ -856,10 +856,10 @@
                            <!-- Dropdown Peminjaman -->
         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
           <div class="mdc-text-field mdc-text-field--outlined">
-            <select name="peminjaman_id" class="mdc-text-field__input" required>
+            <select name="pinjam_id" class="mdc-text-field__input" required>
               @foreach($peminjaman as $pmj)
-                <option value="{{ $pmj->peminjaman_id }}">
-                  {{ $pmj->peminjaman_id }} - {{ $pmj->nama_peminjam ?? 'Warga' }}
+                <option value="{{ $pmj->pinjam_id }}">
+                  {{ $pmj->peminjaman_id }}{{ $pmj->nama_peminjam ?? 'Warga' }}
                 </option>
               @endforeach
             </select>
@@ -982,7 +982,7 @@
                 <!-- Dropdown Fasilitas (WAJIB) -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
   <div class="mdc-text-field mdc-text-field--outlined">
-    <select name="warga_id" class="mdc-text-field__input" required>
+    <select name="petugas_warga_id" class="mdc-text-field__input" required>
       
       <option value="">-- Warga --</option>
       @foreach($warga as $w)
@@ -1019,7 +1019,7 @@
                       <div class="mdc-notched-outline__trailing"></div>
                     </div>
                   </div>
-                  @error('petugas_warga_id') <div class="text-danger small mt-1">{{ $message }}</div> @enderror
+                  @error('fasilitas_id') <div class="text-danger small mt-1">{{ $message }}</div> @enderror
                 </div>
 
               </div>
@@ -1059,9 +1059,9 @@
         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
           <div class="d-flex justify-content-end mt-4">
             <button type="submit" class="mdc-button mdc-button--raised">Simpan</button>
-            <a href="{{ route('forms.create.petugas') }}" class="btn btn-primary">Tambah Petugas</a>
-{{-- 
-            <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">Batal</a> --}}
+            {{-- <a href="{{ route('forms.create.petugas') }}" class="btn btn-primary">Tambah Petugas</a> --}}
+
+            <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">Batal</a>
           </div>
         </div>
 

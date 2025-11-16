@@ -211,22 +211,22 @@ public function destroyFasilitas($id)
 public function storePembayaran(Request $request)
 {
     $request->validate([
-        'peminjaman_id' => 'required|integer',
-        'total_bayar'   => 'required|numeric',
-        'tanggal_bayar' => 'required|date',
+        'pinjam_id' => 'required|integer',
+        'jumlah'   => 'required|numeric',
+        'tanggal' => 'required|date',
         'metode'        => 'required|string',
         'keterangan'    => 'nullable|string',
     ]);
 
-    Pembayaran::create([
-        'peminjaman_id' => $request->peminjaman_id,
-        'total_bayar'   => $request->total_bayar,
-        'tanggal_bayar' => $request->tanggal_bayar,
+    PembayaranFasilitas::create([
+        'pinjam_id' => $request->pinjam_id,
+        'jumlah'   => $request->jumlah,
+        'tanggal' => $request->tanggal,
         'metode'        => $request->metode,
         'keterangan'    => $request->keterangan,
     ]);
 
-    return redirect()->route('forms')->with('success', 'Pembayaran berhasil ditambahkan.');
+    return redirect()->route('tables')->with('success', 'Pembayaran berhasil ditambahkan.');
 }
 
 public function editPembayaran($id)
@@ -278,24 +278,18 @@ public function destroyPembayaran($id)
 public function storePeminjaman(Request $request)
 {
     $request->validate([
-        'warga_id'        => 'required|integer',
-        'fasilitas_id'    => 'required|integer',
-        'tanggal_pinjam'  => 'required|date',
-        'tanggal_kembali' => 'required|date|after_or_equal:tanggal_pinjam',
-        'status'          => 'required|string',
-        'keperluan'       => 'required|string',
+        'warga_id'         => 'required|integer',
+        'fasilitas_id'     => 'required|integer',
+        'tanggal_mulai'    => 'required|date',
+        'tanggal_selesai'  => 'required|date|after_or_equal:tanggal_mulai',
+        'status'           => 'required|string',
+        'tujuan'           => 'required|string',
+        'total_biaya'      => 'required|numeric',
     ]);
 
-    PeminjamanFasilitas::create([
-        'warga_id'        => $request->warga_id,
-        'fasilitas_id'    => $request->fasilitas_id,
-        'tanggal_pinjam'  => $request->tanggal_pinjam,
-        'tanggal_kembali' => $request->tanggal_kembali,
-        'status'          => $request->status,
-        'keperluan'       => $request->keperluan,
-    ]);
+    PeminjamanFasilitas::create($request->all());
 
-    return redirect()->route('forms')->with('success', 'Peminjaman berhasil ditambahkan.');
+    return redirect()->route('tables')->with('success', 'Peminjaman berhasil ditambahkan.');
 }
 
 public function editPeminjaman($id)
@@ -370,7 +364,7 @@ public function createPetugas()
     $fasilitas = FasilitasUmum::all();
     $warga     = Warga::all();
 
-    return view('form_petugas', compact('fasilitas', 'warga'));
+    return view('tables', compact('fasilitas', 'warga'));
 }
    public function editPetugas($id)
 {
@@ -409,24 +403,27 @@ public function storeSyarat(Request $request)
 {
     $request->validate([
         'fasilitas_id' => 'required|integer',
-        'syarat'       => 'required|string',
+        'nama_syarat'       => 'required|string',
+        'deskripsi'       => 'required|string',
+        
     ]);
 
     SyaratFasilitas::create([
         'fasilitas_id' => $request->fasilitas_id,
-        'syarat'       => $request->syarat,
+        'nama_syarat'       => $request->nama_syarat,
+        'deskripsi'       => $request->deskripsi,
+        
     ]);
 
-    return redirect()->route('forms')->with('success', 'Syarat berhasil ditambahkan.');
+    return redirect()->route('tables')->with('success', 'Syarat berhasil ditambahkan.');
 }
 
 public function editSyarat($id)
 {
     $data['email']   = 'spyvy@desa.com';
     $data['name']    = 'Spyvy';
-    $data['syarat']  = SyaratFasilitas::findOrFail($id);
+    $data['nama_syarat']  = SyaratFasilitas::findOrFail($id);
     $data['fasilitas'] = FasilitasUmum::all(); // buat dropdown fasilitas
-
     return view('pages.edit_syarat', $data);
 }
 
