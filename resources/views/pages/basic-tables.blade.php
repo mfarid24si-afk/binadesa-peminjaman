@@ -241,8 +241,8 @@
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th>ID Fasilitas</th>
-                        <th>ID Warga</th>
+                        <th>Fasilitas</th>
+                        <th>Peminjam</th>
                         <th>Tanggal Mulai</th>
                         <th>Tanggal Selesai</th>
                         <th>Tujuan</th>
@@ -255,8 +255,8 @@
                       @forelse ($peminjaman as $item)
                         <tr>
                           <td>{{ $item->pinjam_id }}</td>
-                          <td>{{ $item->fasilitas_id }}</td>
-                          <td>{{ $item->warga_id }}</td>
+                          <td>{{ $item->fasilitas->nama ?? '-' }}</td>
+                          <td>{{ $item->warga->nama ?? '-' }}</td>
                           <td>{{ $item->tanggal_mulai }}</td>
                           <td>{{ $item->tanggal_selesai }}</td>
                           <td>{{ $item->tujuan }}</td>
@@ -296,7 +296,7 @@
                     <thead>
                       <tr>
                         <td>No</td>
-                        <td>ID Peminjaman</td>
+                        <td>Peminjam</td>
                         <th>Tanggal</th>
                         <th>Jumlah Nominal</th>
                         <th>Metode</th>
@@ -308,7 +308,7 @@
                       @forelse ($pembayaran as $item)
                         <tr>
                           <td>{{ $item->bayar_id }}</td>
-                          <td>{{ $item->pinjam_id }}</td>
+                          <td>{{ $item->peminjaman->warga->nama ?? '-' }}</td>
                           <td>{{ $item->tanggal }}</td>
                           <td>{{ $item->jumlah }}</td>
                           <td>{{ $item->metode }}</td>
@@ -347,7 +347,7 @@
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th>ID Fasilitas</th>
+                        <th>Fasilitas</th>
                         <th>Syarat</th>
                         <th>Deskripsi</th>
                         <th>Aksi</th>
@@ -357,7 +357,7 @@
                       @forelse ($syarat as $item)
                         <tr>
                           <td>{{ $item->syarat_id }}</td>
-                          <td>{{ $item->fasilitas_id }}</td>
+                          <td>{{ $item->fasilitas->nama ?? '-' }}</td>
                           <td>{{ $item->nama_syarat }}</td>
                           <td>{{ $item->deskripsi }}</td>
                           <td>
@@ -394,8 +394,8 @@
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th>ID Fasilitas</th>
-                        <th>ID Petugas</th>
+                        <th>Fasilitas</th>
+                        <th>Petugas</th>
                         <th>Peran</th>
                         <th>Aksi</th>
                       </tr>
@@ -404,8 +404,8 @@
                       @forelse ($petugas as $item)
                         <tr>
                           <td>{{ $item->petugas_id }}</td>
-                          <td>{{ $item->fasilitas_id }}</td>
-                          <td>{{ $item->petugas_warga_id }}</td>
+                          <td>{{ $item->fasilitas->nama ?? '-' }}</td>
+                          <td>{{ $item->warga->nama ?? '-' }}</td>
                           <td>{{ $item->peran }}</td>
                           <td>
                             <a href="{{ route('petugas.edit', $item->petugas_id) }}" class="btn btn-primary">Edit</a>

@@ -26,8 +26,6 @@
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
         <main class="content-wrapper">
           
-          
- 
 <div id="syarat" class="tab-content active">
 <form action="{{ route('syarat.update', $syarat->syarat_id) }}" method="POST">
     @csrf
@@ -42,11 +40,40 @@
             <h6 class="card-title">Data Syarat Peminjaman</h6>
             <div class="template-demo">
               <div class="mdc-layout-grid__inner">
+
+      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mt-3">
+  <div class="mdc-select mdc-select--outlined mdc-select--fullwidth">
+    
+    <!-- Native Select -->
+    <select name="fasilitas_id" class="mdc-select__native-control" required>
+      <option value="" disabled {{ $syarat->fasilitas_id ? '' : 'selected' }}>-- Pilih Fasilitas --</option>
+      @foreach($fasilitas as $f)
+        <option value="{{ $f->fasilitas_id }}" 
+                {{ $f->fasilitas_id == $syarat->fasilitas_id ? 'selected' : '' }}>
+          {{ $f->nama_fasilitas }}
+        </option>
+      @endforeach
+    </select>
+
+    <!-- Label harus berada di dalam notched-outline -->
+    <label class="mdc-floating-label">Fasilitas</label>
+
+    <div class="mdc-notched-outline">
+      <div class="mdc-notched-outline__leading"></div>
+      <div class="mdc-notched-outline__notch"></div>
+      <div class="mdc-notched-outline__trailing"></div>
+    </div>
+  </div>
+</div>
+
+
                 
                 <!-- jumlah -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                   <div class="mdc-text-field mdc-text-field--outlined">
-                    <input type="text" name="nama_syarat" value="{{ old('syarat', $syarat->nama_syarat) }}" class="mdc-text-field__input" required>
+                    <input type="text" name="nama_syarat" 
+       value="{{ old('nama_syarat', $syarat->nama_syarat) }}" 
+       class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
                       <div class="mdc-notched-outline__leading"></div>
                       <div class="mdc-notched-outline__notch">

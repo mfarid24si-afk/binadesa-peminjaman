@@ -68,23 +68,30 @@ Route::delete('/tables/delete/media/{id}', [binacontroller::class, 'destroyMedia
 
 // <==== FASILITAS ====>
 Route::post('/forms/fasilitas', [binacontroller::class, 'storeFasilitas'])->name('forms.store.fasilitas');
-Route::put('/update/fasilitas/{id}', [binacontroller::class, 'updateFasilitas'])->name('fasilitas.update');
+
 Route::get('/edit/fasilitas/{id}', [binacontroller::class, 'editFasilitas'])->name('fasilitas.edit');
+Route::put('/update/fasilitas/{id}', [binacontroller::class, 'updateFasilitas'])->name('fasilitas.update');
 Route::delete('/tables/delete/fasilitas/{id}', [binacontroller::class, 'destroyFasilitas'])->name('fasilitas.destroy');
 
 // <==== PEMBAYARAN ====>
 Route::post('/forms/pembayaran', [binacontroller::class, 'storePembayaran'])->name('forms.store.pembayaran');
-Route::put('/update/pembayaran/{id}', [binacontroller::class, 'updatePembayaran'])->name('pembayaran.update');
 Route::get('/edit/pembayaran/{id}', [binacontroller::class, 'editPembayaran'])->name('pembayaran.edit');
+Route::put('/update/pembayaran/{id}', [binacontroller::class, 'updatePembayaran'])->name('pembayaran.update');
 Route::delete('/tables/delete/pembayaran/{id}', [binacontroller::class, 'destroyPembayaran'])->name('pembayaran.destroy');
 
 // <==== PEMINJAMAN ====>
-Route::post('/forms/peminjaman', [binacontroller::class, 'storePeminjaman'])->name('forms.store.peminjaman');
-Route::put('/update/peminjaman/{id}', [binacontroller::class, 'updatePeminjaman'])->name('peminjaman.update');
-Route::get('/edit/peminjaman/{id}', [binacontroller::class, 'editPeminjaman'])->name('peminjaman.edit');
-Route::delete('/tables/delete/peminjaman/{id}', [binacontroller::class, 'destroyPeminjaman'])->name('peminjaman.destroy');
+Route::post('/forms/peminjaman', [binacontroller::class, 'storePeminjaman'])
+    ->name('forms.store.peminjaman');
+Route::get('/edit/peminjaman/{id}', [binacontroller::class, 'editPeminjaman'])
+    ->name('peminjaman.edit');
+Route::put('/update/peminjaman/{id}', [binacontroller::class, 'updatePeminjaman'])
+    ->name('peminjaman.update');
+Route::delete('/tables/delete/peminjaman/{id}', [binacontroller::class, 'destroyPeminjaman'])
+    ->name('peminjaman.destroy');
 
 // <==== PETUGAS ====>
+Route::get('/forms/petugas', [binacontroller::class, 'createPetugas'])
+    ->name('forms.create.petugas');
 Route::post('/forms/petugas', [binacontroller::class, 'storePetugas'])->name('forms.store.petugas');
 Route::put('/update/petugas/{id}', [binacontroller::class, 'updatePetugas'])->name('petugas.update');
 Route::get('/edit/petugas/{id}', [binacontroller::class, 'editPetugas'])->name('petugas.edit');
@@ -92,8 +99,8 @@ Route::delete('/tables/delete/petugas/{id}', [binacontroller::class, 'destroyPet
 
 // <==== SYARAT ====>
 Route::post('/forms/syarat', [binacontroller::class, 'storeSyarat'])->name('forms.store.syarat');
-Route::put('/update/syarat/{id}', [binacontroller::class, 'updateSyarat'])->name('syarat.update');
 Route::get('/edit/syarat/{id}', [binacontroller::class, 'editSyarat'])->name('syarat.edit');
+Route::put('/update/syarat/{id}', [binacontroller::class, 'updateSyarat'])->name('syarat.update');
 Route::delete('/tables/delete/syarat/{id}', [binacontroller::class, 'destroySyarat'])->name('syarat.destroy');
 
 //<====Login=====>

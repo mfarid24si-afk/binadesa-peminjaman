@@ -4,13 +4,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Peminjaman_fasilitas extends Model
+class PeminjamanFasilitas extends Model
 {
     use HasFactory;
 
-    protected $table = 'peminjaman_fasilitas';
+    protected $table      = 'peminjaman_fasilitas';
     protected $primaryKey = 'pinjam_id';
-    protected $fillable = [
+    protected $fillable   = [
         'fasilitas_id',
         'warga_id',
         'tanggal_mulai',
@@ -20,15 +20,18 @@ class Peminjaman_fasilitas extends Model
         'total_biaya',
     ];
 
-    // Relasi ke tabel fasilitas_umum
-    public function fasilitas()
-    {
-        return $this->belongsTo(FasilitasUmum::class, 'fasilitas_id', 'fasilitas_id');
-    }
-
-    // Relasi ke tabel warga
     public function warga()
     {
-        return $this->belongsTo(Warga::class, 'warga_id', 'warga_id');
+        return $this->belongsTo(Warga::class, 'warga_id');
+    }
+
+    public function fasilitas()
+    {
+        return $this->belongsTo(FasilitasUmum::class, 'fasilitas_id');
+    }
+
+    public function pembayaran()
+    {
+        return $this->hasMany(PembayaranFasilitas::class, 'pinjam_id');
     }
 }

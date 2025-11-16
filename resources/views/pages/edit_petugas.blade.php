@@ -40,19 +40,28 @@
             <div class="template-demo">
               <div class="mdc-layout-grid__inner">
                 
-                <!-- jumlah -->
-                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                  <div class="mdc-text-field mdc-text-field--outlined">
-                    <input type="text" name="petugas_warga_id" value="{{ old('petugas_warga_id', $petugas->petugas_warga_id) }}" class="mdc-text-field__input" required>
-                    <div class="mdc-notched-outline">
-                      <div class="mdc-notched-outline__leading"></div>
-                      <div class="mdc-notched-outline__notch">
-                        <label class="mdc-floating-label">ID Petugas</label>
-                      </div>
-                      <div class="mdc-notched-outline__trailing"></div>
-                    </div>
-                  </div>
-                </div>
+               <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mt-3">
+  <div class="mdc-select mdc-select--outlined mdc-select--fullwidth">
+    
+    <!-- Placeholder -->
+    <select name="petugas_warga_id" class="mdc-select__native-control" required>
+      <option value="" disabled {{ $petugas->petugas_warga_id ? '' : 'selected' }}>-- Nama --</option>
+      @foreach($warga as $w)
+        <option value="{{ $w->warga_id }}" 
+          {{ $petugas->petugas_warga_id == $w->warga_id ? 'selected' : '' }}>
+          {{ $w->nama }}
+        </option>
+      @endforeach
+    </select>
+
+    <div class="mdc-notched-outline">
+      <div class="mdc-notched-outline__leading"></div>
+      <div class="mdc-notched-outline__notch"></div>
+      <div class="mdc-notched-outline__trailing"></div>
+    </div>
+  </div>
+</div>
+
 
               </div>
             </div>

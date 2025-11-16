@@ -4,7 +4,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Syarat_fasilitas extends Model
+class SyaratFasilitas extends Model
 {
     use HasFactory;
 
@@ -16,9 +16,8 @@ class Syarat_fasilitas extends Model
         'deskripsi',
     ];
 
-    // Relasi ke fasilitas umum
     public function fasilitas()
     {
-        return $this->belongsTo(FasilitasUmum::class, 'fasilitas_id', 'fasilitas_id');
+        return $this->belongsTo(FasilitasUmum::class, 'fasilitas_id');
     }
 }

@@ -26,7 +26,7 @@
         <main class="content-wrapper">
 
 <div id="pembayaran" class="tab-content active">
-<form action="{{ route('pembayaran.update', $pembayaran->bayar_id) }}" method="POST">
+<form action="{{ route('pembayaran.update', $bayar->bayar_id) }}" method="POST">
     @csrf
     @method('PUT')
     
@@ -43,7 +43,7 @@
                 <!-- Tanggal -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                   <div class="mdc-text-field mdc-text-field--outlined">
-                    <input type="date" name="tanggal" value="{{ old('tanggal', $pembayaran->tanggal) }}" class="mdc-text-field__input" required>
+                    <input type="date" name="tanggal" value="{{ old('tanggal', $bayar->tanggal) }}" class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
                       <div class="mdc-notched-outline__leading"></div>
                       <div class="mdc-notched-outline__notch">
@@ -57,7 +57,7 @@
                 <!-- jumlah -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                   <div class="mdc-text-field mdc-text-field--outlined">
-                    <input type="text" name="jumlah" value="{{ old('jumlah', $pembayaran->jumlah) }}" class="mdc-text-field__input" required>
+                    <input type="text" name="jumlah" value="{{ old('jumlah', $bayar->jumlah) }}" class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
                       <div class="mdc-notched-outline__leading"></div>
                       <div class="mdc-notched-outline__notch">
@@ -83,7 +83,7 @@
                <!-- status -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
                   <div class="mdc-text-field mdc-text-field--outlined">
-                    <input type="text" name="metode" value="{{ old('metode', $pembayaran->metode) }}" class="mdc-text-field__input" required>
+                    <input type="text" name="metode" value="{{ old('metode', $bayar->metode) }}" class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
                       <div class="mdc-notched-outline__leading"></div>
                       <div class="mdc-notched-outline__notch">
@@ -97,7 +97,7 @@
                 <!-- total biaya -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                   <div class="mdc-text-field mdc-text-field--outlined">
-                    <input type="text" name="keterangan" value="{{ old('keterangan', $pembayaran->keterangan) }}" class="mdc-text-field__input" required>
+                    <input type="text" name="keterangan" value="{{ old('keterangan', $bayar->keterangan) }}" class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
                       <div class="mdc-notched-outline__leading"></div>
                       <div class="mdc-notched-outline__notch">

@@ -578,7 +578,7 @@
                       <button type="submit" class="mdc-button mdc-button--raised">
                         Simpan
                       </button>
-                      <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">
+                      <a href="{{ route('forms.store.fasilitas') }}" class="mdc-button mdc-button--outlined ml-2">
                         Batal
                       </a>
                     </div>
@@ -602,6 +602,44 @@
                       <h6 class="card-title">Data Peminjaman</h6>
                       <div class="template-demo">
                         <div class="mdc-layout-grid__inner">
+                          
+                          <!-- Warga -->
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-text-field mdc-text-field--outlined">
+    <select name="warga_id" class="mdc-text-field__input" required>
+      @foreach($warga as $w)
+        <option value="{{ $w->warga_id }}">{{ $w->nama }}</option>
+      @endforeach
+    </select>
+
+    <div class="mdc-notched-outline">
+      <div class="mdc-notched-outline__leading"></div>
+      <div class="mdc-notched-outline__notch">
+        <label class="mdc-floating-label">Warga</label>
+      </div>
+      <div class="mdc-notched-outline__trailing"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Fasilitas -->
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-text-field mdc-text-field--outlined">
+    <select name="fasilitas_id" class="mdc-text-field__input" required>
+      @foreach($fasilitas as $fas)
+        <option value="{{ $fas->fasilitas_id }}">{{ $fas->nama }}</option>
+      @endforeach
+    </select>
+
+    <div class="mdc-notched-outline">
+      <div class="mdc-notched-outline__leading"></div>
+      <div class="mdc-notched-outline__notch">
+        <label class="mdc-floating-label">Fasilitas</label>
+      </div>
+      <div class="mdc-notched-outline__trailing"></div>
+    </div>
+  </div>
+</div>
 
                           <!-- Tanggal mulai -->
                           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
@@ -721,6 +759,24 @@
                       <div class="template-demo">
                         <div class="mdc-layout-grid__inner">
 
+                            <!-- Dropdown Fasilitas -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+          <div class="mdc-text-field mdc-text-field--outlined">
+            <select name="fasilitas_id" class="mdc-text-field__input" required>
+              @foreach($fasilitas as $fas)
+                <option value="{{ $fas->fasilitas_id }}">{{ $fas->nama }}</option>
+              @endforeach
+            </select>
+
+            <div class="mdc-notched-outline">
+              <div class="mdc-notched-outline__leading"></div>
+              <div class="mdc-notched-outline__notch">
+                <label class="mdc-floating-label">Fasilitas</label>
+              </div>
+              <div class="mdc-notched-outline__trailing"></div>
+            </div>
+          </div>
+        </div>
                           <!-- jumlah -->
                           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                             <div class="mdc-text-field mdc-text-field--outlined">
@@ -796,6 +852,27 @@
                       <h6 class="card-title">Data Pembayaran</h6>
                       <div class="template-demo">
                         <div class="mdc-layout-grid__inner">
+
+                           <!-- Dropdown Peminjaman -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+          <div class="mdc-text-field mdc-text-field--outlined">
+            <select name="peminjaman_id" class="mdc-text-field__input" required>
+              @foreach($peminjaman as $pmj)
+                <option value="{{ $pmj->peminjaman_id }}">
+                  {{ $pmj->peminjaman_id }} - {{ $pmj->nama_peminjam ?? 'Warga' }}
+                </option>
+              @endforeach
+            </select>
+
+            <div class="mdc-notched-outline">
+              <div class="mdc-notched-outline__leading"></div>
+              <div class="mdc-notched-outline__notch">
+                <label class="mdc-floating-label">Peminjaman</label>
+              </div>
+              <div class="mdc-notched-outline__trailing"></div>
+            </div>
+          </div>
+        </div>
 
                           <!-- Tanggal -->
                           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
@@ -889,80 +966,109 @@
 
 
           <div id="petugas" class="tab-content">
-            <form action="{{ route('forms.store.petugas') }}" method="POST">
-              @csrf
+  <form action="{{ route('forms.store.petugas') }}" method="POST">
+    @csrf
 
-              <div class="mdc-layout-grid">
-                <div class="mdc-layout-grid__inner">
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
 
-                  <!-- Card Identitas -->
-                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                    <div class="mdc-card">
-                      <h6 class="card-title">Data Petugas</h6>
-                      <div class="template-demo">
-                        <div class="mdc-layout-grid__inner">
+        <!-- Card Identitas -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">Data Petugas</h6>
+            <div class="template-demo">
+              <div class="mdc-layout-grid__inner">
 
-                          <!-- jumlah -->
-                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                            <div class="mdc-text-field mdc-text-field--outlined">
-                              <input type="text" name="petugas_warga_id" class="mdc-text-field__input" required>
-                              <div class="mdc-notched-outline">
-                                <div class="mdc-notched-outline__leading"></div>
-                                <div class="mdc-notched-outline__notch">
-                                  <label class="mdc-floating-label">ID Petugas</label>
-                                </div>
-                                <div class="mdc-notched-outline__trailing"></div>
-                              </div>
-                            </div>
-                          </div>
+                <!-- Dropdown Fasilitas (WAJIB) -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-text-field mdc-text-field--outlined">
+    <select name="warga_id" class="mdc-text-field__input" required>
+      
+      <option value="">-- Warga --</option>
+      @foreach($warga as $w)
+        <option value="{{ $w->warga_id }}">
+          {{ $w->nama }}
+        </option>
+      @endforeach
+    </select>
 
-                        </div>
+    <div class="mdc-notched-outline">
+      <div class="mdc-notched-outline__leading"></div>
+      <div class="mdc-notched-outline__notch">
+      </div>  
+      <div class="mdc-notched-outline__trailing"></div>
+    </div>
+  </div>
+  @error('warga_id') <div class="text-danger small mt-1">{{ $message }}</div> @enderror
+</div>
+
+                <!-- Dropdown Warga (ganti input manual) -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <select name="fasilitas_id" class="mdc-text-field__input" required>
+    <option value="">-- Fasilitas --</option>
+    @foreach($fasilitas as $fas)
+        <option value="{{ $fas->fasilitas_id }}">{{ $fas->nama }}</option>
+    @endforeach
+</select>
+
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
                       </div>
+                      <div class="mdc-notched-outline__trailing"></div>
                     </div>
                   </div>
-
-                  <!-- Card sebelahnya -->
-                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                    <div class="mdc-card">
-                      <h6 class="card-title">👽</h6>
-                      <div class="template-demo">
-                        <div class="mdc-layout-grid__inner">
-
-                          <!-- status -->
-                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-                            <div class="mdc-text-field mdc-text-field--outlined">
-                              <input type="text" name="peran" class="mdc-text-field__input" required>
-                              <div class="mdc-notched-outline">
-                                <div class="mdc-notched-outline__leading"></div>
-                                <div class="mdc-notched-outline__notch">
-                                  <label class="mdc-floating-label">Peran</label>
-                                </div>
-                                <div class="mdc-notched-outline__trailing"></div>
-                              </div>
-                            </div>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Tombol Simpan & Batal -->
-                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                    <div class="d-flex justify-content-end mt-4">
-                      <button type="submit" class="mdc-button mdc-button--raised">
-                        Simpan
-                      </button>
-                      <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">
-                        Batal
-                      </a>
-                    </div>
-                  </div>
-
+                  @error('petugas_warga_id') <div class="text-danger small mt-1">{{ $message }}</div> @enderror
                 </div>
+
               </div>
-            </form>
+            </div>
           </div>
+        </div>
+
+        <!-- Card sebelahnya -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">👽</h6>
+            <div class="template-demo">
+              <div class="mdc-layout-grid__inner">
+
+                <!-- peran -->
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+                  <div class="mdc-text-field mdc-text-field--outlined">
+                    <input type="text" name="peran" class="mdc-text-field__input" 
+                           value="{{ old('peran') }}" required>
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__notch">
+                        <label class="mdc-floating-label">Peran</label>
+                      </div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                  @error('peran') <div class="text-danger small mt-1">{{ $message }}</div> @enderror
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol Simpan & Batal -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+          <div class="d-flex justify-content-end mt-4">
+            <button type="submit" class="mdc-button mdc-button--raised">Simpan</button>
+            <a href="{{ route('forms.create.petugas') }}" class="btn btn-primary">Tambah Petugas</a>
+{{-- 
+            <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">Batal</a> --}}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
 
         </main>
         <!-- partial:../../partials/_footer.html -->

@@ -8,8 +8,8 @@ class Warga extends Model
 {
     use HasFactory;
 
-    protected $table      = 'warga';    // nama tabel di database
-    protected $primaryKey = 'warga_id'; // nama kolom primary key
+    protected $table      = 'warga';
+    protected $primaryKey = 'warga_id';
     protected $fillable   = [
         'no_ktp',
         'nama',
@@ -19,4 +19,14 @@ class Warga extends Model
         'telp',
         'email',
     ];
+
+    public function peminjaman()
+    {
+        return $this->hasMany(PeminjamanFasilitas::class, 'warga_id');
+    }
+
+    public function petugas()
+    {
+        return $this->hasMany(PetugasFasilitas::class, 'petugas_warga_id');
+    }
 }
