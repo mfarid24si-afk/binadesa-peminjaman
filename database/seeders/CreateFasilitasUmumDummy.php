@@ -36,7 +36,14 @@ class CreateFasilitasUmumDummy extends Seeder
             'rt'         => $faker->numberBetween(1, 10),
             'rw'         => $faker->numberBetween(1, 10),
             'kapasitas'  => $faker->numberBetween(10, 500),
-            'deskripsi'  => $faker->sentence(8),
+            'deskripsi'  => $faker->randomElement([
+                'Samping gang lobak',
+                'Depan posyandu',
+                'Sebelah lapangan',
+                'Atap warna merah',
+                'Di dekat balai desa',
+                'Seberang sungai'
+            ]),
         ]);
     }
 }

@@ -28,7 +28,11 @@ class CreateSyaratFasilitasDummy extends Seeder
                     'Formulir Pengajuan',
                     'Surat Pernyataan',
                 ]),
-                'deskripsi'    => $faker->sentence(8),
+                'deskripsi'    => $faker->randomElement([
+                    'Berhasil Dipinjam',
+                    'Tidak Berhasil Dipinjam',
+                    'Masih Ada yang kurang'
+                ]),
             ]);
         }
     }

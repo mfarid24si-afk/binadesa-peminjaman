@@ -27,7 +27,10 @@ class CreatePembayaranFasilitasDummy extends Seeder
                 'transfer',
                 'qris'
             ]),
-            'keterangan' => $faker->optional()->sentence(5),
+            'keterangan' => $faker->randomElement([
+                'Lunas',
+                'Belum Lunas'
+            ]),
         ]);
     }
 }
