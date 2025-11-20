@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <head>
   <meta charset="UTF-8">
@@ -78,7 +79,27 @@
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
               <div class="mdc-card p-0">
                 <h6 class="card-title card-padding pb-0">Data Warga</h6>
-                <div class="table-responsive">
+                  <div class="table-responsive">
+      <form method="POST" action="{{ route('forms.store.warga') }}" onchange="this.form.submit()" class="mb-3">
+          <div class="row">
+              <div class="col-md-2">
+                  <select name="jenis_kelamin" class="form-select">
+                      <option value="">All Genders</option>
+                      <option value="L" {{ request('jenis_kelamin')=='L' ? 'selected' : '' }}>Laki-laki</option>
+                      <option value="P" {{ request('jenis_kelamin')=='P' ? 'selected' : '' }}>Perempuan</option>
+                  </select>
+              </div>
+              <div class="col-md-3">
+    <div class="input-group">
+        <input type="text" name="search" class="form-control" id="exampleInputIconRight" value="{{request('search')}}" placeholder="Search" aria-label="Search">
+        <button type="submit" class="input-group-text" id="basic-addon2">
+        <svg class="icon icon-xxs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+        </button>
+    </div>
+</div>
+          </div>
+      </form>
+      
                   <table class="table">
                     <thead>
                       <tr>
@@ -120,6 +141,9 @@
                       @endforelse
                     </tbody>
                   </table>
+                  <div class="mt-4 d-flex justify-content-center">
+                {{ $warga->links('pagination::bootstrap-5') }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -173,6 +197,9 @@
                       @endforelse
                     </tbody>
                   </table>
+                  <div class="mt-4 d-flex justify-content-center">
+                {{ $media->links('pagination::bootstrap-5') }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -226,6 +253,9 @@
                       @endforelse
                     </tbody>
                   </table>
+                  <div class="mt-4 d-flex justify-content-center">
+                {{ $fasilitas->links('pagination::bootstrap-5') }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -281,6 +311,9 @@
                       @endforelse
                     </tbody>
                   </table>
+                  <div class="mt-4 d-flex justify-content-center">
+                {{ $peminjaman->links('pagination::bootstrap-5') }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -332,6 +365,9 @@
                       @endforelse
                     </tbody>
                   </table>
+                  <div class="mt-4 d-flex justify-content-center">
+                {{ $pembayaran->links('pagination::bootstrap-5') }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -379,6 +415,9 @@
                       @endforelse
                     </tbody>
                   </table>
+                  <div class="mt-4 d-flex justify-content-center">
+                {{ $syarat->links('pagination::bootstrap-5') }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -426,6 +465,9 @@
                       @endforelse
                     </tbody>
                   </table>
+                  <div class="mt-4 d-flex justify-content-center">
+                {{ $petugas->links('pagination::bootstrap-5') }}
+                  </div>
                 </div>
               </div>
             </div>
