@@ -40,7 +40,7 @@ public function scopeSearch($query, $request, array $columns)
             }
         });
     }
-    return $query;
+    
 }
 
 

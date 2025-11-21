@@ -24,10 +24,13 @@ class CreateMediaDummy extends Seeder
             'file_url'   => $faker->imageUrl(640, 480, 'business', true),
             'caption'    => $faker->sentence(5),
             'mime_type'  => $faker->randomElement([
-                'image/jpeg',
-                'image/png',
-                'application/pdf',
-                'video/mp4'
+                'image',
+                'jpeg',
+                'png',
+                'application',
+                'pdf',
+                'video',
+                'mp4',
             ]),
             'sort_order' => $faker->numberBetween(1, 10),
         ]);

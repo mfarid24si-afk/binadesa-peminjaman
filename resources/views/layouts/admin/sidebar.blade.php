@@ -1,3 +1,10 @@
+<script>
+function toggleMenu() {
+    const menu = document.getElementById('submenu-tables');
+    menu.style.display = (menu.style.display === 'none') ? 'block' : 'none';
+}
+</script>
+
 <aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open">
   <div class="mdc-drawer__header">
     <a href="index.html" class="brand-logo">
@@ -25,12 +32,48 @@
           </a>
         </div>
 
-        <div class="mdc-list-item mdc-drawer-item">
-          <a class="mdc-drawer-link" href="{{ url('/tables') }}">
-            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">grid_on</i>
-            Tables
-          </a>
-        </div>
+<div class="mdc-list-item mdc-drawer-item" onclick="toggleMenu()">
+  <a class="mdc-drawer-link" href="javascript:void(0)">
+    <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon">grid_on</i>
+    Tables
+  </a>
+</div>
+
+<div id="submenu-tables" class="submenu" style="display:none; margin-left:50px;">
+
+  <div class="mdc-list-item mdc-drawer-item">
+    <a class="mdc-drawer-link" href="{{ route('warga') }}">👽 Warga</a>
+  </div>
+
+  <div class="mdc-list-item mdc-drawer-item">
+    <a class="mdc-drawer-link" href="{{ route('media') }}">🛸 Media</a>
+  </div>
+
+  <div class="mdc-list-item mdc-drawer-item">
+    <a class="mdc-drawer-link" href="{{ route('fasilitas') }}">🏠 Fasilitas</a>
+  </div>
+
+  <div class="mdc-list-item mdc-drawer-item">
+    <a class="mdc-drawer-link" href="{{ route('peminjaman') }}">📋 Peminjaman</a>
+  </div>
+
+  <div class="mdc-list-item mdc-drawer-item">
+    <a class="mdc-drawer-link" href="{{ route('pembayaran') }}">💰 Pembayaran</a>
+  </div>
+
+  <div class="mdc-list-item mdc-drawer-item">
+    <a class="mdc-drawer-link" href="{{ route('syarat') }}">📄 Syarat</a>
+  </div>
+
+  <div class="mdc-list-item mdc-drawer-item">
+    <a class="mdc-drawer-link" href="{{ route('petugas') }}">👥 Petugas</a>
+  </div>
+
+</div>
+
+
+
+
         <div class="mdc-list-item mdc-drawer-item">
 
         </div>

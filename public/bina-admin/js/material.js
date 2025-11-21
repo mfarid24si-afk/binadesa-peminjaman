@@ -41,5 +41,6 @@
       contentEls[event.detail.index].classList.add('content--active');
     });
   }
+  
 
 })(jQuery);

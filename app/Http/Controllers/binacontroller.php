@@ -24,16 +24,12 @@ class binacontroller extends Controller
 
     public function tables(Request $request)
     {
+        $filterableColumns = ['jenis_kelamin'];
+        $searchableColumns = ['nama'];
         $data['name']      = 'Spyvy';
         $data['email']     = 'spyvy@desa.com';
         $data['judul']     = 'Peminjaman Fasilitas';
         $data['peminjam']  = Pinjam::all(); // ambil semua data
-$filterableColumns = ['jenis_kelamin'];
-$searchableColumns = ['nama'];
-
-$data['warga'] = Warga::query()
-    ->paginate(10)
-    ->withQueryString();
 
         $data['media']      = Media::paginate(10);
         $data['fasilitas']  = FasilitasUmum::paginate(10);
@@ -59,7 +55,7 @@ $data['warga'] = Warga::query()
         return view('pages.basic-forms', $data);
     }
 
-    // ========================
+// ========================
 // === WARGA ==============
 // ========================
     public function storeWarga(Request $request)

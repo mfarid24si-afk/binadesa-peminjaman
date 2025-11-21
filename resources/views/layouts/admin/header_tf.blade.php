@@ -56,15 +56,15 @@
             </div>
           </div>
         </div>
-        <div class="tab-container">
+        {{-- <div class="tab-container">
           <button class="nav-tab" onclick="showTab(event, 'user')">User</button>
-          <button class="nav-tab active" onclick="showTab(event, 'warga')">👽 Warga</button>
-          <button class="nav-tab" onclick="showTab(event, 'media')">🛸 Media</button>
+          <button class="nav-tab" onclick="window.location='{{ route('warga') }}'">👽 Warga</button>
+          <button class="nav-tab" onclick="window.location='{{ route('media') }}'">🛸 Media</button>
           <button class="nav-tab" onclick="showTab(event, 'fasilitas')">🏠 Fasilitas Umum</button>
           <button class="nav-tab" onclick="showTab(event, 'peminjaman')">📋 Peminjaman</button>
           <button class="nav-tab" onclick="showTab(event, 'pembayaran')">💰 Pembayaran</button>
           <button class="nav-tab" onclick="showTab(event, 'syarat')">📄 Syarat Fasilitas</button>
           <button class="nav-tab" onclick="showTab(event, 'petugas')">👥 Petugas</button>
-        </div>
+        </div> --}}
         
       </header>
