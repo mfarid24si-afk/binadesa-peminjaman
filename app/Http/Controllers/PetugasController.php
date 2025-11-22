@@ -19,7 +19,7 @@ public function index(Request $request){
         $data['email']     = 'spyvy@desa.com';
         $data['judul']     = 'Peminjaman Fasilitas';
         $filterableColumns = ['peran'];
-        $searchableColumns = ['nama'];
+        $searchableColumns = ['peran'];
         $data['petugas'] = PetugasFasilitas::filter($request, $filterableColumns)->search($request, $searchableColumns)->paginate(10);
         return view('pages.petugas', $data);
     }

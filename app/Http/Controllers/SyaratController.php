@@ -16,7 +16,7 @@ public function index(Request $request){
         $data['name']      = 'Spyvy';
         $data['email']     = 'spyvy@desa.com';
         $data['judul']     = 'Peminjaman Fasilitas';
-        $filterableColumns = ['peran'];
+        $filterableColumns = ['deskripsi'];
         $searchableColumns = ['nama_syarat'];
         $data['syarat'] = SyaratFasilitas::filter($request, $filterableColumns)->search($request, $searchableColumns)->paginate(10);
         return view('pages.syarat', $data);
