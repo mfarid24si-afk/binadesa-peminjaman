@@ -10,7 +10,7 @@
   @include('layouts.admin.css')
 
 </head>
-
+<body>
 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
   <div class="mdc-card">
     <h6 class="card-title">Registrasi Pengguna</h6>
@@ -74,6 +74,25 @@
               </div>
             </div>
           </div>
+          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                            <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+                              <input type="hidden" name="role">
+                              <i class="mdc-select__dropdown-icon"></i>
+                              <div class="mdc-select__selected-text"></div>
+                              <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+                                <ul class="mdc-list">
+                                  <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true">
+                                  </li>
+                                  <li class="mdc-list-item" data-value="super admin">Super Admin</li>
+                                  <li class="mdc-list-item" data-value="admin">Admin</li>
+                                  <li class="mdc-list-item" data-value="user">User</li>
+                                </ul>
+                              </div>
+                              <span class="mdc-floating-label">Role</span>
+                              <div class="mdc-line-ripple"></div>
+                            </div>
+                          </div>
+
 
         </div>
       </div>

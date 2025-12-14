@@ -103,15 +103,24 @@
                             </div>
                           </div>
 
-                          <div class="form-group">
-  <label for="role">Role</label>
-  <select name="role" id="role" class="form-control" required>
-    <option value="">-- Pilih Role --</option>
-    <option value="admin">Admin</option>
-    <option value="super admin">Super Admin</option>
-    <option value="guest">Guest</option>
-  </select>
-</div>
+      <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                            <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+                              <input type="hidden" name="role">
+                              <i class="mdc-select__dropdown-icon"></i>
+                              <div class="mdc-select__selected-text"></div>
+                              <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+                                <ul class="mdc-list">
+                                  <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true">
+                                  </li>
+                                  <li class="mdc-list-item" data-value="super admin">Super Admin</li>
+                                  <li class="mdc-list-item" data-value="admin">Admin</li>
+                                  <li class="mdc-list-item" data-value="user">User</li>
+                                </ul>
+                              </div>
+                              <span class="mdc-floating-label">Role</span>
+                              <div class="mdc-line-ripple"></div>
+                            </div>
+                          </div>
 
 
 
@@ -144,12 +153,6 @@
             {{-- form warga --}}
             <form action="{{ route('forms.store.warga') }}" method="POST">
               @csrf
-
-               <div>
-        <label>Foto</label>
-        <input type="file" name="foto" accept="image/*">
-    </div>
-
 
               <div class="mdc-layout-grid">
                 <div class="mdc-layout-grid__inner">
@@ -230,6 +233,20 @@
                             </div>
                           </div>
 
+                          
+                          <!-- Upload File Baru -->
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <label for="fileUpload" class="btn btn-primary">
+    Pilih File
+</label>
+<input 
+    type="file" 
+    id="fileUpload" 
+    name="file"
+    style="display: none;"
+>
+
+</div>
 
                         </div>
                       </div>

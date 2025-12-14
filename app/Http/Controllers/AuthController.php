@@ -96,7 +96,7 @@ User::create([
     'password' => bcrypt($request->password),
     'role'     => $request->role,
 ]);
-return redirect()->route('dashboard')->with('success', 'Data User berhasil disimpan.');
+return redirect()->route('login')->with('success', 'Data User berhasil disimpan.');
     }
 
     public function editUser($id)
