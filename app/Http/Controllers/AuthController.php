@@ -109,7 +109,7 @@ return redirect()->route('login')->with('success', 'Data User berhasil disimpan.
     {
         $user = User::findOrFail($id);
         $user->update($request->all());
-        return redirect()->route('dashboard')->with('success', 'Data User berhasil diperbarui.');
+        return redirect()->route('user')->with('success', 'Data User berhasil diperbarui.');
     }
     public function destroyUser($id)
     {

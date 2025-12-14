@@ -36,6 +36,7 @@
                       <tr>
                         <th>No</th>
                         <th>Nama</th>
+                        <th>Role</th>
                         <th>Email</th>
                         <th>Password</th>
                         <th>Aksi</th>
@@ -46,6 +47,7 @@
                         <tr>
                           <td>{{ $u->id }}</td>
                           <td>{{ $u->name }}</td>
+                          <td>{{ $u->role }}</td>
                           <td>{{ $u->email }}</td>
                           <td>{{ $u->password }}</td>
                           <td>
