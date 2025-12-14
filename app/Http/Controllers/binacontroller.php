@@ -37,7 +37,7 @@ class binacontroller extends Controller
         $data['peminjaman'] = PeminjamanFasilitas::paginate(10);
         $data['petugas']    = PetugasFasilitas::paginate(10);
         $data['syarat']     = SyaratFasilitas::paginate(10);
-        $data['user']       = User::all();
+        $data['user']       = User::paginate(10);
         return view('pages.basic-tables', $data);
     }
     public function forms()
@@ -58,396 +58,437 @@ class binacontroller extends Controller
 // ========================
 // === WARGA ==============
 // ========================
-    public function storeWarga(Request $request)
-    {
-        $request->validate([
-            'nama'          => 'required|string|max:100',
-            'no_ktp'        => 'required|string|max:16',
-            'agama'         => 'required|string|max:255',
-            'pekerjaan'     => 'required|string|max:255',
-            'jenis_kelamin' => 'required|string',
-            'email'         => 'required|string',
-        ]);
+    // public function storeWarga(Request $request)
+    // {
+    //     $request->validate([
+    //         'nama'          => 'required|string|max:100',
+    //         'no_ktp'        => 'required|string|max:16',
+    //         'agama'         => 'required|string|max:255',
+    //         'pekerjaan'     => 'required|string|max:255',
+    //         'jenis_kelamin' => 'required|string',
+    //         'email'         => 'required|string',
+    //     ]);
 
-        Warga::create($request->all());
-        return redirect()->route('tables')->with('success', 'Data Warga berhasil disimpan.');
-    }
+    //     Warga::create($request->all());
+    //     return redirect()->route('tables')->with('success', 'Data Warga berhasil disimpan.');
+    // }
 
-    public function editWarga($id)
-    {
-        $data['email'] = 'spyvy@desa.com';
-        $data['name']  = 'Spyvy';
-        $data['warga'] = Warga::findOrFail($id);
-        return view('pages.edit_warga', $data);
-    }
+    // public function editWarga($id)
+    // {
+    //     $data['email'] = 'spyvy@desa.com';
+    //     $data['name']  = 'Spyvy';
+    //     $data['warga'] = Warga::findOrFail($id);
+    //     return view('pages.edit_warga', $data);
+    // }
 
-    public function updateWarga(Request $request, $id)
-    {
-        $warga = Warga::findOrFail($id);
-        $warga->update($request->all());
-        return redirect()->route('tables')->with('success', 'Data Warga berhasil diperbarui.');
-    }
-    public function destroyWarga($id)
-    {
-        $warga = Warga::findOrFail($id);
-        $warga->delete();
+    // public function updateWarga(Request $request, $id)
+    // {
+    //     $warga = Warga::findOrFail($id);
+    //     $warga->update($request->all());
+    //     return redirect()->route('tables')->with('success', 'Data Warga berhasil diperbarui.');
+    // }
+    // public function destroyWarga($id)
+    // {
+    //     $warga = Warga::findOrFail($id);
+    //     $warga->delete();
 
-        return redirect()->route('tables')->with('success', 'Data berhasil dihapus!');
-    }
+    //     return redirect()->route('tables')->with('success', 'Data berhasil dihapus!');
+    // }
 
     // ========================
 // === MEDIA ==============
 // ========================
-    public function storeMedia(Request $request)
-    {
-        $request->validate([
-            'ref_table'  => 'required|string',
-            'ref_id'     => 'required|numeric',
-            'file_url'   => 'required|string',
-            'caption'    => 'nullable|string',
-            'mime_type'  => 'nullable|string',
-            'sort_order' => 'nullable|integer',
-        ]);
+//     public function storeMedia(Request $request)
+// {
+//     $request->validate([
+//         'ref_table'  => 'required|string',
+//         'ref_id'     => 'required|numeric',
+//         'file_url'   => 'required|file',
+//         'caption'    => 'nullable|string',
+//         'mime_type'  => 'nullable|string',
+//         'sort_order' => 'nullable|integer',
+//     ]);
 
-        Media::create($request->all());
-        return redirect()->route('tables')->with('success', 'Data Media berhasil disimpan.');
-    }
+//     // Upload file ke storage/app/public/media
+//     $file = $request->file('file_url');
+//     $fileName = time().'_'.$file->getClientOriginalName();
+//     $file->storeAs('public/media', $fileName);
 
-    public function editMedia($id)
-    {
-        $data['email'] = 'spyvy@desa.com';
-        $data['name']  = 'Spyvy';
-        $data['media'] = Media::findOrFail($id);
-        return view('pages.edit_media', $data);
-    }
+//     // Simpan ke database
+//     Media::create([
+//         'ref_table'  => $request->ref_table,
+//         'ref_id'     => $request->ref_id,
+//         'file_url'   => $fileName, // ini yang disimpan
+//         'caption'    => $request->caption,
+//         'mime_type'  => $file->getClientMimeType(),
+//         'sort_order' => $request->sort_order,
+//     ]);
 
-    public function updateMedia(Request $request, $id)
-    {
-        $media = Media::findOrFail($id);
-        $media->update($request->all());
-        return redirect()->route('tables')->with('success', 'Data Media berhasil diperbarui.');
-    }
-    public function destroyMedia($id)
-    {
-        $media = Media::findOrFail($id);
-        $media->delete();
+//     return redirect()->route('media')->with('success', 'Data Media berhasil disimpan.');
+// }
 
-        return redirect()->route('tables')->with('success', 'Data berhasil dihapus!');
-    }
+
+// public function editMedia($id)
+// {
+//     $media = Media::findOrFail($id);
+
+//     return view('pages.edit_media', ['media' => $media]);
+// }
+
+
+
+//    public function updateMedia(Request $request, $id)
+// {
+//     $media = Media::findOrFail($id);
+
+//     $data = $request->except('file');
+
+//     // Jika upload file baru
+//     if ($request->hasFile('file')) {
+
+//         // Hapus file lama kalau ada
+//         if ($media->file_url && file_exists(storage_path('app/public/media/'.$media->file_url))) {
+//             unlink(storage_path('app/public/media/'.$media->file_url));
+//         }
+
+//         // Upload file baru
+//         $file = $request->file('file');
+//         $filename = time() . '_' . $file->getClientOriginalName();
+//         $file->storeAs('public/media', $filename);
+
+//         // Simpan nama file baru
+//         $data['file_url'] = $filename;
+
+//         // Update mime_type dari file baru
+//         $data['mime_type'] = $file->getClientMimeType();
+//     }
+
+//     $media->update($data);
+
+//     return redirect()->route('media')->with('success', 'Media berhasil diperbarui.');
+// }
+
+//     public function destroyMedia($id)
+//     {
+//         $media = Media::findOrFail($id);
+//         $media->delete();
+
+//         return redirect()->route('media')->with('success', 'Data berhasil dihapus!');
+//     }
 
     // ========================
 // === FASILITAS UMUM =====
 // ========================
-    public function storeFasilitas(Request $request)
-    {
-        $validated = $request->validate([
-            'nama'      => 'required|string',
-            'deskripsi' => 'required|string',
-            'jenis'     => 'required|string',
-            'alamat'    => 'required|string',
-            'rt'        => 'required|string',
-            'rw'        => 'required|string',
-            'kapasitas' => 'required|string',
-        ]);
+    // public function storeFasilitas(Request $request)
+    // {
+    //     $validated = $request->validate([
+    //         'nama'      => 'required|string',
+    //         'deskripsi' => 'required|string',
+    //         'jenis'     => 'required|string',
+    //         'alamat'    => 'required|string',
+    //         'rt'        => 'required|string',
+    //         'rw'        => 'required|string',
+    //         'kapasitas' => 'required|string',
+    //     ]);
 
-        FasilitasUmum::create([
-            'nama'      => $validated['nama'],
-            'deskripsi' => $validated['deskripsi'],
-            'jenis'     => $validated['jenis'],
-            'alamat'    => $validated['alamat'],
-            'rt'        => $validated['rt'],
-            'rw'        => $validated['rw'],
-            'kapasitas' => $validated['kapasitas'],
-        ]);
+    //     FasilitasUmum::create([
+    //         'nama'      => $validated['nama'],
+    //         'deskripsi' => $validated['deskripsi'],
+    //         'jenis'     => $validated['jenis'],
+    //         'alamat'    => $validated['alamat'],
+    //         'rt'        => $validated['rt'],
+    //         'rw'        => $validated['rw'],
+    //         'kapasitas' => $validated['kapasitas'],
+    //     ]);
 
-        return redirect()
-            ->route('tables')
-            ->with('success', 'Data Fasilitas berhasil disimpan.');
-    }
+    //     return redirect()
+    //         ->route('tables')
+    //         ->with('success', 'Data Fasilitas berhasil disimpan.');
+    // }
 
-    public function editFasilitas($id)
-    {
-        $data['name']      = 'Spyvy';
-        $data['email']     = 'spyvy@desa.com';
-        $data['fasilitas'] = FasilitasUmum::findOrFail($id);
+    // public function editFasilitas($id)
+    // {
+    //     $data['name']      = 'Spyvy';
+    //     $data['email']     = 'spyvy@desa.com';
+    //     $data['fasilitas'] = FasilitasUmum::findOrFail($id);
 
-        return view('pages.edit_fasilitas', $data);
-    }
+    //     return view('pages.edit_fasilitas', $data);
+    // }
 
-    public function updateFasilitas(Request $request, $id)
-    {
-        $validated = $request->validate([
-            'nama'      => 'required|string',
-            'deskripsi' => 'required|string',
-            'jenis'     => 'required|string',
-            'alamat'    => 'required|string',
-            'rt'        => 'required|string',
-            'rw'        => 'required|string',
-            'kapasitas' => 'required|string',
-        ]);
+    // public function updateFasilitas(Request $request, $id)
+    // {
+    //     $validated = $request->validate([
+    //         'nama'      => 'required|string',
+    //         'deskripsi' => 'required|string',
+    //         'jenis'     => 'required|string',
+    //         'alamat'    => 'required|string',
+    //         'rt'        => 'required|string',
+    //         'rw'        => 'required|string',
+    //         'kapasitas' => 'required|string',
+    //     ]);
 
-        $fasilitas = FasilitasUmum::findOrFail($id);
-        $fasilitas->update($validated);
+    //     $fasilitas = FasilitasUmum::findOrFail($id);
+    //     $fasilitas->update($validated);
 
-        return redirect()
-            ->route('tables')
-            ->with('success', 'Data Fasilitas berhasil diperbarui.');
-    }
+    //     return redirect()
+    //         ->route('tables')
+    //         ->with('success', 'Data Fasilitas berhasil diperbarui.');
+    // }
 
-    public function destroyFasilitas($id)
-    {
-        $fasilitas = FasilitasUmum::findOrFail($id);
-        $fasilitas->delete();
+    // public function destroyFasilitas($id)
+    // {
+    //     $fasilitas = FasilitasUmum::findOrFail($id);
+    //     $fasilitas->delete();
 
-        return redirect()->route('tables')->with('success', 'Fasilitas berhasil dihapus.');
-    }
+    //     return redirect()->route('tables')->with('success', 'Fasilitas berhasil dihapus.');
+    // }
 
 // ========================
 // === PEMBAYARAN =========
 // ========================
 
-    public function storePembayaran(Request $request)
-    {
-        $request->validate([
-            'pinjam_id'  => 'required|integer',
-            'jumlah'     => 'required|numeric',
-            'tanggal'    => 'required|date',
-            'metode'     => 'required|string',
-            'keterangan' => 'nullable|string',
-        ]);
+    // public function storePembayaran(Request $request)
+    // {
+    //     $request->validate([
+    //         'pinjam_id'  => 'required|integer',
+    //         'jumlah'     => 'required|numeric',
+    //         'tanggal'    => 'required|date',
+    //         'metode'     => 'required|string',
+    //         'keterangan' => 'nullable|string',
+    //     ]);
 
-        PembayaranFasilitas::create([
-            'pinjam_id'  => $request->pinjam_id,
-            'jumlah'     => $request->jumlah,
-            'tanggal'    => $request->tanggal,
-            'metode'     => $request->metode,
-            'keterangan' => $request->keterangan,
-        ]);
+    //     PembayaranFasilitas::create([
+    //         'pinjam_id'  => $request->pinjam_id,
+    //         'jumlah'     => $request->jumlah,
+    //         'tanggal'    => $request->tanggal,
+    //         'metode'     => $request->metode,
+    //         'keterangan' => $request->keterangan,
+    //     ]);
 
-        return redirect()->route('tables')->with('success', 'Pembayaran berhasil ditambahkan.');
-    }
+    //     return redirect()->route('tables')->with('success', 'Pembayaran berhasil ditambahkan.');
+    // }
 
-    public function editPembayaran($id)
-    {
-        $data['email']      = 'spyvy@desa.com';
-        $data['name']       = 'Spyvy';
-        $data['bayar']      = PembayaranFasilitas::findOrFail($id);
-        $data['peminjaman'] = PeminjamanFasilitas::all();
+    // public function editPembayaran($id)
+    // {
+    //     $data['email']      = 'spyvy@desa.com';
+    //     $data['name']       = 'Spyvy';
+    //     $data['bayar']      = PembayaranFasilitas::findOrFail($id);
+    //     $data['peminjaman'] = PeminjamanFasilitas::all();
 
-        return view('pages.edit_pembayaran', $data);
-    }
+    //     return view('pages.edit_pembayaran', $data);
+    // }
 
-    public function updatePembayaran(Request $request, $id)
-    {
-        $request->validate([
-            'tanggal_bayar' => $request->tanggal,
-            'total_bayar'   => $request->jumlah,
-            'metode'        => 'required|string',
-            'keterangan'    => 'nullable|string',
-        ]);
+    // public function updatePembayaran(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'tanggal_bayar' => $request->tanggal,
+    //         'total_bayar'   => $request->jumlah,
+    //         'metode'        => 'required|string',
+    //         'keterangan'    => 'nullable|string',
+    //     ]);
 
-        // SESUAI MODEL YANG BENER
-        $bayar = PembayaranFasilitas::findOrFail($id);
+    //     // SESUAI MODEL YANG BENER
+    //     $bayar = PembayaranFasilitas::findOrFail($id);
 
-        $bayar->update([
-            'tanggal_bayar' => $request->tanggal,
-            'total_bayar'   => $request->jumlah,
-            'metode'        => $request->metode,
-            'keterangan'    => $request->keterangan,
-        ]);
+    //     $bayar->update([
+    //         'tanggal_bayar' => $request->tanggal,
+    //         'total_bayar'   => $request->jumlah,
+    //         'metode'        => $request->metode,
+    //         'keterangan'    => $request->keterangan,
+    //     ]);
 
-        return redirect()->route('tables')->with('success', 'Pembayaran berhasil diperbarui.');
-    }
+    //     return redirect()->route('tables')->with('success', 'Pembayaran berhasil diperbarui.');
+    // }
 
-    public function destroyPembayaran($id)
-    {
-        $bayar = PembayaranFasilitas::findOrFail($id);
-        $bayar->delete();
+    // public function destroyPembayaran($id)
+    // {
+    //     $bayar = PembayaranFasilitas::findOrFail($id);
+    //     $bayar->delete();
 
-        return redirect()->route('tables')->with('success', 'Pembayaran berhasil dihapus!');
-    }
+    //     return redirect()->route('tables')->with('success', 'Pembayaran berhasil dihapus!');
+    // }
 
 // ========================
 // === PEMINJAMAN =========
 // ========================
 
-    public function storePeminjaman(Request $request)
-    {
-        $request->validate([
-            'warga_id'        => 'required|integer',
-            'fasilitas_id'    => 'required|integer',
-            'tanggal_mulai'   => 'required|date',
-            'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai',
-            'status'          => 'required|string',
-            'tujuan'          => 'required|string',
-            'total_biaya'     => 'required|numeric',
-        ]);
+    // public function storePeminjaman(Request $request)
+    // {
+    //     $request->validate([
+    //         'warga_id'        => 'required|integer',
+    //         'fasilitas_id'    => 'required|integer',
+    //         'tanggal_mulai'   => 'required|date',
+    //         'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai',
+    //         'status'          => 'required|string',
+    //         'tujuan'          => 'required|string',
+    //         'total_biaya'     => 'required|numeric',
+    //     ]);
 
-        PeminjamanFasilitas::create($request->all());
+    //     PeminjamanFasilitas::create($request->all());
 
-        return redirect()->route('tables')->with('success', 'Peminjaman berhasil ditambahkan.');
-    }
+    //     return redirect()->route('tables')->with('success', 'Peminjaman berhasil ditambahkan.');
+    // }
 
-    public function editPeminjaman($id)
-    {
-        $data['email']  = 'spyvy@desa.com';
-        $data['name']   = 'Spyvy';
-        $data['pinjam'] = PeminjamanFasilitas::findOrFail($id);
+    // public function editPeminjaman($id)
+    // {
+    //     $data['email']  = 'spyvy@desa.com';
+    //     $data['name']   = 'Spyvy';
+    //     $data['pinjam'] = PeminjamanFasilitas::findOrFail($id);
 
-        // dropdown yang dibutuhkan
-        $data['warga']     = Warga::all();
-        $data['fasilitas'] = FasilitasUmum::all();
+    //     // dropdown yang dibutuhkan
+    //     $data['warga']     = Warga::all();
+    //     $data['fasilitas'] = FasilitasUmum::all();
 
-        return view('pages.edit_peminjaman', $data);
-    }
+    //     return view('pages.edit_peminjaman', $data);
+    // }
 
-    public function updatePeminjaman(Request $request, $id)
-    {
-        $request->validate([
-            'warga_id'        => 'required|integer',
-            'fasilitas_id'    => 'required|integer',
-            'tanggal_pinjam'  => 'required|date',
-            'tanggal_kembali' => 'required|date|after_or_equal:tanggal_pinjam',
-            'status'          => 'required|string',
-            'keperluan'       => 'required|string',
-        ]);
+    // public function updatePeminjaman(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'warga_id'        => 'required|integer',
+    //         'fasilitas_id'    => 'required|integer',
+    //         'tanggal_pinjam'  => 'required|date',
+    //         'tanggal_kembali' => 'required|date|after_or_equal:tanggal_pinjam',
+    //         'status'          => 'required|string',
+    //         'keperluan'       => 'required|string',
+    //     ]);
 
-        $pinjam = PeminjamanFasilitas::findOrFail($id);
+    //     $pinjam = PeminjamanFasilitas::findOrFail($id);
 
-        $pinjam->update([
-            'warga_id'        => $request->warga_id,
-            'fasilitas_id'    => $request->fasilitas_id,
-            'tanggal_pinjam'  => $request->tanggal_pinjam,
-            'tanggal_kembali' => $request->tanggal_kembali,
-            'status'          => $request->status,
-            'keperluan'       => $request->keperluan,
-        ]);
+    //     $pinjam->update([
+    //         'warga_id'        => $request->warga_id,
+    //         'fasilitas_id'    => $request->fasilitas_id,
+    //         'tanggal_pinjam'  => $request->tanggal_pinjam,
+    //         'tanggal_kembali' => $request->tanggal_kembali,
+    //         'status'          => $request->status,
+    //         'keperluan'       => $request->keperluan,
+    //     ]);
 
-        return redirect()->route('tables')->with('success', 'Peminjaman berhasil diperbarui.');
-    }
+    //     return redirect()->route('tables')->with('success', 'Peminjaman berhasil diperbarui.');
+    // }
 
-    public function destroyPeminjaman($id)
-    {
-        $pinjam = PeminjamanFasilitas::findOrFail($id);
-        $pinjam->delete();
+    // public function destroyPeminjaman($id)
+    // {
+    //     $pinjam = PeminjamanFasilitas::findOrFail($id);
+    //     $pinjam->delete();
 
-        return redirect()->route('tables')->with('success', 'Peminjaman berhasil dihapus!');
-    }
+    //     return redirect()->route('tables')->with('success', 'Peminjaman berhasil dihapus!');
+    // }
 
     // ========================
 // === PETUGAS ============
 // ========================
-    public function storePetugas(Request $request)
-    {
-        $request->validate([
-            'petugas_warga_id' => 'required|integer|exists:warga,warga_id',
-            'peran'            => 'required|string',
-            'fasilitas_id'     => 'required|integer|exists:fasilitas_umum,fasilitas_id',
-        ]);
+    // public function storePetugas(Request $request)
+    // {
+    //     $request->validate([
+    //         'petugas_warga_id' => 'required|integer|exists:warga,warga_id',
+    //         'peran'            => 'required|string',
+    //         'fasilitas_id'     => 'required|integer|exists:fasilitas_umum,fasilitas_id',
+    //     ]);
 
-        PetugasFasilitas::create([
-            'petugas_warga_id' => $request->petugas_warga_id,
-            'peran'            => $request->peran,
-            'fasilitas_id'     => $request->fasilitas_id,
-        ]);
+    //     PetugasFasilitas::create([
+    //         'petugas_warga_id' => $request->petugas_warga_id,
+    //         'peran'            => $request->peran,
+    //         'fasilitas_id'     => $request->fasilitas_id,
+    //     ]);
 
-        return redirect()->route('tables')
-            ->with('success', 'Data Petugas berhasil disimpan.');
-    }
-    public function createPetugas()
-    {
-        $fasilitas = FasilitasUmum::all();
-        $warga     = Warga::all();
+    //     return redirect()->route('tables')
+    //         ->with('success', 'Data Petugas berhasil disimpan.');
+    // }
+    // public function createPetugas()
+    // {
+    //     $fasilitas = FasilitasUmum::all();
+    //     $warga     = Warga::all();
 
-        return view('tables', compact('fasilitas', 'warga'));
-    }
-    public function editPetugas($id)
-    {
-        $data['email']   = 'spyvy@desa.com';
-        $data['name']    = 'Spyvy';
-        $data['petugas'] = PetugasFasilitas::findOrFail($id);
-        $data['warga']   = Warga::all();
-        return view('pages.edit_petugas', $data);
-    }
+    //     return view('tables', compact('fasilitas', 'warga'));
+    // }
+    // public function editPetugas($id)
+    // {
+    //     $data['email']   = 'spyvy@desa.com';
+    //     $data['name']    = 'Spyvy';
+    //     $data['petugas'] = PetugasFasilitas::findOrFail($id);
+    //     $data['warga']   = Warga::all();
+    //     return view('pages.edit_petugas', $data);
+    // }
 
-    public function updatePetugas(Request $request, $id)
-    {
-        $request->validate([
-            'petugas_warga_id' => 'required|exists:warga,warga_id',
-            'peran'            => 'required|string|max:255',
-        ]);
+    // public function updatePetugas(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'petugas_warga_id' => 'required|exists:warga,warga_id',
+    //         'peran'            => 'required|string|max:255',
+    //     ]);
 
-        $petugas = PetugasFasilitas::findOrFail($id);
-        $petugas->update($request->only('petugas_warga_id', 'peran'));
+    //     $petugas = PetugasFasilitas::findOrFail($id);
+    //     $petugas->update($request->only('petugas_warga_id', 'peran'));
 
-        return redirect()->route('tables')->with('success', 'Data Petugas berhasil diperbarui.');
-    }
+    //     return redirect()->route('tables')->with('success', 'Data Petugas berhasil diperbarui.');
+    // }
 
-    public function destroyPetugas($id)
-    {
-        $petugas = PetugasFasilitas::findOrFail($id);
-        $petugas->delete();
+    // public function destroyPetugas($id)
+    // {
+    //     $petugas = PetugasFasilitas::findOrFail($id);
+    //     $petugas->delete();
 
-        return redirect()->route('tables')->with('success', 'Data berhasil dihapus!');
-    }
+    //     return redirect()->route('tables')->with('success', 'Data berhasil dihapus!');
+    // }
     // ========================
 // === SYARAT FASILITAS ===
 // ========================
 
-    public function storeSyarat(Request $request)
-    {
-        $request->validate([
-            'fasilitas_id' => 'required|integer',
-            'nama_syarat'  => 'required|string',
-            'deskripsi'    => 'required|string',
+    // public function storeSyarat(Request $request)
+    // {
+    //     $request->validate([
+    //         'fasilitas_id' => 'required|integer',
+    //         'nama_syarat'  => 'required|string',
+    //         'deskripsi'    => 'required|string',
 
-        ]);
+    //     ]);
 
-        SyaratFasilitas::create([
-            'fasilitas_id' => $request->fasilitas_id,
-            'nama_syarat'  => $request->nama_syarat,
-            'deskripsi'    => $request->deskripsi,
+    //     SyaratFasilitas::create([
+    //         'fasilitas_id' => $request->fasilitas_id,
+    //         'nama_syarat'  => $request->nama_syarat,
+    //         'deskripsi'    => $request->deskripsi,
 
-        ]);
+    //     ]);
 
-        return redirect()->route('tables')->with('success', 'Syarat berhasil ditambahkan.');
-    }
+    //     return redirect()->route('tables')->with('success', 'Syarat berhasil ditambahkan.');
+    // }
 
-    public function editSyarat($id)
-    {
-        $data['email']       = 'spyvy@desa.com';
-        $data['name']        = 'Spyvy';
-        $data['nama_syarat'] = SyaratFasilitas::findOrFail($id);
-        $data['fasilitas']   = FasilitasUmum::all(); // buat dropdown fasilitas
-        return view('pages.edit_syarat', $data);
-    }
+    // public function editSyarat($id)
+    // {
+    //     $data['email']       = 'spyvy@desa.com';
+    //     $data['name']        = 'Spyvy';
+    //     $data['nama_syarat'] = SyaratFasilitas::findOrFail($id);
+    //     $data['fasilitas']   = FasilitasUmum::all(); // buat dropdown fasilitas
+    //     return view('pages.edit_syarat', $data);
+    // }
 
-    public function updateSyarat(Request $request, $id)
-    {
-        $request->validate([
-            'fasilitas_id' => 'required|integer',
-            'nama_syarat'  => 'required|string',
-            'deskripsi'    => 'required|string',
-        ]);
+    // public function updateSyarat(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'fasilitas_id' => 'required|integer',
+    //         'nama_syarat'  => 'required|string',
+    //         'deskripsi'    => 'required|string',
+    //     ]);
 
-        $syarat = SyaratFasilitas::findOrFail($id);
+    //     $syarat = SyaratFasilitas::findOrFail($id);
 
-        $syarat->update([
-            'fasilitas_id' => $request->fasilitas_id,
-            'nama_syarat'  => $request->nama_syarat,
-            'deskripsi'    => $request->deskripsi,
-        ]);
+    //     $syarat->update([
+    //         'fasilitas_id' => $request->fasilitas_id,
+    //         'nama_syarat'  => $request->nama_syarat,
+    //         'deskripsi'    => $request->deskripsi,
+    //     ]);
 
-        return redirect()->route('tables')
-            ->with('success', 'Syarat berhasil diperbarui.');
-    }
+    //     return redirect()->route('tables')
+    //         ->with('success', 'Syarat berhasil diperbarui.');
+    // }
 
-    public function destroySyarat($id)
-    {
-        $syarat = SyaratFasilitas::findOrFail($id);
-        $syarat->delete();
+    // public function destroySyarat($id)
+    // {
+    //     $syarat = SyaratFasilitas::findOrFail($id);
+    //     $syarat->delete();
 
-        return redirect()->route('tables')->with('success', 'Syarat berhasil dihapus!');
-    }
+    //     return redirect()->route('tables')->with('success', 'Syarat berhasil dihapus!');
+    // }
 
 }

@@ -19,15 +19,21 @@
           </div>
           <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end mdc-top-app-bar__section-right">
             <div class="menu-button-container menu-profile d-none d-md-block">
-              <button class="mdc-button mdc-menu-button">
-                <span class="d-flex align-items-center">
-                  <span class="figure">
-                    <img src="{{asset('assets/images/faces/face11.jpg')}}" alt="user" class="user">
-                  </span>
-                  <span class="user-nama">Spyvy</span>
-                </span>
-              </button>
-            </div>
+  <button class="mdc-button mdc-menu-button">
+    <span class="d-flex align-items-center">
+      <span class="figure">
+        <img src="{{ asset('assets/images/faces/face11.jpg') }}" alt="user" class="user">
+      </span>
+      <span>
+        {{ Auth::user()->name }}
+        <br>
+        <small class="text-muted" style="font-size:12px">
+          Last login: {{ session('last_login') }}
+        </small>
+      </span>
+    </span>
+  </button>
+</div>
             <div class="divider d-none d-md-block"></div>
             <div class="menu-button-container d-none d-md-block">
               <button class="mdc-button mdc-menu-button">
@@ -44,27 +50,30 @@
                     </div>
                   </li>
                   <li class="mdc-list-item" role="menuitem">
-                    <div class="item-thumbnail item-thumbnail-icon-only">
-                      <i class="mdi mdi-logout-variant text-primary"></i>
-                    </div>
-                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Logout</h6>
-                    </div>
+                    <div class="profile-actions">
+      <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button class="nav-tab" type="submit">
+          <img src="{{ asset('assets/images/logout.png') }}" height="10px" width="10px" alt="logout"
+            class="icon-logout">
+          Logout</button>
+      </form>
+    </div>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-        {{-- <div class="tab-container">
-          <button class="nav-tab" onclick="showTab(event, 'user')">User</button>
-          <button class="nav-tab" onclick="window.location='{{ route('warga') }}'">👽 Warga</button>
-          <button class="nav-tab" onclick="window.location='{{ route('media') }}'">🛸 Media</button>
+        <div class="tab-container">
+          <button class="nav-tab active" onclick="showTab(event, 'user')">User</button>
+          <button class="nav-tab" onclick="showTab(event, 'warga')">👽 Warga</button>
+          <button class="nav-tab" onclick="showTab(event, 'media')">🛸 Media</button>
           <button class="nav-tab" onclick="showTab(event, 'fasilitas')">🏠 Fasilitas Umum</button>
           <button class="nav-tab" onclick="showTab(event, 'peminjaman')">📋 Peminjaman</button>
           <button class="nav-tab" onclick="showTab(event, 'pembayaran')">💰 Pembayaran</button>
           <button class="nav-tab" onclick="showTab(event, 'syarat')">📄 Syarat Fasilitas</button>
           <button class="nav-tab" onclick="showTab(event, 'petugas')">👥 Petugas</button>
-        </div> --}}
+        </div>
         
       </header>

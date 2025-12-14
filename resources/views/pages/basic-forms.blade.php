@@ -103,6 +103,17 @@
                             </div>
                           </div>
 
+                          <div class="form-group">
+  <label for="role">Role</label>
+  <select name="role" id="role" class="form-control" required>
+    <option value="">-- Pilih Role --</option>
+    <option value="admin">Admin</option>
+    <option value="super admin">Super Admin</option>
+    <option value="guest">Guest</option>
+  </select>
+</div>
+
+
 
 
                         </div>
@@ -133,6 +144,12 @@
             {{-- form warga --}}
             <form action="{{ route('forms.store.warga') }}" method="POST">
               @csrf
+
+               <div>
+        <label>Foto</label>
+        <input type="file" name="foto" accept="image/*">
+    </div>
+
 
               <div class="mdc-layout-grid">
                 <div class="mdc-layout-grid__inner">
@@ -293,7 +310,9 @@
           <div id="media" class="tab-content">
             {{-- form media --}}
             <!-- Form -->
-            <form action="{{ route('forms.store.media') }}" method="POST">
+            <form action="{{ route('forms.store.media') }}" method="POST" >
+
+
               @csrf
 
               <div class="mdc-layout-grid">
@@ -334,19 +353,20 @@
                             </div>
                           </div>
 
-                          <!-- file url -->
-                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                            <div class="mdc-text-field mdc-text-field--outlined">
-                              <input type="text" name="file_url" class="mdc-text-field__input" required>
-                              <div class="mdc-notched-outline">
-                                <div class="mdc-notched-outline__leading"></div>
-                                <div class="mdc-notched-outline__notch">
-                                  <label class="mdc-floating-label">File URL</label>
-                                </div>
-                                <div class="mdc-notched-outline__trailing"></div>
-                              </div>
-                            </div>
-                          </div>
+                          <!-- Upload File Baru -->
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <label for="fileUpload" class="btn btn-primary">
+    Pilih File
+</label>
+<input 
+    type="file" 
+    id="fileUpload" 
+    name="file"
+    style="display: none;"
+>
+
+</div>
+
 
                         </div>
                       </div>

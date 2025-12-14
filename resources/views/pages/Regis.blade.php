@@ -94,11 +94,7 @@
 </div>
 @include('layouts.admin.footer')
  <!-- JS -->
-  @include('layouts.admin.js')
-
-  <a href="https://wa.me/6281234567890" class="whatsapp-float" target="_blank">
-    <img src="{{ asset('assets/images/wa.jpg') }}" alt="WhatsApp" class="whatsapp-icon">
-  </a>
+  @include('layouts.admin.js-r')
 
 </body>
 

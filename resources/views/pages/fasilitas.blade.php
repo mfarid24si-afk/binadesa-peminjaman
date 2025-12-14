@@ -22,7 +22,7 @@
     <!-- partial -->
     <div class="main-wrapper mdc-drawer-app-content">
       <!-- partial:../../partials/_navbar.html -->
-      @include('layouts.admin.header_tf')
+      @include('layouts.admin.header')
       <!-- partial -->
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
         <main class="content-wrapper">
@@ -86,15 +86,26 @@
                           <td>{{ $item->kapasitas }}</td>
                           <td>{{ $item->deskripsi }}</td>
                           <td>
-                            <a href="{{ route('fasilitas.edit', $item->fasilitas_id) }}" class="btn btn-primary">Edit</a>
+  <a href="{{ route('fasilitas.show', $item->fasilitas_id) }}"
+     class="btn btn-info btn-sm">
+     Detail
+  </a>
 
-                            <form action="{{ route('fasilitas.destroy', $item->fasilitas_id) }}" method="POST"
-                              style="display:inline;">
-                              @csrf
-                              @method('DELETE')
-                              <button type="submit" class="btn btn-danger">Hapus</button>
-                            </form>
-                          </td>
+  <a href="{{ route('fasilitas.edit', $item->fasilitas_id) }}"
+     class="btn btn-primary btn-sm">
+     Edit
+  </a>
+
+  <form action="{{ route('fasilitas.destroy', $item->fasilitas_id) }}"
+        method="POST" style="display:inline;">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger btn-sm">
+      Hapus
+    </button>
+  </form>
+</td>
+
 
                         </tr>
                       @empty

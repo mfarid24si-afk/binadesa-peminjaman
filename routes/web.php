@@ -47,10 +47,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
 
 Route::get('/regis', [Authcontroller::class, 'regis'])->name('regis');
 Route::get('/bina', [binacontroller::class, 'index'])->name('dashboard');
@@ -81,6 +77,10 @@ Route::get('/tables/fasilitas', [FasilitasController::class, 'index'])->name('fa
 Route::get('/edit/fasilitas/{id}', [FasilitasController::class, 'editFasilitas'])->name('fasilitas.edit');
 Route::put('/update/fasilitas/{id}', [FasilitasController::class, 'updateFasilitas'])->name('fasilitas.update');
 Route::delete('/tables/delete/fasilitas/{id}', [FasilitasController::class, 'destroyFasilitas'])->name('fasilitas.destroy');
+Route::get('/fasilitas/{id}', 
+  [FasilitasController::class, 'show']
+)->name('fasilitas.show');
+
 
 // <==== PEMBAYARAN ====>
 Route::post('/forms/pembayaran', [PembayaranController::class, 'storePembayaran'])->name('forms.store.pembayaran');
@@ -122,7 +122,12 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //<====User====>
+Route::get('/user', [AuthController::class, 'user'])
+    ->middleware('isLogin')
+    ->name('user');
 Route::post('/forms/user', [AuthController::class, 'storeUser'])->name('forms.store.user');
 Route::put('/update/user/{id}', [AuthController::class, 'updateUser'])->name('user.update');
 Route::get('/edit/user/{id}', [AuthController::class, 'editUser'])->name('user.edit');
 Route::delete('/tables/delete/user/{id}', [AuthController::class, 'destroyUser'])->name('user.destroy');
+Route::get('/profil-pengembang', [AuthController::class, 'index'])
+    ->name('developer.profile');

@@ -25,17 +25,26 @@ class WargaController extends Controller
     }
     public function storeWarga(Request $request)
     {
-        $request->validate([
-            'nama'          => 'required|string|max:100',
-            'no_ktp'        => 'required|string|max:16',
-            'agama'         => 'required|string|max:255',
-            'pekerjaan'     => 'required|string|max:255',
-            'jenis_kelamin' => 'required|string',
-            'email'         => 'required|string',
-        ]);
+         $data = $request->validate([
+        'nama'          => 'required|string|max:100',
+        'no_ktp'        => 'required|string|max:16',
+        'agama'         => 'required|string|max:255',
+        'pekerjaan'     => 'required|string|max:255',
+        'jenis_kelamin' => 'required|string',
+        'email'         => 'required|string',
+        'foto'          => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+    ]);
 
-        Warga::create($request->all());
-        return redirect()->route('')->with('success', 'Data Warga berhasil disimpan.');
+    if ($request->hasFile('foto')) {
+        $data['foto'] = $request->file('foto')->store('warga', 'public');
+    } else {
+        $data['foto'] = null;
+    }
+
+    Warga::create($data);
+
+    return redirect()->route('warga.index')
+                     ->with('success', 'Data Warga berhasil disimpan.');
     }
 
     public function editWarga($id)

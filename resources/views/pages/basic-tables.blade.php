@@ -27,7 +27,7 @@
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
         <main class="content-wrapper">
 
-          <div id="user" class="tab-content">
+          <div id="user" class="tab-content active">
             <!-- ==================== TABLE USER==================== --->
              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
               <div class="mdc-card p-0">
@@ -37,7 +37,7 @@
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th>Nama</th>
+                        <th>Nama</th> 
                         <th>Email</th>
                         <th>Password</th>
                         <th>Aksi</th>
@@ -74,7 +74,7 @@
             </div>
           </div>
 
-          <div id="warga" class="tab-content active">
+          <div id="warga" class="tab-content">
             {{-- ==================== TABLE WARGA ==================== --}}
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
               <div class="mdc-card p-0">

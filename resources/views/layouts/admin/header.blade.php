@@ -19,34 +19,44 @@
     </div>
     <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end mdc-top-app-bar__section-right">
       <div class="menu-button-container menu-profile d-none d-md-block">
-        <button class="mdc-button mdc-menu-button">
-          <span class="d-flex align-items-center">
-            <span class="figure">
-              <img src="{{asset('assets/images/faces/face11.jpg')}}" alt="user" class="user">
-            </span>
-            <span class="user-name">{{$name}}</span>
-          </span>
-        </button>
-        <div class="mdc-menu mdc-menu-surface" tabindex="-1">
-          <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
-            <li class="mdc-list-item" role="menuitem">
-              <div class="item-thumbnail item-thumbnail-icon-only">
-                <i class="mdi mdi-account-edit-outline text-primary"></i>
-              </div>
-              <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                <h6 class="item-subject font-weight-normal">Edit profile</h6>
-              </div>
-            </li>
-            <li class="mdc-list-item" role="menuitem">
-              <div class="item-thumbnail item-thumbnail-icon-only">
-                <i class="mdi mdi-settings-outline text-primary"></i>
-              </div>
-              <div class="item-content d-flex align-items-start flex-column justify-content-center">
-              </div>
-            </li>
-          </ul>
+
+  <!-- BUTTON (trigger menu) -->
+  <button class="mdc-button mdc-menu-button" type="button">
+    <span class="d-flex align-items-center">
+      <span class="figure">
+        <a href="{{ route('developer.profile') }}">
+          <img src="{{ asset('assets/images/faces/face11.jpg') }}" 
+               alt="user" 
+               class="user"
+               style="cursor:pointer">
+        </a>
+      </span>
+
+      <span class="ml-2 text-left">
+        <div>{{ Auth::user()->name }}</div>
+        <small class="text-muted" style="font-size:11px; line-height:1;">
+          Last login: {{ session('last_login') }}
+        </small>
+      </span>
+    </span>
+  </button>
+
+  <!-- DROPDOWN MENU (tidak disentuh) -->
+  <div class="mdc-menu mdc-menu-surface" tabindex="-1">
+    <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
+      <li class="mdc-list-item" role="menuitem">
+        <div class="item-thumbnail item-thumbnail-icon-only">
+          <i class="mdi mdi-account-edit-outline text-primary"></i>
         </div>
-      </div>
+        <div class="item-content d-flex align-items-start flex-column justify-content-center">
+          <h6 class="item-subject font-weight-normal">Edit profile</h6>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
       <div class="divider d-none d-md-block"></div>
       <div class="menu-button-container d-none d-md-block">
         <button class="mdc-button mdc-menu-button">
@@ -178,12 +188,12 @@
               <div class="item-thumbnail item-thumbnail-icon-only">
                 <i class="mdi mdi-logout-variant text-primary"></i>
               </div>
-              <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                <h6 class="item-subject font-weight-normal">
-                  <img src="{{ asset('assets/image/log-out.svg') }}" width="20" height="20" alt="Logout">
-                  Logout
-                </h6>
-              </div>
+              <div class="profile-actions">
+      <form action="{{ route('logout') }}" method="POST">
+        @csrf
+         <h6 class="item-subject font-weight-normal">Logout</h6>
+      </form>
+    </div>
             </li>
           </ul>
         </div>

@@ -27,10 +27,6 @@
 </style>
 
 
-<a href="https://wa.me/6281234567890" class="whatsapp-float" target="_blank">
-  <img src="{{ asset('assets/images/wa.jpg') }}" alt="WhatsApp" class="whatsapp-icon">
-</a>
-
 <script src="{{asset('assets/vendors/js/vendor.bundle.base.js')}}"></script>
 <!-- endinject -->
 <!-- Plugin js for this page-->

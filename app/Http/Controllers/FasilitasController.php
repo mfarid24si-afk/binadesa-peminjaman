@@ -12,6 +12,7 @@ class FasilitasController extends Controller
 // ========================
 
     public function index(Request $request){
+        
         $data['name']      = 'Spyvy';
         $data['email']     = 'spyvy@desa.com';
         $data['judul']     = 'Peminjaman Fasilitas';
@@ -83,5 +84,15 @@ class FasilitasController extends Controller
 
         return redirect()->route('tables')->with('success', 'Fasilitas berhasil dihapus.');
     }
+    public function show($id)
+{
+    $fasilitas = FasilitasUmum::findOrFail($id);
+    return view('pages.fasidetail', [
+        'fasilitas' => $fasilitas,
+        'name' => 'Spyvy',
+        'email' => 'spyvy@desa.com',
+    ]);
+}
+
 
 }

@@ -7,6 +7,39 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    public function index()
+    {
+        $user = User::all();
+        $developer = [
+            'nama' => 'M.Farid Fadillah',
+            'nim'  => '2457301079',
+            'prodi'=> 'Sistem Informasi',
+            'foto' => 'assets/images/developer/developer.jpeg',
+            'email'=> 'm.farid24si@mahasiswa.pcr.ac.id',
+            'github' => 'https://github.com/username',
+            'linkedin' => 'https://linkedin.com/in/username',
+            'instagram' => 'https://instagram.com/username',
+        ];
+
+        return view('pages.profile', [
+        'developer' => $developer,
+        'user' => $user,
+    'authUser' => Auth::user()
+    ]);
+    }
+ public function user()
+{
+    $user = User::paginate(10);
+
+    return view('pages.user_index', [
+        'user' => $user,
+         'user' => $user,
+    'authUser' => Auth::user()
+    ]);
+}
+
+
+
     // Tampilkan form login
     public function showLoginForm()
     {
@@ -15,24 +48,26 @@ class AuthController extends Controller
 
     // Proses login
     public function login(Request $request)
-    {
-        // Validasi input
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+{
+    $credentials = $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
 
-        // Attempt login
-        if (Auth::attempt($credentials, $request->has('remember'))) {
-            $request->session()->regenerate();
-            return redirect()->intended('/bina'); // ganti sesuai route dashboard
-        }
+if (Auth::attempt($credentials, $request->has('remember'))) {
+    $request->session()->regenerate();
 
-        return back()->withErrors([
-            'email' => 'Email salah!',
-            'password' => 'password salah',
-        ])->onlyInput('email', 'password');
-    }
+    session(['last_login' => now()]);
+
+    return redirect()->intended('/bina');
+}
+
+
+    return back()->withErrors([
+        'email' => 'Email atau password salah',
+    ])->onlyInput('email');
+}
+
 
     // Logout
     public function logout(Request $request)
@@ -49,33 +84,39 @@ class AuthController extends Controller
     public function storeUser(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+    'name'     => 'required|string',
+    'email'    => 'required|email',
+    'password' => 'required',
+    'role'     => 'required|string',
+]);
 
-        User::create($request->all());
-        return redirect()->route('tables')->with('success', 'Data User berhasil disimpan.');
+User::create([
+    'name'     => $request->name,
+    'email'    => $request->email,
+    'password' => bcrypt($request->password),
+    'role'     => $request->role,
+]);
+return redirect()->route('dashboard')->with('success', 'Data User berhasil disimpan.');
     }
 
     public function editUser($id)
     {
-        $data['user'] = Users::findOrFail($id);
+        $data['user'] = User::findOrFail($id);
         return view('pages.edit_user', $data);
     }
 
     public function updateUser(Request $request, $id)
     {
-        $user = Users::findOrFail($id);
+        $user = User::findOrFail($id);
         $user->update($request->all());
-        return redirect()->route('tables')->with('success', 'Data User berhasil diperbarui.');
+        return redirect()->route('dashboard')->with('success', 'Data User berhasil diperbarui.');
     }
     public function destroyUser($id)
     {
-        $user = Users::findOrFail($id);
+        $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('tables')->with('success', 'Data berhasil dihapus!');
+        return redirect()->route('dashboard')->with('success', 'Data berhasil dihapus!');
     }
     public function regis()
     {

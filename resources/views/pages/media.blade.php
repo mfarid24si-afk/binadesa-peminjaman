@@ -22,7 +22,7 @@
     <!-- partial -->
     <div class="main-wrapper mdc-drawer-app-content">
       <!-- partial:../../partials/_navbar.html -->
-      @include('layouts.admin.header_tf')
+      @include('layouts.admin.header')
       <!-- partial -->
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
         <main class="content-wrapper">
@@ -83,7 +83,18 @@
                           <td>{{ $m->media_id }}</td>
                           <td>{{ $m->ref_table }}</td>
                           <td>{{ $m->ref_id }}</td>
-                          <td>{{ $m->file_url }}</td>
+                          <td>
+    @if(str_contains($m->mime_type, 'image'))
+        <img src="{{ asset('storage/media/'.$m->file_url) }}" 
+             alt="media" 
+             style="width: 70px; height: auto; border-radius: 4px;">
+    @else
+        <a href="{{ asset('storage/media/'.$m->file_url) }}" target="_blank">
+            {{ $m->file_url }}
+        </a>
+    @endif
+</td>
+
                           <td>{{ $m->caption }}</td>
                           <td>{{ $m->mime_type }}</td>
                           <td>{{ $m->sort_order }}</td>

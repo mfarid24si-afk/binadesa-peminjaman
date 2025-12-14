@@ -22,7 +22,7 @@
     <!-- partial -->
     <div class="main-wrapper mdc-drawer-app-content">
       <!-- partial:../../partials/_navbar.html -->
-      @include('layouts.admin.header_tf')
+      @include('layouts.admin.header')
       <!-- partial -->
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
         <main class="content-wrapper">
@@ -64,19 +64,31 @@
       
                   <table class="table">
                     <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Agama</th>
-                        <th>Jenis Kelamin</th>
-                        <th>No. Telepon</th>
-                        <th>Email</th>
-                        <th>Aksi</th>
-                      </tr>
-                    </thead>
+  <tr>
+    <th>No</th>
+    <th>Foto</th>
+    <th>Nama</th>
+    <th>Agama</th>
+    <th>Jenis Kelamin</th>
+    <th>No. Telepon</th>
+    <th>Email</th>
+    <th>Aksi</th>
+  </tr>
+</thead>
+
                     <tbody>
                       @forelse($warga as $w)
                         <tr>
+                          <td>
+  <img
+    src="{{ $w->foto && Storage::disk('public')->exists($w->foto)
+          ? asset('storage/'.$w->foto)
+          : asset('storage/user/placeholder.png') }}"
+    width="40"
+    height="40"
+    style="object-fit:cover;border-radius:50%;">
+</td>
+
                           <td>{{ $w->warga_id }}</td>
                           <td>{{ $w->nama }}</td>
                           <td>{{ $w->agama }}</td>

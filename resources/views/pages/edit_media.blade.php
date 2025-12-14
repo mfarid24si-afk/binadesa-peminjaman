@@ -29,7 +29,7 @@
   <div id="media" class="tab-content active">  
   {{-- form media --}}
   <!-- Form -->
-  <form action="{{ route('media.update', $media->media_id) }}" method="POST">
+  <form action="{{ route('media.update', $media->media_id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     
@@ -84,6 +84,21 @@
                     </div>
                   </div>
                 </div>
+
+                <!-- upload file -->
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+  <div class="mdc-text-field mdc-text-field--outlined">
+    <input type="file" name="file" class="mdc-text-field__input">
+    <div class="mdc-notched-outline">
+      <div class="mdc-notched-outline__leading"></div>
+      <div class="mdc-notched-outline__notch">
+        <label class="mdc-floating-label">Upload File Baru (opsional)</label>
+      </div>
+      <div class="mdc-notched-outline__trailing"></div>
+    </div>
+  </div>
+</div>
+
 
               </div>
             </div>
@@ -166,7 +181,7 @@
             <button type="submit" class="mdc-button mdc-button--raised">
               Simpan
             </button>
-            <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">
+            <a href="{{ route('media') }}" class="mdc-button mdc-button--outlined ml-2">
               Batal
             </a>
           </div>

@@ -13,8 +13,8 @@ function toggleMenu() {
   </div>
   <div class="mdc-drawer__content">
     <div class="user-info">
-      <p class="name">{{$name}}</p>
-      <p class="email">{{$email}}</p>
+      <p>{{ Auth::user()->name }} </p>
+      <p>{{ Auth::user()->email }}</p>
     </div>
     <div class="mdc-list-group">
       <nav class="mdc-list mdc-drawer-menu">
@@ -40,6 +40,10 @@ function toggleMenu() {
 </div>
 
 <div id="submenu-tables" class="submenu" style="display:none; margin-left:50px;">
+
+  <div class="mdc-list-item mdc-drawer-item">
+    <a class="mdc-drawer-link" href="{{ route('user') }}"> User</a>
+  </div>
 
   <div class="mdc-list-item mdc-drawer-item">
     <a class="mdc-drawer-link" href="{{ route('warga') }}">👽 Warga</a>

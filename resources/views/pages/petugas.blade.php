@@ -22,7 +22,7 @@
     <!-- partial -->
     <div class="main-wrapper mdc-drawer-app-content">
       <!-- partial:../../partials/_navbar.html -->
-      @include('layouts.admin.header_tf')
+      @include('layouts.admin.header')
       <!-- partial -->
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
         <main class="content-wrapper">
