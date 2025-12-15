@@ -10,7 +10,8 @@ class CheckIsLogin
     public function handle($request, Closure $next)
     {
         if (!Auth::check()) {
-            return redirect('/login')->with('error', 'Lu belum login.');
+            abort(403, 'anda perlu login.');
+
         }
         
         return $next($request);
