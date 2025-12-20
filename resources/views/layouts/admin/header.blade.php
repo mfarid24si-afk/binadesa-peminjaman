@@ -18,28 +18,23 @@
       </div>
     </div>
     <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end mdc-top-app-bar__section-right">
-      <div class="menu-button-container menu-profile d-none d-md-block">
+     
 
   <!-- BUTTON (trigger menu) -->
-  <button class="mdc-button mdc-menu-button" type="button">
-    <span class="d-flex align-items-center">
-      <span class="figure">
-        <a href="{{ route('developer.profile') }}">
-          <img src="{{ asset('assets/images/faces/face11.jpg') }}" 
-               alt="user" 
-               class="user"
-               style="cursor:pointer">
-        </a>
-      </span>
+  <div class="menu-profile d-flex align-items-center">
+  <a href="{{ route('developer.profile') }}" class="d-flex align-items-center">
+    <img src="{{ asset('assets/images/faces/face11.jpg') }}"
+         alt="user"
+         style="width:40px;height:40px;border-radius:50%;object-fit:cover;">
+  </a>
 
-      <span class="ml-2 text-left">
-        <div>{{ Auth::user()->name }}</div>
-        <small class="text-muted" style="font-size:11px; line-height:1;">
-          Last login: {{ session('last_login') }}
-        </small>
-      </span>
-    </span>
-  </button>
+  <div class="ml-2 text-left">
+    <div>{{ Auth::user()->name }}</div>
+    <small class="text-muted" style="font-size:11px">
+      Last login: {{ session('last_login') }}
+    </small>
+  </div>
+</div>
 
   <!-- DROPDOWN MENU (tidak disentuh) -->
   <div class="mdc-menu mdc-menu-surface" tabindex="-1">
@@ -55,7 +50,7 @@
     </ul>
   </div>
 
-</div>
+
 
       <div class="divider d-none d-md-block"></div>
       <div class="menu-button-container d-none d-md-block">
