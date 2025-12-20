@@ -49,7 +49,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/regis', [Authcontroller::class, 'regis'])
-->middleware('checkislogin')
 ->name('regis');
 Route::get('/bina', [binacontroller::class, 'index'])
 ->middleware('checkislogin')
