@@ -16,8 +16,8 @@ class AuthController extends Controller
             'prodi'=> 'Sistem Informasi',
             'foto' => 'assets/images/developer/developer.jpeg',
             'email'=> 'm.farid24si@mahasiswa.pcr.ac.id',
-            'github' => 'https://github.com/username',
-            'linkedin' => 'https://linkedin.com/in/username',
+            'github' => 'https://github.com/mfarid24si-afk/binadesa-peminjaman',
+            'linkedin' => 'https://www.linkedin.com/in/muhammad-farid-fadillah-41b307394/',
             'instagram' => 'https://instagram.com/username',
         ];
 
