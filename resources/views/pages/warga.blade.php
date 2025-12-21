@@ -80,11 +80,20 @@
                       @forelse($warga as $w)
                         <tr>
                           <td>{{ $w->warga_id }}</td>
-                          <td>
+                          {{-- <td>
   <img
     src="{{ $w->foto && Storage::disk('public')->exists($w->foto)
           ? asset('storage/'.$w->foto)
           : asset('storage/user/placeholder.jpg') }}"
+    width="40"
+    height="40"
+    style="object-fit:cover;border-radius:50%;">
+</td> --}}
+<td>
+  <img
+    src="{{ $w->foto && Storage::disk('public')->exists($w->foto)
+        ? Storage::url($w->foto)
+        : Storage::url('user/placeholder.jpg') }}"
     width="40"
     height="40"
     style="object-fit:cover;border-radius:50%;">
