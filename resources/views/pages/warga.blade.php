@@ -79,17 +79,16 @@
                     <tbody>
                       @forelse($warga as $w)
                         <tr>
+                          <td>{{ $w->warga_id }}</td>
                           <td>
   <img
     src="{{ $w->foto && Storage::disk('public')->exists($w->foto)
           ? asset('storage/'.$w->foto)
-          : asset('storage/user/placeholder.png') }}"
+          : asset('storage/user/placeholder.jpg') }}"
     width="40"
     height="40"
     style="object-fit:cover;border-radius:50%;">
 </td>
-
-                          <td>{{ $w->warga_id }}</td>
                           <td>{{ $w->nama }}</td>
                           <td>{{ $w->agama }}</td>
                           <td>{{ $w->jenis_kelamin }}</td>
