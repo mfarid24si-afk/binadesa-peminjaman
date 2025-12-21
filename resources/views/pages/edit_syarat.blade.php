@@ -27,7 +27,7 @@
         <main class="content-wrapper">
           
 <div id="syarat" class="tab-content active">
-<form action="{{ route('syarat.update', $syarat->syarat_id) }}" method="POST">
+<form action="{{ route('syarat.update', $nama_syarat->syarat_id) }}" method="POST">
     @csrf
     @method('PUT')
     
@@ -46,10 +46,10 @@
     
     <!-- Native Select -->
     <select name="fasilitas_id" class="mdc-select__native-control" required>
-      <option value="" disabled {{ $syarat->fasilitas_id ? '' : 'selected' }}>-- Pilih Fasilitas --</option>
+      <option value="" disabled {{ $nama_syarat->fasilitas_id ? '' : 'selected' }}>-- Pilih Fasilitas --</option>
       @foreach($fasilitas as $f)
         <option value="{{ $f->fasilitas_id }}" 
-                {{ $f->fasilitas_id == $syarat->fasilitas_id ? 'selected' : '' }}>
+                {{ $f->fasilitas_id == $nama_syarat->fasilitas_id ? 'selected' : '' }}>
           {{ $f->nama_fasilitas }}
         </option>
       @endforeach
@@ -72,7 +72,7 @@
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                   <div class="mdc-text-field mdc-text-field--outlined">
                     <input type="text" name="nama_syarat" 
-       value="{{ old('nama_syarat', $syarat->nama_syarat) }}" 
+       value="{{ old('nama_syarat', $nama_syarat->nama_syarat) }}" 
        class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
                       <div class="mdc-notched-outline__leading"></div>
@@ -99,7 +99,7 @@
                <!-- status -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
                   <div class="mdc-text-field mdc-text-field--outlined">
-                    <input type="text" name="deskripsi" value="{{ old('deskripsi', $syarat->deskripsi) }}" class="mdc-text-field__input" required>
+                    <input type="text" name="deskripsi" value="{{ old('deskripsi', $nama_syarat->deskripsi) }}" class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
                       <div class="mdc-notched-outline__leading"></div>
                       <div class="mdc-notched-outline__notch">
