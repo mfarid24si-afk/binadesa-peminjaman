@@ -29,7 +29,7 @@
           
 
 <div id="peminjaman" class="tab-content active">
-<form action="{{ route('peminjaman.update', $peminjaman->pinjam_id) }}" method="POST">
+<form action="{{ route('peminjaman.update', $pinjam->pinjam_id) }}" method="POST">
     @csrf
     @method('PUT')
     
@@ -46,7 +46,7 @@
                 <!-- Tanggal mulai -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                   <div class="mdc-text-field mdc-text-field--outlined">
-                    <input type="date" name="tanggal_mulai" value="{{ old('tanggal_mulai', $peminjaman->tanggal_mulai) }}" class="mdc-text-field__input" required>
+                    <input type="date" name="tanggal_mulai" value="{{ old('tanggal_mulai', $pinjam->tanggal_mulai) }}" class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
                       <div class="mdc-notched-outline__leading"></div>
                       <div class="mdc-notched-outline__notch">
@@ -60,7 +60,7 @@
                 <!-- Tanggal selesai -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                   <div class="mdc-text-field mdc-text-field--outlined">
-                    <input type="date" name="tanggal_selesai" value="{{ old('tanggal_selesai', $peminjaman->tanggal_selesai) }}" class="mdc-text-field__input" required>
+                    <input type="date" name="tanggal_selesai" value="{{ old('tanggal_selesai', $pinjam->tanggal_selesai) }}" class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
                       <div class="mdc-notched-outline__leading"></div>
                       <div class="mdc-notched-outline__notch">
@@ -74,7 +74,7 @@
                 <!-- tujuan -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                   <div class="mdc-text-field mdc-text-field--outlined">
-                    <input type="text" name="tujuan" value="{{ old('tujuan', $peminjaman->tujuan) }}" class="mdc-text-field__input" required>
+                    <input type="text" name="tujuan" value="{{ old('tujuan', $pinjam->tujuan) }}" class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
                       <div class="mdc-notched-outline__leading"></div>
                       <div class="mdc-notched-outline__notch">
@@ -100,7 +100,7 @@
                <!-- status -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
                   <div class="mdc-text-field mdc-text-field--outlined">
-                    <input type="text" name="status" value="{{ old('status', $peminjaman->status) }}" class="mdc-text-field__input" required>
+                    <input type="text" name="status" value="{{ old('status', $pinjam->status) }}" class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
                       <div class="mdc-notched-outline__leading"></div>
                       <div class="mdc-notched-outline__notch">
@@ -114,7 +114,7 @@
                 <!-- total biaya -->
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                   <div class="mdc-text-field mdc-text-field--outlined">
-                    <input type="text" name="total_biaya" value="{{ old('total_biaya', $peminjaman->total_biaya) }}" class="mdc-text-field__input" required>
+                    <input type="text" name="total_biaya" value="{{ old('total_biaya', $pinjam->total_biaya) }}" class="mdc-text-field__input" required>
                     <div class="mdc-notched-outline">
                       <div class="mdc-notched-outline__leading"></div>
                       <div class="mdc-notched-outline__notch">
