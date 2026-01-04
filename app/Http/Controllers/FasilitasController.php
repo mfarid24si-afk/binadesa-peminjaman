@@ -56,7 +56,6 @@ class FasilitasController extends Controller
 
         return view('pages.edit_fasilitas', $data);
     }
-
     public function updateFasilitas(Request $request, $id)
     {
         $validated = $request->validate([
@@ -68,10 +67,8 @@ class FasilitasController extends Controller
             'rw'        => 'required|string',
             'kapasitas' => 'required|string',
         ]);
-
         $fasilitas = FasilitasUmum::findOrFail($id);
         $fasilitas->update($validated);
-
         return redirect()
             ->route('tables')
             ->with('success', 'Data Fasilitas berhasil diperbarui.');

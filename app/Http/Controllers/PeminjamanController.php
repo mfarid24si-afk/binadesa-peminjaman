@@ -46,14 +46,10 @@ class PeminjamanController extends Controller
         $data['email']  = 'spyvy@desa.com';
         $data['name']   = 'Spyvy';
         $data['pinjam'] = PeminjamanFasilitas::findOrFail($id);
-
-        // dropdown yang dibutuhkan
         $data['warga']     = Warga::all();
         $data['fasilitas'] = FasilitasUmum::all();
-
         return view('pages.edit_peminjaman', $data);
     }
-
     public function updatePeminjaman(Request $request, $id)
     {
         $request->validate([
@@ -64,9 +60,7 @@ class PeminjamanController extends Controller
             'status'          => 'required|string',
             'keperluan'       => 'required|string',
         ]);
-
         $pinjam = PeminjamanFasilitas::findOrFail($id);
-
         $pinjam->update([
             'warga_id'        => $request->warga_id,
             'fasilitas_id'    => $request->fasilitas_id,

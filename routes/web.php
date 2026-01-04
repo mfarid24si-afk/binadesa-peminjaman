@@ -50,6 +50,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/regis', [Authcontroller::class, 'regis'])
 ->name('regis');
+Route::post('/regis', [AuthController::class, 'register'])
+    ->name('regis.store');
 Route::get('/bina', [binacontroller::class, 'index'])
 ->middleware('checkislogin')
 ->name('dashboard');

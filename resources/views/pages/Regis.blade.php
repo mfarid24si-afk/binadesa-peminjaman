@@ -14,7 +14,7 @@
 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
   <div class="mdc-card">
     <h6 class="card-title">Registrasi Pengguna</h6>
-    <form action="{{ route('forms.store.user') }}" method="POST">
+    <form action="{{ route('regis.store') }}" method="POST">
       @csrf
       <div class="template-demo">
         <div class="mdc-layout-grid__inner">

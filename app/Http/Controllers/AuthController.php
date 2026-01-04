@@ -122,5 +122,23 @@ return redirect()->route('login')->with('success', 'Data User berhasil disimpan.
     {
         return view('pages.Regis');
     }
+    public function register(Request $request)
+{
+    $request->validate([
+        'name'     => 'required|string',
+        'email'    => 'required|email|unique:users,email',
+        'password' => 'required|confirmed|min:6',
+    ]);
+
+    User::create([
+        'name'     => $request->name,
+        'email'    => $request->email,
+        'password' => bcrypt($request->password),
+        'role'     => 'user', // FIXED
+    ]);
+
+    return redirect()->route('login')->with('success', 'Registrasi berhasil');
+}
+
 
 }

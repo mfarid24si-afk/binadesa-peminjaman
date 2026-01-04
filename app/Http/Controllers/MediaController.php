@@ -58,46 +58,27 @@ public function editMedia($id)
         'email' => 'spyvy@desa.com',
     ]);
 }
-
-
-
-
    public function updateMedia(Request $request, $id)
 {
     $media = Media::findOrFail($id);
-
     $data = $request->except('file');
-
-    // Jika upload file baru
     if ($request->hasFile('file')) {
-
-        // Hapus file lama kalau ada
         if ($media->file_url && file_exists(storage_path('app/public/media/'.$media->file_url))) {
             unlink(storage_path('app/public/media/'.$media->file_url));
         }
-
-        // Upload file baru
         $file = $request->file('file');
         $filename = time() . '_' . $file->getClientOriginalName();
         $file->storeAs('public/media', $filename);
-
-        // Simpan nama file baru
         $data['file_url'] = $filename;
-
-        // Update mime_type dari file baru
         $data['mime_type'] = $file->getClientMimeType();
     }
-
     $media->update($data);
-
     return redirect()->route('media')->with('success', 'Media berhasil diperbarui.');
 }
-
     public function destroyMedia($id)
     {
         $media = Media::findOrFail($id);
         $media->delete();
-
         return redirect()->route('media')->with('success', 'Data berhasil dihapus!');
     }
 }

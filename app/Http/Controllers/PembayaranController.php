@@ -13,13 +13,13 @@ class PembayaranController extends Controller
 // ========================
 
 public function index(Request $request){
-        $data['name']      = 'Spyvy';
-        $data['email']     = 'spyvy@desa.com';
-        $data['judul']     = 'Peminjaman Fasilitas';
-        $filterableColumns = ['metode'];
-        $searchableColumns = ['keterangan'];
-        $data['pembayaran'] = PembayaranFasilitas::filter($request, $filterableColumns)->search($request, $searchableColumns)->paginate(10);
-        return view('pages.pembayaran', $data);
+$data['name']      = 'Spyvy';
+$data['email']     = 'spyvy@desa.com';
+$data['judul']     = 'Peminjaman Fasilitas';
+$filterableColumns = ['metode'];
+$searchableColumns = ['keterangan'];
+$data['pembayaran'] = PembayaranFasilitas::filter($request, $filterableColumns)->search($request, $searchableColumns)->paginate(10);
+return view('pages.pembayaran', $data);
     }
     public function storePembayaran(Request $request)
     {
