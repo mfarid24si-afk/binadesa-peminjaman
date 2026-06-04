@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\PeminjamanFasilitas;
 use App\Models\FasilitasUmum;
 use App\Models\Warga;
@@ -11,11 +12,12 @@ use Illuminate\Database\Eloquent\Builder;
 class PeminjamanController extends Controller
 {
     // ========================
-// === PEMINJAMAN =========
-// ========================
+    // === PEMINJAMAN =========
+    // ========================
 
 
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $data['name']      = 'Spyvy';
         $data['email']     = 'spyvy@desa.com';
         $data['judul']     = 'Peminjaman Fasilitas';
@@ -80,6 +82,4 @@ class PeminjamanController extends Controller
 
         return redirect()->route('tables')->with('success', 'Peminjaman berhasil dihapus!');
     }
-
-
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,30 +14,30 @@ class AuthController extends Controller
         $developer = [
             'nama' => 'M.Farid Fadillah',
             'nim'  => '2457301079',
-            'prodi'=> 'Sistem Informasi',
+            'prodi' => 'Sistem Informasi',
             'foto' => 'assets/images/developer/developer.jpeg',
-            'email'=> 'm.farid24si@mahasiswa.pcr.ac.id',
+            'email' => 'm.farid24si@mahasiswa.pcr.ac.id',
             'github' => 'https://github.com/mfarid24si-afk/binadesa-peminjaman',
             'linkedin' => 'https://www.linkedin.com/in/muhammad-farid-fadillah-41b307394/',
             'instagram' => 'https://instagram.com/username',
         ];
 
         return view('pages.profile', [
-        'developer' => $developer,
-        'user' => $user,
-    'authUser' => Auth::user()
-    ]);
+            'developer' => $developer,
+            'user' => $user,
+            'authUser' => Auth::user()
+        ]);
     }
- public function user()
-{
-    $user = User::paginate(10);
+    public function user()
+    {
+        $user = User::paginate(10);
 
-    return view('pages.user_index', [
-        'user' => $user,
-         'user' => $user,
-    'authUser' => Auth::user()
-    ]);
-}
+        return view('pages.user_index', [
+            'user' => $user,
+            'user' => $user,
+            'authUser' => Auth::user()
+        ]);
+    }
 
 
 
@@ -48,25 +49,25 @@ class AuthController extends Controller
 
     // Proses login
     public function login(Request $request)
-{
-    $credentials = $request->validate([
-        'email' => ['required', 'email'],
-        'password' => ['required'],
-    ]);
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
 
-if (Auth::attempt($credentials, $request->has('remember'))) {
-    $request->session()->regenerate();
+        if (Auth::attempt($credentials, $request->has('remember'))) {
+            $request->session()->regenerate();
 
-    session(['last_login' => now()]);
+            session(['last_login' => now()]);
 
-    return redirect()->intended('/bina');
-}
+            return redirect()->intended('/bina');
+        }
 
 
-    return back()->withErrors([
-        'email' => 'Email atau password salah',
-    ])->onlyInput('email');
-}
+        return back()->withErrors([
+            'email' => 'Email atau password salah',
+        ])->onlyInput('email');
+    }
 
 
     // Logout
@@ -79,24 +80,24 @@ if (Auth::attempt($credentials, $request->has('remember'))) {
         return redirect('/login');
     }
     // ========================
-// === USER =============
-// ========================
+    // === USER =============
+    // ========================
     public function storeUser(Request $request)
     {
         $request->validate([
-    'name'     => 'required|string',
-    'email'    => 'required|email',
-    'password' => 'required',
-    'role'     => 'required|string',
-]);
+            'name'     => 'required|string',
+            'email'    => 'required|email',
+            'password' => 'required',
+            'role'     => 'required|string',
+        ]);
 
-User::create([
-    'name'     => $request->name,
-    'email'    => $request->email,
-    'password' => bcrypt($request->password),
-    'role'     => $request->role,
-]);
-return redirect()->route('login')->with('success', 'Data User berhasil disimpan.');
+        User::create([
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => bcrypt($request->password),
+            'role'     => $request->role,
+        ]);
+        return redirect()->route('login')->with('success', 'Data User berhasil disimpan.');
     }
 
     public function editUser($id)
@@ -123,22 +124,20 @@ return redirect()->route('login')->with('success', 'Data User berhasil disimpan.
         return view('pages.Regis');
     }
     public function register(Request $request)
-{
-    $request->validate([
-        'name'     => 'required|string',
-        'email'    => 'required|email|unique:users,email',
-        'password' => 'required|confirmed|min:6',
-    ]);
+    {
+        $request->validate([
+            'name'     => 'required|string',
+            'email'    => 'required|email|unique:users,email',
+            'password' => 'required|confirmed|min:6',
+        ]);
 
-    User::create([
-        'name'     => $request->name,
-        'email'    => $request->email,
-        'password' => bcrypt($request->password),
-        'role'     => 'user', // FIXED
-    ]);
+        User::create([
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => bcrypt($request->password),
+            'role'     => 'user', // FIXED
+        ]);
 
-    return redirect()->route('login')->with('success', 'Registrasi berhasil');
-}
-
-
+        return redirect()->route('login')->with('success', 'Registrasi berhasil');
+    }
 }

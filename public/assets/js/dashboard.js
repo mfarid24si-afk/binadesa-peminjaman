@@ -1,336 +1,152 @@
-(function($) {
-    'use strict'; 
-    $(function() {
+(function ($) {
+    'use strict';
+    $(function () {
 
-    //Revenue Chart
-    if ($("#revenue-chart").length) {
-        var revenueChartCanvas = $("#revenue-chart").get(0).getContext("2d");
+        // ── Mengambil data riil dari PHP via window.DASHBOARD_DATA ──
+        var DB = window.DASHBOARD_DATA || { perBulan: [], status: {} };
 
-        var revenueChart = new Chart(revenueChartCanvas, {
-            type: 'bar',
-            data: {
-            labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-            datasets: [{
-                data: [105, 195, 290, 320, 400, 100, 290],
-                backgroundColor: ["rgba(255, 86, 48, 0.3)", "rgba(255, 86, 48, 0.3)", "rgba(255, 86, 48, 0.3)", "rgb(255, 86, 48)", "rgba(255, 86, 48, 0.3)", "rgba(255, 86, 48, 0.3)", "rgba(255, 86, 48, 0.3)"],
-                }
-            ]
-            },
-            options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                yAxes: [{
-                gridLines: {
-                    drawBorder: false,
-                    zeroLineColor: "rgba(0, 0, 0, 0.09)",
-                    color: "rgba(0, 0, 0, 0.09)"
-                },
-                ticks: {
-                    fontColor: '#bababa',
-                    min:0,
-                    stepSize: 100,
-                }
-                }],
-                xAxes: [{
-                ticks: {
-                    fontColor: '#bababa',
-                    beginAtZero: true
-                },
-                gridLines: {
-                    display: false,
-                    drawBorder: false
-                },
-                barPercentage: 0.4
-                }]
-            },
-            legend: {
-                display: false
-            }
-            }
-        });
-    }
+        // Variabel warna bawaan template (Tidak merubah warna asli)
+        var primary      = '#2C2166';
+        var primaryAlpha = 'rgba(44,33,102,0.18)';
+        var green        = '#27ae60';
+        var earth        = '#d35400';
+        var sky          = '#2980b9';
+        var red          = '#e74c3c';
+        var amber        = '#f39c12';
 
-    //Sales Chart
-    if ($("#chart-sales").length) {
-        var salesChartCanvas = $("#chart-sales").get(0).getContext("2d");
-        var gradient1 = salesChartCanvas.createLinearGradient(0, 0, 0, 230);
-        gradient1.addColorStop(0, '#55d1e8');
-        gradient1.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        var currentMonth = new Date().getMonth(); // Mendapatkan bulan berjalan (0 = Jan, 1 = Feb, dst)
 
-        var gradient2 = salesChartCanvas.createLinearGradient(0, 0, 0, 160);
-        gradient2.addColorStop(0, '#1bbd88');
-        gradient2.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        // ── Bar Chart: Peminjaman per Bulan (real data) ──
+        if ($("#revenue-chart").length) {
+            var ctx = $("#revenue-chart").get(0).getContext("2d");
+            var months = ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
+            var barData = Array.isArray(DB.perBulan) && DB.perBulan.length === 12 ? DB.perBulan : Array(12).fill(0);
+            
+            // Kalkulasi batas atas grafik yang dinamis agar chart.js v2 tidak crash
+            var highestVal = Math.max.apply(null, barData);
+            var maxVal = highestVal > 0 ? Math.ceil(highestVal * 1.2) : 10;
+            var stepCalc = Math.ceil(maxVal / 5) || 1;
 
-        var salesChart = new Chart(salesChartCanvas, {
-          type: 'line',
-          data: {
-            labels: ["2am", "4am", "6am", "8am", "10am", "12am"],
-            datasets: [{
-                data: [80, 115, 115, 150, 130, 160],
-                backgroundColor: gradient1,
-                borderColor: [
-                  '#08bdde'
-                ],
-                borderWidth: 2,
-                pointBorderColor: "#08bdde",
-                pointBorderWidth: 4,
-                pointRadius: 1,
-                fill: 'origin',
-              },
-              {
-                data: [250, 310, 270, 330, 270, 380],
-                backgroundColor: gradient2,
-                borderColor: [
-                  '#00b67a'
-                ],
-                borderWidth: 2,
-                pointBorderColor: "#00b67a",
-                pointBorderWidth: 4,
-                pointRadius: 1,
-                fill: 'origin',
-              }
-            ]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            plugins: {
-              filler: {
-                propagate: false
-              }
-            },
-            scales: {
-              xAxes: [{
-                ticks: {
-                  fontColor: "#bababa"
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: 'Peminjaman',
+                        data: barData,
+                        backgroundColor: months.map(function (_, i) {
+                            // Highlight khusus bulan sekarang dengan warna penuh, bulan lain semi-transparan
+                            return i === currentMonth ? primary : primaryAlpha;
+                        }),
+                        borderRadius: 6,
+                        borderSkipped: false,
+                    }]
                 },
-                gridLines: {
-                  display: false,
-                  drawBorder: false
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: { display: false },
+                    tooltips: {
+                        enabled: true,
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: {
+                            label: function (tooltipItem) { 
+                                return ' ' + tooltipItem.yLabel + ' peminjaman'; 
+                            }
+                        }
+                    },
+                    scales: {
+                        yAxes: [{
+                            gridLines: { color: 'rgba(0,0,0,.04)', drawBorder: false },
+                            ticks: { 
+                                fontColor: '#aaa', 
+                                beginAtZero: true, 
+                                stepSize: stepCalc, 
+                                max: maxVal 
+                            }
+                        }],
+                        xAxes: [{
+                            gridLines: { display: false, drawBorder: false },
+                            ticks: { fontColor: '#aaa' },
+                            barPercentage: 0.6
+                        }]
+                    }
                 }
-              }],
-              yAxes: [{
-                ticks: {
-                  fontColor: "#bababa",
-                  stepSize: 100,
-                  min: 0,
-                  max: 500
-                },
-                gridLines: {
-                  drawBorder: false,
-                  color: "rgba(101, 103, 119, 0.21)",
-                  zeroLineColor: "rgba(101, 103, 119, 0.21)"
-                }
-              }]
-            },
-            legend: {
-              display: false
-            },
-            tooltips: {
-              enabled: true
-            },
-            elements: {
-                line: {
-                    tension: 0
-                }
-            },
-            legendCallback : function(chart) {
-              var text = [];
-              text.push('<div>');
-              text.push('<div class="d-flex align-items-center">');
-              text.push('<span class="bullet-rounded" style="border-color: ' + chart.data.datasets[1].borderColor[0] +' "></span>');
-              text.push('<p class="tx-12 text-muted mb-0 ml-2">Gross volume</p>');
-              text.push('</div>');
-              text.push('<div class="d-flex align-items-center">');
-              text.push('<span class="bullet-rounded" style="border-color: ' + chart.data.datasets[0].borderColor[0] +' "></span>');
-              text.push('<p class="tx-12 text-muted mb-0 ml-2">New Cusromers</p>');
-              text.push('</div>');
-              text.push('</div>');
-              return text.join('');
-            },
-          }
-        });
-      document.getElementById('sales-legend').innerHTML = salesChart.generateLegend();
-    }
-    
-    //Impressions Chart
-    if ($("#impressions-chart").length) {
-        var impressionsChartCanvas = $("#impressions-chart").get(0).getContext("2d");
-        var impressionChart = new Chart(impressionsChartCanvas, {
-          type: 'line',
-          data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept",],
-            datasets: [{
-                data: [47, 33, 33, 24, 40, 30, 26, 30, 39],
-                fill: false,
-                borderColor: [
-                  '#ffffff'
-                ],
-                borderWidth: 1,
-                pointBorderColor: "#ffffff",
-                pointBorderWidth: 5,
-                pointRadius: [1, 0, 0, 0, 0, 0, 0, 0, 1],
-                label: "online"
-              }
-            ]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            layout: {
-              padding: {
-                left: 0,
-                right: 10,
-                top: 0,
-                bottom: 0
-              }
-            },
-            plugins: {
-              filler: {
-                propagate: false
-              }
-            },
-            scales: {
-              xAxes: [{
-                ticks: {
-                  display: false,
-                  fontColor: "#6c7293"
-                },
-                gridLines: {
-                display: false,
-                drawBorder: false,
-                  color: "rgba(101, 103, 119, 0.21)"
-                }
-              }],
-              yAxes: [{
-                ticks: {
-                  display: false,
-                  fontColor: "#6c7293",
-                },
-                gridLines: {
-                  display: false,
-                  drawBorder: false,
-                  color: "rgba(101, 103, 119, 0.21)"
-                }
-              }]
-            },
-            legend: {
-              display: false
-            },
-            tooltips: {
-              enabled: true
-            },
-            elements: {
-                line: {
-                    tension: 0
-                }
-            }
-          }
-        });
-    }
-    
-    //Traffic Chart
-    if ($("#traffic-chart").length) {
-      var trafficChartCanvas = $("#traffic-chart").get(0).getContext("2d");
-      var trafficChart = new Chart(trafficChartCanvas, {
-        type: 'line',
-        data: {
-          labels: ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept",],
-          datasets: [{
-              data: [47, 33, 33, 24, 40, 30, 26, 30, 39],
-              fill: false,
-              borderColor: [
-                '#ffffff'
-              ],
-              borderWidth: 1,
-              pointBorderColor: "#ffffff",
-              pointBorderWidth: 5,
-              pointRadius: [1, 0, 0, 0, 0, 0, 0, 0, 1],
-              label: "online"
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: true,
-          layout: {
-            padding: {
-              left: 0,
-              right: 10,
-              top: 0,
-              bottom: 0
-            }
-          },
-          plugins: {
-            filler: {
-              propagate: false
-            }
-          },
-          scales: {
-            xAxes: [{
-              ticks: {
-                display: false,
-                fontColor: "#6c7293"
-              },
-              gridLines: {
-              display: false,
-              drawBorder: false,
-                color: "rgba(101, 103, 119, 0.21)"
-              }
-            }],
-            yAxes: [{
-              ticks: {
-                display: false,
-                fontColor: "#6c7293",
-              },
-              gridLines: {
-                display: false,
-                drawBorder: false,
-                color: "rgba(101, 103, 119, 0.21)"
-              }
-            }]
-          },
-          legend: {
-            display: false
-          },
-          tooltips: {
-            enabled: true
-          },
-          elements: {
-              line: {
-                  tension: 0
-              }
-          }
+            });
         }
-      });
-    }
 
-    if($('#revenue-map').length) {
-      $('#revenue-map').vectorMap({
-        map: 'world_mill_en',
-        backgroundColor: 'transparent',
-        zoomButtons : false,
-        panOnDrag: true,
-        focusOn: {
-          x: 0.5,
-          y: 0.5,
-          scale: 1,
-          animate: true
-        },
-        regionStyle: {
-          initial: {
-            fill: '#00bbdd'
-          },
-          hover: {
-              fill: "#006c80"
+        // ── Doughnut Chart: Status Peminjaman (real data) ──
+        if ($("#chart-sales").length) {
+            var salesCanvas  = $("#chart-sales").get(0).getContext("2d");
+            var statusData   = DB.status || {};
+            var counts       = [
+                statusData.pending  || 0,
+                statusData.distujui || 0,
+                statusData.ditolak  || 0,
+                statusData.selesai  || 0
+            ];
+            var total = counts.reduce(function (a, b) { return a + b; }, 0);
+
+            // Sembunyikan animasi loading skeleton, tampilkan chart
+            $('#chart-sales-skeleton').hide();
+            $('#chart-sales-wrap').css('display', 'flex');
+
+            new Chart(salesCanvas, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Pending', 'Disetujui', 'Ditolak', 'Selesai'],
+                    datasets: [{
+                        data: counts,
+                        backgroundColor: [amber, green, red, primary],
+                        borderWidth: 0,
+                        hoverOffset: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutoutPercentage: 72,
+                    legend: { display: false },
+                    tooltips: {
+                        callbacks: {
+                            label: function (tooltipItem, data) {
+                                var val = data.datasets[0].data[tooltipItem.index];
+                                var pct = total > 0 ? Math.round(val / total * 100) : 0;
+                                return ' ' + data.labels[tooltipItem.index] + ': ' + val + ' (' + pct + '%)';
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Kosongkan dan buat ulang legenda agar tidak menumpuk saat reload halaman
+            var legendEl = document.getElementById('sales-legend');
+            if (legendEl) {
+                legendEl.innerHTML = '';
+                var colors = [amber, green, red, primary];
+                var labels = ['Pending', 'Disetujui', 'Ditolak', 'Selesai'];
+                labels.forEach(function (lbl, i) {
+                    var item = document.createElement('div');
+                    item.style.cssText = 'display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;cursor:default;padding:4px 8px;border-radius:4px;background:rgba(0,0,0,0.02);';
+                    item.title = lbl + ': ' + counts[i] + ' item';
+                    item.innerHTML =
+                        '<span style="width:8px;height:8px;border-radius:50%;background:' + colors[i] + ';flex-shrink:0;"></span>' +
+                        lbl + ' <span style="color:#666;font-weight:400;margin-left:2px;">(' + counts[i] + ')</span>';
+                    legendEl.appendChild(item);
+                });
             }
         }
-      });
-    }
+
+        // ── Tooltip otomatis pada card statistik ──
+        $('[data-tooltip]').on('mouseenter', function () {
+            var tip = $('<div class="stat-tooltip" style="position:absolute;background:#222;color:#fff;padding:5px 10px;font-size:11px;border-radius:4px;z-index:9999;">' + $(this).data('tooltip') + '</div>');
+            $('body').append(tip);
+            var offset = $(this).offset();
+            tip.css({ top: offset.top - tip.outerHeight() - 8, left: offset.left + ($(this).outerWidth() / 2) - (tip.outerWidth() / 2) });
+        }).on('mouseleave', function () {
+            $('.stat-tooltip').remove();
+        });
 
     });
 })(jQuery);
-
-
-

@@ -11,10 +11,11 @@ use Illuminate\Http\Request;
 class WargaController extends Controller
 {
     // ========================
-// === WARGA ==============
-// ========================
+    // === WARGA ==============
+    // ========================
 
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $data['name']      = 'Spyvy';
         $data['email']     = 'spyvy@desa.com';
         $data['judul']     = 'Peminjaman Fasilitas';
@@ -25,26 +26,26 @@ class WargaController extends Controller
     }
     public function storeWarga(Request $request)
     {
-         $data = $request->validate([
-        'nama'          => 'required|string|max:100',
-        'no_ktp'        => 'required|string|max:16',
-        'agama'         => 'required|string|max:255',
-        'pekerjaan'     => 'required|string|max:255',
-        'jenis_kelamin' => 'required|string',
-        'email'         => 'required|string',
-        'foto'          => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-    ]);
+        $data = $request->validate([
+            'nama'          => 'required|string|max:100',
+            'no_ktp'        => 'required|string|max:16',
+            'agama'         => 'required|string|max:255',
+            'pekerjaan'     => 'required|string|max:255',
+            'jenis_kelamin' => 'required|string',
+            'email'         => 'required|string',
+            'foto'          => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
 
-    if ($request->hasFile('foto')) {
-        $data['foto'] = $request->file('foto')->store('warga', 'public');
-    } else {
-        $data['foto'] = null;
-    }
+        if ($request->hasFile('foto')) {
+            $data['foto'] = $request->file('foto')->store('warga', 'public');
+        } else {
+            $data['foto'] = null;
+        }
 
-    Warga::create($data);
+        Warga::create($data);
 
-    return redirect()->route('warga.index')
-                     ->with('success', 'Data Warga berhasil disimpan.');
+        return redirect()->route('warga.index')
+            ->with('success', 'Data Warga berhasil disimpan.');
     }
 
     public function editWarga($id)
@@ -68,5 +69,4 @@ class WargaController extends Controller
 
         return redirect()->route('tables')->with('success', 'Data berhasil dihapus!');
     }
-
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\PetugasFasilitas;
 use App\Models\FasilitasUmum;
 use App\Models\Warga;
@@ -10,11 +11,12 @@ use Illuminate\Database\Eloquent\Builder;
 class PetugasController extends Controller
 {
     // ========================
-// === PETUGAS ============
-// ========================
+    // === PETUGAS ============
+    // ========================
 
 
-public function index(Request $request){
+    public function index(Request $request)
+    {
         $data['name']      = 'Spyvy';
         $data['email']     = 'spyvy@desa.com';
         $data['judul']     = 'Peminjaman Fasilitas';

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\PembayaranFasilitas;
 use App\Models\PeminjamanFasilitas;
 use Illuminate\Http\Request;
@@ -9,17 +10,18 @@ use Illuminate\Database\Eloquent\Builder;
 class PembayaranController extends Controller
 {
     // ========================
-// === PEMBAYARAN =========
-// ========================
+    // === PEMBAYARAN =========
+    // ========================
 
-public function index(Request $request){
-$data['name']      = 'Spyvy';
-$data['email']     = 'spyvy@desa.com';
-$data['judul']     = 'Peminjaman Fasilitas';
-$filterableColumns = ['metode'];
-$searchableColumns = ['keterangan'];
-$data['pembayaran'] = PembayaranFasilitas::filter($request, $filterableColumns)->search($request, $searchableColumns)->paginate(10);
-return view('pages.pembayaran', $data);
+    public function index(Request $request)
+    {
+        $data['name']      = 'Spyvy';
+        $data['email']     = 'spyvy@desa.com';
+        $data['judul']     = 'Peminjaman Fasilitas';
+        $filterableColumns = ['metode'];
+        $searchableColumns = ['keterangan'];
+        $data['pembayaran'] = PembayaranFasilitas::filter($request, $filterableColumns)->search($request, $searchableColumns)->paginate(10);
+        return view('pages.pembayaran', $data);
     }
     public function storePembayaran(Request $request)
     {
@@ -81,5 +83,4 @@ return view('pages.pembayaran', $data);
 
         return redirect()->route('tables')->with('success', 'Pembayaran berhasil dihapus!');
     }
-
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\FasilitasUmum;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
@@ -8,11 +9,12 @@ use Illuminate\Database\Eloquent\Builder;
 class FasilitasController extends Controller
 {
     // ========================
-// === FASILITAS UMUM =====
-// ========================
+    // === FASILITAS UMUM =====
+    // ========================
 
-    public function index(Request $request){
-        
+    public function index(Request $request)
+    {
+
         $data['name']      = 'Spyvy';
         $data['email']     = 'spyvy@desa.com';
         $data['judul']     = 'Peminjaman Fasilitas';
@@ -82,14 +84,12 @@ class FasilitasController extends Controller
         return redirect()->route('tables')->with('success', 'Fasilitas berhasil dihapus.');
     }
     public function show($id)
-{
-    $fasilitas = FasilitasUmum::findOrFail($id);
-    return view('pages.fasidetail', [
-        'fasilitas' => $fasilitas,
-        'name' => 'Spyvy',
-        'email' => 'spyvy@desa.com',
-    ]);
-}
-
-
+    {
+        $fasilitas = FasilitasUmum::findOrFail($id);
+        return view('pages.fasidetail', [
+            'fasilitas' => $fasilitas,
+            'name' => 'Spyvy',
+            'email' => 'spyvy@desa.com',
+        ]);
+    }
 }

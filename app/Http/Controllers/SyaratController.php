@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\SyaratFasilitas;
 use App\Models\FasilitasUmum;
 use Illuminate\Http\Request;
@@ -9,10 +10,11 @@ use Illuminate\Database\Eloquent\Builder;
 class SyaratController extends Controller
 {
     // ========================
-// === SYARAT FASILITAS ===
-// ========================
+    // === SYARAT FASILITAS ===
+    // ========================
 
-public function index(Request $request){
+    public function index(Request $request)
+    {
         $data['name']      = 'Spyvy';
         $data['email']     = 'spyvy@desa.com';
         $data['judul']     = 'Peminjaman Fasilitas';
@@ -77,5 +79,4 @@ public function index(Request $request){
 
         return redirect()->route('tables')->with('success', 'Syarat berhasil dihapus!');
     }
-
 }

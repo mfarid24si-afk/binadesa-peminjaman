@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,7 +10,7 @@
   @extends('layouts.admin.app')
   @section('content')
   
-    {{-- start main content --}}
+    start main content
     @yield('content')
-    <!-- end main content -->
-  @endsection
+    
+  @endsection --}}
