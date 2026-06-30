@@ -49,6 +49,13 @@ class binacontroller extends Controller
             'selesai'  => $statusGroups['selesai']  ?? 0,
         ];
 
+        // ── Dashboard Widgets: Status Real-time ──
+        $data['peminjamanAktif'] = PeminjamanFasilitas::whereIn('status', ['pending', 'disetujui'])->count();
+        $data['peminjamanPending'] = PeminjamanFasilitas::where('status', 'pending')->count();
+        $data['jatuhTempoHariIni'] = PeminjamanFasilitas::whereDate('tanggal_selesai', today())
+            ->whereIn('status', ['pending', 'disetujui'])
+            ->count();
+
         // ── Recent 5 peminjaman for activity feed ──
         $data['recentPeminjaman'] = PeminjamanFasilitas::with(['warga', 'fasilitas'])
             ->latest()

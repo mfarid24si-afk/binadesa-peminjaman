@@ -69,13 +69,17 @@
                     </td>
                     <td style="color:var(--text-secondary);">{{ $item->keterangan ?? '—' }}</td>
                     <td style="white-space:nowrap;">
+                      @if(in_array(Auth::user()->role ?? '', ['super admin', 'admin']))
                       <a href="{{ route('pembayaran.edit', $item->bayar_id) }}" class="btn-action btn-action-edit">
                         <i class="material-icons" style="font-size:14px;">edit</i> Edit
                       </a>
+                      @endif
+                      @if(Auth::user()->role === 'super admin')
                       <form action="{{ route('pembayaran.destroy', $item->bayar_id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Hapus data pembayaran ini?')">
                         @csrf @method('DELETE')
                         <button type="submit" class="btn-action btn-action-delete"><i class="material-icons" style="font-size:14px;">delete</i> Hapus</button>
                       </form>
+                      @endif
                     </td>
                   </tr>
                 @empty

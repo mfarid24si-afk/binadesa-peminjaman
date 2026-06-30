@@ -57,13 +57,17 @@
                     <td>{{ $item->nama_syarat }}</td>
                     <td style="color:var(--text-secondary);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="{{ $item->deskripsi }}">{{ $item->deskripsi }}</td>
                     <td style="white-space:nowrap;">
+                      @if(in_array(Auth::user()->role ?? '', ['super admin', 'admin']))
                       <a href="{{ route('syarat.edit', $item->syarat_id) }}" class="btn-action btn-action-edit">
                         <i class="material-icons" style="font-size:14px;">edit</i> Edit
                       </a>
+                      @endif
+                      @if(Auth::user()->role === 'super admin')
                       <form action="{{ route('syarat.destroy', $item->syarat_id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Hapus syarat ini?')">
                         @csrf @method('DELETE')
                         <button type="submit" class="btn-action btn-action-delete"><i class="material-icons" style="font-size:14px;">delete</i> Hapus</button>
                       </form>
+                      @endif
                     </td>
                   </tr>
                 @empty

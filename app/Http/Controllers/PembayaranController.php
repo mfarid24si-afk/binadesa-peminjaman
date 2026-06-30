@@ -57,20 +57,19 @@ class PembayaranController extends Controller
     public function updatePembayaran(Request $request, $id)
     {
         $request->validate([
-            'tanggal_bayar' => $request->tanggal,
-            'total_bayar'   => $request->jumlah,
-            'metode'        => 'required|string',
-            'keterangan'    => 'nullable|string',
+            'tanggal'    => 'required|date',
+            'jumlah'     => 'required|numeric',
+            'metode'     => 'required|string',
+            'keterangan' => 'nullable|string',
         ]);
 
-        // SESUAI MODEL YANG BENER
         $bayar = PembayaranFasilitas::findOrFail($id);
 
         $bayar->update([
-            'tanggal_bayar' => $request->tanggal,
-            'total_bayar'   => $request->jumlah,
-            'metode'        => $request->metode,
-            'keterangan'    => $request->keterangan,
+            'tanggal'    => $request->tanggal,
+            'jumlah'     => $request->jumlah,
+            'metode'     => $request->metode,
+            'keterangan' => $request->keterangan,
         ]);
 
         return redirect()->route('tables')->with('success', 'Pembayaran berhasil diperbarui.');

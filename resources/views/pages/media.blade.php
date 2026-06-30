@@ -75,13 +75,17 @@
                     <td><span class="badge-status badge-selesai" style="font-size:10px;">{{ strtoupper($m->mime_type ?? '—') }}</span></td>
                     <td>{{ $m->sort_order ?? '—' }}</td>
                     <td style="white-space:nowrap;">
+                      @if(in_array(Auth::user()->role ?? '', ['super admin', 'admin']))
                       <a href="{{ route('media.edit', $m->media_id) }}" class="btn-action btn-action-edit">
                         <i class="material-icons" style="font-size:14px;">edit</i> Edit
                       </a>
+                      @endif
+                      @if(Auth::user()->role === 'super admin')
                       <form action="{{ route('media.destroy', $m->media_id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Hapus media ini?')">
                         @csrf @method('DELETE')
                         <button type="submit" class="btn-action btn-action-delete"><i class="material-icons" style="font-size:14px;">delete</i> Hapus</button>
                       </form>
+                      @endif
                     </td>
                   </tr>
                 @empty

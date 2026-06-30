@@ -46,6 +46,33 @@
             </div>
           @endif
 
+          {{-- Tab Navigation --}}
+          @php
+            $tabs = [
+              ['id' => 'user',      'label' => 'User',      'icon' => 'person',       'roles' => ['super admin','admin']],
+              ['id' => 'warga',     'label' => 'Warga',     'icon' => 'people',       'roles' => ['super admin','admin','user']],
+              ['id' => 'fasilitas', 'label' => 'Fasilitas', 'icon' => 'store',        'roles' => ['super admin','admin','user']],
+              ['id' => 'media',     'label' => 'Media',     'icon' => 'collections',  'roles' => ['super admin','admin']],
+              ['id' => 'peminjaman','label' => 'Peminjaman','icon' => 'assignment',   'roles' => ['super admin','admin','user']],
+              ['id' => 'syarat',    'label' => 'Syarat',    'icon' => 'description',  'roles' => ['super admin','admin']],
+              ['id' => 'pembayaran','label' => 'Pembayaran','icon' => 'credit_card',  'roles' => ['super admin','admin']],
+              ['id' => 'petugas',   'label' => 'Petugas',   'icon' => 'assignment_ind','roles' => ['super admin','admin']],
+            ];
+          @endphp
+
+          <div class="mdc-card" style="padding:16px; margin-bottom:24px;">
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+              @foreach($tabs as $tab)
+                @if(in_array(Auth::user()->role ?? 'user', $tab['roles']))
+                <button class="nav-tab {{ $tab['id'] === 'warga' ? 'active' : '' }}" onclick="showTab(event, '{{ $tab['id'] }}')">
+                  <i class="material-icons" style="font-size:16px;">{{ $tab['icon'] }}</i>
+                  {{ $tab['label'] }}
+                </button>
+                @endif
+              @endforeach
+            </div>
+          </div>
+
           <div id="user" class="tab-content">
             <!-- Form -->
             <form action="{{ route('forms.store.user') }}" method="POST">
@@ -256,7 +283,7 @@
                   <!-- Card sebelahnya -->
                   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                     <div class="mdc-card">
-                      <h6 class="card-title">👽</h6>
+                      <h6 class="card-title"><i class="material-icons" style="font-size:18px; vertical-align:middle; margin-right:6px;">contact_mail</i>Kontak
                       <div class="template-demo">
                         <div class="mdc-layout-grid__inner">
 
@@ -393,7 +420,7 @@
                   <!-- Card sebelahnya -->
                   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                     <div class="mdc-card">
-                      <h6 class="card-title">🛸</h6>
+                      <h6 class="card-title"><i class="material-icons" style="font-size:18px; vertical-align:middle; margin-right:6px;">perm_media</i>Detail Media
                       <div class="template-demo">
                         <div class="mdc-layout-grid__inner">
 
@@ -558,7 +585,7 @@
                   <!-- Card sebelahnya -->
                   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                     <div class="mdc-card">
-                      <h6 class="card-title">👽</h6>
+                      <h6 class="card-title"><i class="material-icons" style="font-size:18px; vertical-align:middle; margin-right:6px;">contact_mail</i>Kontak
                       <div class="template-demo">
                         <div class="mdc-layout-grid__inner">
 
@@ -627,60 +654,63 @@
           </div>
 
           <div id="peminjaman" class="tab-content">
-            <form action="{{ route('forms.store.peminjaman') }}" method="POST" >
+            <form action="{{ route('forms.store.peminjaman') }}" method="POST">
               @csrf
 
               <div class="mdc-layout-grid">
                 <div class="mdc-layout-grid__inner">
 
-                  <!-- Card Identitas -->
-                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                  {{-- Card 1: Data Peminjaman --}}
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop">
                     <div class="mdc-card">
-                      <h6 class="card-title">Data Peminjaman</h6>
+                      <h6 class="card-title">
+                        <i class="material-icons" style="font-size:18px; vertical-align:middle; margin-right:6px;">assignment</i>
+                        Data Peminjaman
+                      </h6>
                       <div class="template-demo">
                         <div class="mdc-layout-grid__inner">
-                          
-                          <!-- Warga -->
-<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-  <div class="mdc-text-field mdc-text-field--outlined">
-    <select name="warga_id" class="mdc-text-field__input" required>
-      @foreach($warga as $w)
-        <option value="{{ $w->warga_id }}">{{ $w->nama }}</option>
-      @endforeach
-    </select>
 
-    <div class="mdc-notched-outline">
-      <div class="mdc-notched-outline__leading"></div>
-      <div class="mdc-notched-outline__notch">
-        <label class="mdc-floating-label">Warga</label>
-      </div>
-      <div class="mdc-notched-outline__trailing"></div>
-    </div>
-  </div>
-</div>
-
-<!-- Fasilitas -->
-<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-  <div class="mdc-text-field mdc-text-field--outlined">
-    <select name="fasilitas_id" class="mdc-text-field__input" required>
-      @foreach($fasilitas as $fas)
-        <option value="{{ $fas->fasilitas_id }}">{{ $fas->nama }}</option>
-      @endforeach
-    </select>
-
-    <div class="mdc-notched-outline">
-      <div class="mdc-notched-outline__leading"></div>
-      <div class="mdc-notched-outline__notch">
-        <label class="mdc-floating-label">Fasilitas</label>
-      </div>
-      <div class="mdc-notched-outline__trailing"></div>
-    </div>
-  </div>
-</div>
-
-                          <!-- Tanggal mulai -->
+                          {{-- Warga --}}
                           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                            <div class="mdc-text-field mdc-text-field--outlined">
+                            <div class="mdc-text-field mdc-text-field--outlined" style="width:100%;">
+                              <select name="warga_id" class="mdc-text-field__input" required>
+                                <option value="">-- Pilih Warga --</option>
+                                @foreach($warga as $w)
+                                  <option value="{{ $w->warga_id }}">{{ $w->nama }}</option>
+                                @endforeach
+                              </select>
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label class="mdc-floating-label">Warga</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {{-- Fasilitas --}}
+                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                            <div class="mdc-text-field mdc-text-field--outlined" style="width:100%;">
+                              <select name="fasilitas_id" class="mdc-text-field__input" required>
+                                <option value="">-- Pilih Fasilitas --</option>
+                                @foreach($fasilitas as $fas)
+                                  <option value="{{ $fas->fasilitas_id }}">{{ $fas->nama }}</option>
+                                @endforeach
+                              </select>
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label class="mdc-floating-label">Fasilitas</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {{-- Tanggal Mulai --}}
+                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                            <div class="mdc-text-field mdc-text-field--outlined" style="width:100%;">
                               <input type="date" name="tanggal_mulai" class="mdc-text-field__input" required>
                               <div class="mdc-notched-outline">
                                 <div class="mdc-notched-outline__leading"></div>
@@ -692,9 +722,9 @@
                             </div>
                           </div>
 
-                          <!-- Tanggal selesai -->
+                          {{-- Tanggal Selesai --}}
                           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                            <div class="mdc-text-field mdc-text-field--outlined">
+                            <div class="mdc-text-field mdc-text-field--outlined" style="width:100%;">
                               <input type="date" name="tanggal_selesai" class="mdc-text-field__input" required>
                               <div class="mdc-notched-outline">
                                 <div class="mdc-notched-outline__leading"></div>
@@ -706,14 +736,28 @@
                             </div>
                           </div>
 
-                          <!-- tujuan -->
+                          {{-- Tujuan --}}
                           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                            <div class="mdc-text-field mdc-text-field--outlined">
-                              <input type="text" name="tujuan" class="mdc-text-field__input" required>
+                            <div class="mdc-text-field mdc-text-field--outlined" style="width:100%;">
+                              <input type="text" name="tujuan" class="mdc-text-field__input" placeholder="Contoh: Acara HUT RI" required>
                               <div class="mdc-notched-outline">
                                 <div class="mdc-notched-outline__leading"></div>
                                 <div class="mdc-notched-outline__notch">
-                                  <label class="mdc-floating-label">Tujuan</label>
+                                  <label class="mdc-floating-label">Tujuan Peminjaman</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {{-- Total Biaya --}}
+                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                            <div class="mdc-text-field mdc-text-field--outlined" style="width:100%;">
+                              <input type="number" name="total_biaya" class="mdc-text-field__input" step="0.01" min="0">
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label class="mdc-floating-label">Total Biaya (Rp)</label>
                                 </div>
                                 <div class="mdc-notched-outline__trailing"></div>
                               </div>
@@ -725,55 +769,78 @@
                     </div>
                   </div>
 
-                  <!-- Card sebelahnya -->
-                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                    <div class="mdc-card">
-                      <h6 class="card-title">👽</h6>
-                      <div class="template-demo">
-                        <div class="mdc-layout-grid__inner">
-
-                          <!-- status -->
-                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-                            <div class="mdc-text-field mdc-text-field--outlined">
-                              <input type="text" name="status" class="mdc-text-field__input" required>
+                  {{-- Card 2: Detail Barang (Multi-Item) --}}
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
+                    <div class="mdc-card" style="height:100%;">
+                      <h6 class="card-title" style="display:flex; align-items:center; justify-content:space-between;">
+                        <span>
+                          <i class="material-icons" style="font-size:18px; vertical-align:middle; margin-right:6px;">inventory_2</i>
+                          Barang Dipinjam
+                        </span>
+                        <button type="button" onclick="addItemRow()" class="btn-action btn-action-edit"
+                                style="padding:4px 10px; font-size:12px;">
+                          <i class="material-icons" style="font-size:14px;">add</i> Tambah
+                        </button>
+                      </h6>
+                      <div id="items-container">
+                        {{-- Item row template --}}
+                        <div class="item-row" style="background:var(--surface); border-radius:8px; padding:12px; margin-bottom:10px; border:1px solid var(--border);">
+                          <div style="display:flex; gap:8px; margin-bottom:8px;">
+                            <div style="flex:1;">
+                              <div class="mdc-text-field mdc-text-field--outlined" style="width:100%; margin:0; height:40px;">
+                                <input type="text" name="items[0][nama]" class="mdc-text-field__input" placeholder="Nama barang" required style="padding:8px;">
+                                <div class="mdc-notched-outline">
+                                  <div class="mdc-notched-outline__leading"></div>
+                                  <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div style="width:80px; flex-shrink:0;">
+                              <div class="mdc-text-field mdc-text-field--outlined" style="width:100%; margin:0; height:40px;">
+                                <input type="number" name="items[0][jumlah]" class="mdc-text-field__input" placeholder="Jml" required min="1" value="1" style="padding:8px; text-align:center;">
+                                <div class="mdc-notched-outline">
+                                  <div class="mdc-notched-outline__leading"></div>
+                                  <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <button type="button" onclick="this.closest('.item-row').remove(); updateItemIndex()"
+                                    style="background:none; border:none; color:#ef5350; cursor:pointer; padding:4px; flex-shrink:0;">
+                              <i class="material-icons" style="font-size:18px;">close</i>
+                            </button>
+                          </div>
+                          <div>
+                            <div class="mdc-text-field mdc-text-field--outlined" style="width:100%; margin:0; height:36px;">
+                              <input type="text" name="items[0][keterangan]" class="mdc-text-field__input" placeholder="Keterangan (opsional)" style="padding:6px 8px; font-size:12px;">
                               <div class="mdc-notched-outline">
                                 <div class="mdc-notched-outline__leading"></div>
-                                <div class="mdc-notched-outline__notch">
-                                  <label class="mdc-floating-label">Status</label>
-                                </div>
                                 <div class="mdc-notched-outline__trailing"></div>
                               </div>
                             </div>
                           </div>
-
-                          <!-- total biaya -->
-                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                            <div class="mdc-text-field mdc-text-field--outlined">
-                              <input type="text" name="total_biaya" class="mdc-text-field__input" required>
-                              <div class="mdc-notched-outline">
-                                <div class="mdc-notched-outline__leading"></div>
-                                <div class="mdc-notched-outline__notch">
-                                  <label class="mdc-floating-label">Total Biaya</label>
-                                </div>
-                                <div class="mdc-notched-outline__trailing"></div>
-                              </div>
-                            </div>
-                          </div>
-
                         </div>
                       </div>
+                      <p id="items-empty-msg" style="display:none; color:var(--text-secondary); font-size:12px; text-align:center; padding:16px 0;">
+                        <i class="material-icons" style="font-size:16px; vertical-align:middle;">info</i>
+                        Minimal 1 barang harus ditambahkan
+                      </p>
+                      <small style="color:var(--text-secondary); display:block; margin-top:8px; font-size:11px;">
+                        <i class="material-icons" style="font-size:12px; vertical-align:middle;">info</i>
+                        Status otomatis diisi "pending" dan log aktivitas tercatat.
+                      </small>
                     </div>
                   </div>
 
-                  <!-- Tombol Simpan & Batal -->
+                  {{-- Tombol Aksi --}}
                   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                    <div class="d-flex justify-content-end mt-4">
-                      <button type="submit" class="mdc-button mdc-button--raised">
-                        Simpan
-                      </button>
-                      <a href="{{ route('tables') }}" class="mdc-button mdc-button--outlined ml-2">
+                    <div class="d-flex justify-content-end mt-4" style="gap:12px;">
+                      <a href="{{ route('peminjaman') }}" class="mdc-button mdc-button--outlined">
                         Batal
                       </a>
+                      <button type="submit" class="mdc-button mdc-button--raised" style="background:var(--primary);">
+                        <i class="material-icons" style="font-size:16px; margin-right:6px;">save</i>
+                        Ajukan Peminjaman
+                      </button>
                     </div>
                   </div>
 
@@ -781,6 +848,83 @@
               </div>
             </form>
           </div>
+
+          {{-- JavaScript for dynamic items --}}
+          <script>
+          let itemIndex = 1;
+          function addItemRow() {
+            const container = document.getElementById('items-container');
+            const msg = document.getElementById('items-empty-msg');
+            if (msg) msg.style.display = 'none';
+            const div = document.createElement('div');
+            div.className = 'item-row';
+            div.style.cssText = 'background:var(--surface); border-radius:8px; padding:12px; margin-bottom:10px; border:1px solid var(--border);';
+            div.innerHTML = `
+              <div style="display:flex; gap:8px; margin-bottom:8px;">
+                <div style="flex:1;">
+                  <div class="mdc-text-field mdc-text-field--outlined" style="width:100%; margin:0; height:40px;">
+                    <input type="text" name="items[${itemIndex}][nama]" class="mdc-text-field__input" placeholder="Nama barang" required style="padding:8px;">
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+                <div style="width:80px; flex-shrink:0;">
+                  <div class="mdc-text-field mdc-text-field--outlined" style="width:100%; margin:0; height:40px;">
+                    <input type="number" name="items[${itemIndex}][jumlah]" class="mdc-text-field__input" placeholder="Jml" required min="1" value="1" style="padding:8px; text-align:center;">
+                    <div class="mdc-notched-outline">
+                      <div class="mdc-notched-outline__leading"></div>
+                      <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                  </div>
+                </div>
+                <button type="button" onclick="this.closest('.item-row').remove(); updateItemIndex()"
+                        style="background:none; border:none; color:#ef5350; cursor:pointer; padding:4px; flex-shrink:0;">
+                  <i class="material-icons" style="font-size:18px;">close</i>
+                </button>
+              </div>
+              <div>
+                <div class="mdc-text-field mdc-text-field--outlined" style="width:100%; margin:0; height:36px;">
+                  <input type="text" name="items[${itemIndex}][keterangan]" class="mdc-text-field__input" placeholder="Keterangan (opsional)" style="padding:6px 8px; font-size:12px;">
+                  <div class="mdc-notched-outline">
+                    <div class="mdc-notched-outline__leading"></div>
+                    <div class="mdc-notched-outline__trailing"></div>
+                  </div>
+                </div>
+              </div>
+            `;
+            container.appendChild(div);
+            // Init MDC for new row fields
+            if (typeof mdc !== 'undefined' && mdc.textField) {
+              div.querySelectorAll('.mdc-text-field').forEach(function(el) {
+                try { mdc.textField.MDCTextField.attachTo(el); } catch(e) {}
+              });
+            }
+            itemIndex++;
+          }
+          function updateItemIndex() {
+            const rows = document.querySelectorAll('#items-container .item-row');
+            rows.forEach(function(row, idx) {
+              row.querySelectorAll('[name]').forEach(function(input) {
+                var name = input.getAttribute('name');
+                input.setAttribute('name', name.replace(/\[\d+\]/, '[' + idx + ']'));
+              });
+            });
+            const msg = document.getElementById('items-empty-msg');
+            if (msg) {
+              msg.style.display = rows.length === 0 ? 'block' : 'none';
+            }
+          }
+          document.addEventListener('DOMContentLoaded', function() {
+            // Re-init MDC for dynamic fields
+            if (typeof mdc !== 'undefined' && mdc.textField) {
+              document.querySelectorAll('.item-row .mdc-text-field').forEach(function(el) {
+                try { mdc.textField.MDCTextField.attachTo(el); } catch(e) {}
+              });
+            }
+          });
+          </script>
 
           <div id="syarat" class="tab-content">
             <form action="{{ route('forms.store.syarat') }}" method="POST">
@@ -836,7 +980,7 @@
                   <!-- Card sebelahnya -->
                   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                     <div class="mdc-card">
-                      <h6 class="card-title">👽</h6>
+                      <h6 class="card-title"><i class="material-icons" style="font-size:18px; vertical-align:middle; margin-right:6px;">contact_mail</i>Kontak
                       <div class="template-demo">
                         <div class="mdc-layout-grid__inner">
 
@@ -947,7 +1091,7 @@
                   <!-- Card sebelahnya -->
                   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                     <div class="mdc-card">
-                      <h6 class="card-title">👽</h6>
+                      <h6 class="card-title"><i class="material-icons" style="font-size:18px; vertical-align:middle; margin-right:6px;">contact_mail</i>Kontak
                       <div class="template-demo">
                         <div class="mdc-layout-grid__inner">
 

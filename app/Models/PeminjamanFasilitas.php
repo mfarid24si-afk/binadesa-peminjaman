@@ -56,4 +56,14 @@ public function scopeSearch($query, $request, array $columns)
     {
         return $this->hasMany(PembayaranFasilitas::class, 'pinjam_id');
     }
+
+    public function detail()
+    {
+        return $this->hasMany(DetailPeminjaman::class, 'pinjam_id');
+    }
+
+    public function logs()
+    {
+        return $this->hasMany(PeminjamanLog::class, 'pinjam_id');
+    }
 }

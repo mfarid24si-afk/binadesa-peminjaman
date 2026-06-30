@@ -98,10 +98,13 @@
                       <td>{{ $w->telp }}</td>
                       <td style="color:var(--text-secondary);">{{ $w->email }}</td>
                       <td style="white-space:nowrap;">
+                        @if(in_array(Auth::user()->role ?? '', ['super admin', 'admin']))
                         <a href="{{ route('warga.edit', $w->warga_id) }}"
                            class="btn-action btn-action-edit">
                           <i class="material-icons" style="font-size:14px;">edit</i> Edit
                         </a>
+                        @endif
+                        @if(Auth::user()->role === 'super admin')
                         <form action="{{ route('warga.destroy', $w->warga_id) }}" method="POST"
                               style="display:inline;"
                               onsubmit="return confirm('Hapus data warga ini?')">
@@ -111,6 +114,7 @@
                             <i class="material-icons" style="font-size:14px;">delete</i> Hapus
                           </button>
                         </form>
+                        @endif
                       </td>
                     </tr>
                   @empty

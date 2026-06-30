@@ -8,8 +8,9 @@ use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\SyaratController;
-use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/regis', [Authcontroller::class, 'regis'])
@@ -118,6 +119,24 @@ Route::get('/edit/syarat/{id}', [SyaratController::class, 'editSyarat'])
 Route::put('/update/syarat/{id}', [SyaratController::class, 'updateSyarat'])->name('syarat.update');
 Route::delete('/tables/delete/syarat/{id}', [SyaratController::class, 'destroySyarat'])->name('syarat.destroy');
 
+//<====Log Activity====>
+Route::get('/log-aktivitas', [PeminjamanController::class, 'logIndex'])
+    ->middleware('checkislogin')
+    ->name('log.index');
+
+//<====Quick Action====>
+Route::post('/peminjaman/{id}/setujui', [PeminjamanController::class, 'quickApprove'])
+    ->middleware('checkrole:super admin,admin')
+    ->name('peminjaman.approve');
+
+Route::post('/peminjaman/{id}/tolak', [PeminjamanController::class, 'quickReject'])
+    ->middleware('checkrole:super admin,admin')
+    ->name('peminjaman.reject');
+
+Route::post('/peminjaman/{id}/selesai', [PeminjamanController::class, 'quickDone'])
+    ->middleware('checkrole:super admin,admin')
+    ->name('peminjaman.done');
+
 //<====Login=====>
 Route::get('/login', [AuthController::class, 'showLoginForm'])
 
@@ -145,6 +164,32 @@ Route::get('/edit/user/{id}', [AuthController::class, 'editUser'])
 Route::delete('/tables/delete/user/{id}', [AuthController::class, 'destroyUser'])
     ->middleware('checkrole:super admin') 
     ->name('user.destroy');
+
+//<====Profil User====>
+Route::get('/profil-saya', [ProfileController::class, 'index'])
+    ->middleware('checkislogin')
+    ->name('profile.index');
+
+Route::put('/profil-saya', [ProfileController::class, 'updateProfile'])
+    ->middleware('checkislogin')
+    ->name('profile.update');
+
+Route::put('/profil-saya/password', [ProfileController::class, 'updatePassword'])
+    ->middleware('checkislogin')
+    ->name('profile.update-password');
+
+Route::post('/profil-saya/foto', [ProfileController::class, 'uploadPhoto'])
+    ->middleware('checkislogin')
+    ->name('profile.upload-photo');
+
+//<====Pengaturan Sistem====>
+Route::get('/pengaturan', [SettingController::class, 'index'])
+    ->middleware(['checkislogin', 'checkrole:super admin,admin'])
+    ->name('settings.index');
+
+Route::put('/pengaturan', [SettingController::class, 'update'])
+    ->middleware(['checkislogin', 'checkrole:super admin,admin'])
+    ->name('settings.update');
 
 Route::get('/profil-pengembang', [AuthController::class, 'index'])
     ->middleware('checkislogin') 

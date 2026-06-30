@@ -92,7 +92,7 @@
         <!-- Card sebelahnya -->
         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
           <div class="mdc-card">
-            <h6 class="card-title">👽</h6>
+            <h6 class="card-title"><i class="material-icons" style="font-size:18px; vertical-align:middle; margin-right:6px;">description</i>Keterangan
             <div class="template-demo">
               <div class="mdc-layout-grid__inner">
                 

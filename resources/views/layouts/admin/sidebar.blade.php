@@ -12,21 +12,66 @@ function toggleMenu() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Auto-open submenu jika tautan anak aktif
-    var subLinks = document.querySelectorAll('#submenu-tables a');
-    var anyActive = false;
-    subLinks.forEach(function (link) {
-        if (window.location.href.indexOf(link.getAttribute('href')) !== -1) {
-            link.classList.add('active');
-            anyActive = true;
+// Sidebar toggle — handle class + margin konten secara manual
+document.addEventListener('DOMContentLoaded', function() {
+    var drawer     = document.querySelector('.mdc-drawer');
+    var scrim      = document.getElementById('sidebar-scrim');
+    var appContent = document.querySelector('.main-wrapper.mdc-drawer-app-content');
+    var SIDEBAR_W  = 240; // --sidebar-w
+
+    function updateSidebar() {
+        var isOpen = drawer.classList.contains('mdc-drawer--open');
+        document.body.classList.toggle('sidebar-open', isOpen);
+        // Desktop: geser margin konten, Mobile: tidak perlu (sidebar slide)
+        if (window.innerWidth > 991 && appContent) {
+            appContent.style.marginLeft = isOpen ? SIDEBAR_W + 'px' : '0';
+        }
+    }
+
+    // Scrim
+    if (scrim) {
+        scrim.addEventListener('click', function() {
+            drawer.classList.remove('mdc-drawer--open');
+            updateSidebar();
+        });
+    }
+
+    // Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && drawer.classList.contains('mdc-drawer--open')) {
+            drawer.classList.remove('mdc-drawer--open');
+            updateSidebar();
         }
     });
-    if (anyActive) {
-        document.getElementById('submenu-tables').style.display = 'block';
-        var arrow = document.getElementById('tables-arrow');
-        if (arrow) arrow.textContent = 'keyboard_arrow_down';
+
+    // Clone & replace sidebar-toggler untuk hapus event listener dari misc.js
+    setTimeout(function() {
+        var oldToggler = document.querySelector('.sidebar-toggler');
+        if (!oldToggler) return;
+        var newToggler = oldToggler.cloneNode(true);
+        oldToggler.parentNode.replaceChild(newToggler, oldToggler);
+        newToggler.addEventListener('click', function(e) {
+            e.preventDefault();
+            drawer.classList.toggle('mdc-drawer--open');
+            updateSidebar();
+        });
+    }, 50);
+
+    // Tutup sidebar di mobile saat initial load
+    if (window.innerWidth <= 991 && drawer.classList.contains('mdc-drawer--open')) {
+        drawer.classList.remove('mdc-drawer--open');
     }
+
+    // Initial state
+    updateSidebar();
+
+    // Re-check on resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth <= 991) {
+            drawer.classList.remove('mdc-drawer--open');
+        }
+        updateSidebar();
+    });
 });
 </script>
 
@@ -93,32 +138,66 @@ document.addEventListener('DOMContentLoaded', function () {
         <div id="submenu-tables" style="display:none; margin:4px 0 6px 12px; background:rgba(0,0,0,0.2); border-radius:6px; padding:4px 0;">
           @php
             $tableLinks = [
-              ['route' => 'user',       'label' => 'User',       'icon' => 'account_box'],
-              ['route' => 'warga',      'label' => 'Warga',      'icon' => 'people'],
-              ['route' => 'media',      'label' => 'Media',      'icon' => 'collections'],
-              ['route' => 'fasilitas',  'label' => 'Fasilitas',  'icon' => 'store'],
-              ['route' => 'peminjaman', 'label' => 'Peminjaman', 'icon' => 'assignment'],
-              ['route' => 'pembayaran', 'label' => 'Pembayaran', 'icon' => 'credit_card'],
-              ['route' => 'syarat',     'label' => 'Syarat',     'icon' => 'description'],
-              ['route' => 'petugas',    'label' => 'Petugas',    'icon' => 'assignment_ind'],
+              ['route' => 'warga',      'label' => 'Warga',      'icon' => 'people',        'roles' => ['super admin','admin','user']],
+              ['route' => 'fasilitas',  'label' => 'Fasilitas',  'icon' => 'store',          'roles' => ['super admin','admin','user']],
+              ['route' => 'peminjaman', 'label' => 'Peminjaman', 'icon' => 'assignment',     'roles' => ['super admin','admin','user']],
+              ['route' => 'pembayaran', 'label' => 'Pembayaran', 'icon' => 'credit_card',    'roles' => ['super admin','admin']],
+              ['route' => 'syarat',     'label' => 'Syarat',     'icon' => 'description',    'roles' => ['super admin','admin']],
+              ['route' => 'petugas',    'label' => 'Petugas',    'icon' => 'assignment_ind', 'roles' => ['super admin','admin']],
+              ['route' => 'media',      'label' => 'Media',      'icon' => 'collections',    'roles' => ['super admin','admin']],
+              ['route' => 'user',       'label' => 'User',       'icon' => 'account_box',    'roles' => ['super admin']],
             ];
           @endphp
 
           @foreach($tableLinks as $link)
+            @if(in_array(Auth::user()->role ?? 'user', $link['roles']))
             <div class="mdc-list-item mdc-drawer-item" style="height: 38px; padding: 0;">
               <a class="mdc-drawer-link {{ request()->routeIs($link['route']) ? 'active' : '' }}" href="{{ route($link['route']) }}" style="padding-left: 16px; font-size: 13px; display: flex; align-items: center; width: 100%;">
                 <i class="material-icons" style="font-size: 18px; margin-right: 12px; opacity: 0.85; width: 18px; text-align: center;">{{ $link['icon'] }}</i>
                 <span style="color: rgba(255,255,255,0.85);">{{ $link['label'] }}</span>
               </a>
             </div>
+            @endif
           @endforeach
         </div>
 
-        {{-- Profil --}}
+      </nav>
+
+      {{-- ─ Lainnya ─ --}}
+      <div class="sidebar-section-label" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: rgba(255,255,255,0.35); margin: 16px 0 6px;">Lainnya</div>
+      <nav class="mdc-list mdc-drawer-menu" style="padding: 0;">
+
+        {{-- Profil Saya --}}
+        <div class="mdc-list-item mdc-drawer-item" style="padding: 0; margin-bottom: 4px;">
+          <a class="mdc-drawer-link {{ request()->routeIs('profile.index') ? 'active' : '' }}" href="{{ route('profile.index') }}">
+            <i class="material-icons mdc-drawer-item-icon">account_circle</i>
+            Profil Saya
+          </a>
+        </div>
+
+        {{-- Pengaturan (hanya super admin & admin) --}}
+        @if(in_array(Auth::user()->role ?? '', ['super admin', 'admin']))
+        <div class="mdc-list-item mdc-drawer-item" style="padding: 0; margin-bottom: 4px;">
+          <a class="mdc-drawer-link {{ request()->routeIs('settings.index') ? 'active' : '' }}" href="{{ route('settings.index') }}">
+            <i class="material-icons mdc-drawer-item-icon">settings</i>
+            Pengaturan
+          </a>
+        </div>
+        @endif
+
+        {{-- Log Aktivitas --}}
+        <div class="mdc-list-item mdc-drawer-item" style="padding: 0; margin-bottom: 4px;">
+          <a class="mdc-drawer-link {{ request()->routeIs('log.index') ? 'active' : '' }}" href="{{ route('log.index') }}">
+            <i class="material-icons mdc-drawer-item-icon">history</i>
+            Log Aktivitas
+          </a>
+        </div>
+
+        {{-- Profil Pengembang --}}
         <div class="mdc-list-item mdc-drawer-item" style="padding: 0; margin-bottom: 4px;">
           <a class="mdc-drawer-link {{ request()->routeIs('developer.profile') ? 'active' : '' }}" href="{{ route('developer.profile') }}">
-            <i class="material-icons mdc-drawer-item-icon">person</i>
-            Profil
+            <i class="material-icons mdc-drawer-item-icon">code</i>
+            Developer
           </a>
         </div>
 
@@ -140,6 +219,9 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
 
   </div>
+
+  {{-- Scrim overlay di DALAM drawer agar tidak memutus sibling CSS --}}
+  <div id="sidebar-scrim" class="sidebar-scrim"></div>
 </aside>
 
 <div class="main-wrapper mdc-drawer-app-content">

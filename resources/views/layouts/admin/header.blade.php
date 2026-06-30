@@ -29,8 +29,10 @@
 
       {{-- Profile --}}
       <div class="menu-profile d-flex align-items-center" style="gap:10px;">
-        <a href="{{ route('developer.profile') }}" class="d-flex align-items-center" style="text-decoration:none;">
-          <img src="{{ asset('assets/images/faces/face11.jpg') }}"
+        <a href="{{ route('profile.index') }}" class="d-flex align-items-center" style="text-decoration:none;">
+          <img src="{{ Auth::user()->foto && Storage::disk('public')->exists(Auth::user()->foto)
+                ? Storage::url(Auth::user()->foto)
+                : asset('assets/images/faces/face11.jpg') }}"
                alt="{{ Auth::user()->name }}"
                class="avatar-circle">
         </a>

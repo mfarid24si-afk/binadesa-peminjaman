@@ -58,8 +58,19 @@ class WargaController extends Controller
 
     public function updateWarga(Request $request, $id)
     {
+        $validated = $request->validate([
+            'no_ktp'        => 'required|string|max:16|unique:warga,no_ktp,' . $id . ',warga_id',
+            'nama'          => 'required|string|max:100',
+            'jenis_kelamin' => 'required|string|in:L,P',
+            'agama'         => 'required|string|max:255',
+            'pekerjaan'     => 'required|string|max:255',
+            'telp'          => 'nullable|string|max:20',
+            'email'         => 'nullable|string|email|max:255',
+        ]);
+
         $warga = Warga::findOrFail($id);
-        $warga->update($request->all());
+        $warga->update($validated);
+
         return redirect()->route('tables')->with('success', 'Data Warga berhasil diperbarui.');
     }
     public function destroyWarga($id)

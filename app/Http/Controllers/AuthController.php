@@ -108,8 +108,28 @@ class AuthController extends Controller
 
     public function updateUser(Request $request, $id)
     {
+        $validated = $request->validate([
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|email|max:255|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:6',
+            'role'     => 'required|string|in:super admin,admin,user',
+        ]);
+
         $user = User::findOrFail($id);
-        $user->update($request->all());
+
+        $data = [
+            'name'  => $validated['name'],
+            'email' => $validated['email'],
+            'role'  => $validated['role'],
+        ];
+
+        // Only update password if a new one is provided
+        if (!empty($validated['password'])) {
+            $data['password'] = bcrypt($validated['password']);
+        }
+
+        $user->update($data);
+
         return redirect()->route('user')->with('success', 'Data User berhasil diperbarui.');
     }
     public function destroyUser($id)

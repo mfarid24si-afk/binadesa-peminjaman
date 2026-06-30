@@ -109,19 +109,52 @@
                       </td>
                       <td>Rp {{ number_format($item->total_biaya, 0, ',', '.') }}</td>
                       <td style="white-space:nowrap;">
+                        {{-- Quick action: Setujui (pending only) --}}
+                        @if($item->status === 'pending' && in_array(Auth::user()->role ?? '', ['super admin', 'admin']))
+                        <form action="{{ route('peminjaman.approve', $item->pinjam_id) }}" method="POST" style="display:inline;"
+                              onsubmit="return confirm('Setujui peminjaman ini?')">
+                          @csrf
+                          <button type="submit" class="btn-action" style="background:#e8f5e9;color:#2e7d32;padding:4px 8px;font-size:11px;">
+                            <i class="material-icons" style="font-size:13px;">check</i> Setujui
+                          </button>
+                        </form>
+                        <form action="{{ route('peminjaman.reject', $item->pinjam_id) }}" method="POST" style="display:inline;"
+                              onsubmit="return confirm('Tolak peminjaman ini?')">
+                          @csrf
+                          <button type="submit" class="btn-action" style="background:#ffebee;color:#c62828;padding:4px 8px;font-size:11px;">
+                            <i class="material-icons" style="font-size:13px;">close</i> Tolak
+                          </button>
+                        </form>
+                        @endif
+
+                        {{-- Quick action: Selesai (disetujui only) --}}
+                        @if($item->status === 'disetujui' && in_array(Auth::user()->role ?? '', ['super admin', 'admin']))
+                        <form action="{{ route('peminjaman.done', $item->pinjam_id) }}" method="POST" style="display:inline;"
+                              onsubmit="return confirm('Tandai peminjaman selesai?')">
+                          @csrf
+                          <button type="submit" class="btn-action" style="background:#e8eaf6;color:var(--primary);padding:4px 8px;font-size:11px;">
+                            <i class="material-icons" style="font-size:13px;">done_all</i> Selesai
+                          </button>
+                        </form>
+                        @endif
+
+                        @if(in_array(Auth::user()->role ?? '', ['super admin', 'admin']))
                         <a href="{{ route('peminjaman.edit', $item->pinjam_id) }}"
-                           class="btn-action btn-action-edit">
-                          <i class="material-icons" style="font-size:14px;">edit</i> Edit
+                           class="btn-action btn-action-edit" style="padding:4px 8px;font-size:11px;">
+                          <i class="material-icons" style="font-size:13px;">edit</i>
                         </a>
+                        @endif
+                        @if(Auth::user()->role === 'super admin')
                         <form action="{{ route('peminjaman.destroy', $item->pinjam_id) }}" method="POST"
                               style="display:inline;"
                               onsubmit="return confirm('Hapus data peminjaman ini?')">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn-action btn-action-delete">
-                            <i class="material-icons" style="font-size:14px;">delete</i> Hapus
+                          <button type="submit" class="btn-action btn-action-delete" style="padding:4px 8px;font-size:11px;">
+                            <i class="material-icons" style="font-size:13px;">delete</i>
                           </button>
                         </form>
+                        @endif
                       </td>
                     </tr>
                   @empty

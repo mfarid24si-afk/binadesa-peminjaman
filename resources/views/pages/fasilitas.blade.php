@@ -69,13 +69,17 @@
                       <a href="{{ route('fasilitas.show', $item->fasilitas_id) }}" class="btn-action" style="background:#e8f5e9;color:#27ae60;">
                         <i class="material-icons" style="font-size:14px;">visibility</i> Detail
                       </a>
+                      @if(in_array(Auth::user()->role ?? '', ['super admin', 'admin']))
                       <a href="{{ route('fasilitas.edit', $item->fasilitas_id) }}" class="btn-action btn-action-edit">
                         <i class="material-icons" style="font-size:14px;">edit</i> Edit
                       </a>
+                      @endif
+                      @if(Auth::user()->role === 'super admin')
                       <form action="{{ route('fasilitas.destroy', $item->fasilitas_id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Hapus fasilitas ini?')">
                         @csrf @method('DELETE')
                         <button type="submit" class="btn-action btn-action-delete"><i class="material-icons" style="font-size:14px;">delete</i> Hapus</button>
                       </form>
+                      @endif
                     </td>
                   </tr>
                 @empty
